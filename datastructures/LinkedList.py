@@ -1,13 +1,16 @@
 '''
 Created on Aug 12, 2015
-@author: topcat
+@author: hari
 '''
-
 class LinkedNode(object):
     """
     A node in a Linked list.
     """
     def __init__(self, element = None, nextNode = None):
+        '''
+        a node is created with the element object and the next node. If any of these
+        are not available use the default value None.
+        '''
         self._next = nextNode
         self._element = element
     
@@ -31,7 +34,7 @@ class LinkedNode(object):
         return '%s %s' % (self.__class__.__name__, self._element)
     
     def __repr__(self):
-        return '%s(%s)' % (self.__class__.__name__, self._element)
+        return '%s(element = %s, nextNode = %s)' % (self.__class__.__name__, self._element, self._next)
         
 class LinkedList(object):
     '''
@@ -41,10 +44,22 @@ class LinkedList(object):
         self._head = None
         self._length = 0
         self._tail = self._head
+            
+    @property
+    def length(self):
+        return self._length
     
+    @property
+    def head(self):
+        return self._head
+    
+    @property
+    def tail(self):
+        return self._tail
+        
     def append(self, element):
         """
-        Adds an element to the end of the list
+        Adds an element to the end of the list as a Node.
         """
         if self._head is None:
             self._head = LinkedNode(element)
@@ -57,6 +72,10 @@ class LinkedList(object):
         self._length = self._length + 1
     
     def index(self, element):
+        '''
+        Returns -1 if element is not present in list. If present function returns the
+        0 based index of the element in the list.
+        '''
         if self._length == 0:
             return -1
          
@@ -71,6 +90,10 @@ class LinkedList(object):
     #
     
     def extend(self, linked_list):
+        '''
+        extend takes another LinkedList instance and adds each element of linked_list as a NEW
+        node of this list.
+        '''
         if linked_list is None:
             return   
         for node in linked_list:
@@ -84,6 +107,7 @@ class LinkedList(object):
         if self._head.element == element:
             if self._head.nextNode == None:
                 self._head = None
+                self._tail = None
             else:
                 self._head = self._head.nextNode
             self._length = self._length - 1
@@ -99,15 +123,11 @@ class LinkedList(object):
             else:
                 break
         
-        if current_node == None:
+        if current_node == None:#did not find the element in the list.
             return
-        
+        #element found. it is in current_node.
         prev_node.nextNode = current_node.nextNode
         self._length = self._length - 1
-            
-    @property
-    def length(self):
-        return self._length
     #
     def __iter__(self):
         self._iterNode = self._head
@@ -121,5 +141,4 @@ class LinkedList(object):
         raise StopIteration
     #
     def __str__(self):
-        return '%s %s element(s)' % (self.__class__.__name__, str(self._length))
-    
+        return '%s has %s element(s)' % (self.__class__.__name__, str(self._length))

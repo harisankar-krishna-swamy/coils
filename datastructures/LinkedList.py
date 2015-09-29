@@ -42,8 +42,8 @@ class LinkedList(object):
     '''
     def __init__(self):
         self._head = None
-        self._length = 0
         self._tail = self._head
+        self._length = 0
             
     @property
     def length(self):
@@ -96,8 +96,8 @@ class LinkedList(object):
         '''
         if linked_list is None:
             return   
-        for node in linked_list:
-            self.append(node.element)
+        for element in linked_list:
+            self.append(element)
     #
     
     def remove(self, element):
@@ -127,6 +127,8 @@ class LinkedList(object):
             return
         #element found. it is in current_node.
         prev_node.nextNode = current_node.nextNode
+        if prev_node.nextNode == None: #Prev is the tail now.
+            self._tail = prev_node
         self._length = self._length - 1
     #
     def __iter__(self):
@@ -137,7 +139,7 @@ class LinkedList(object):
         if self._iterNode is not None:
             temp = self._iterNode
             self._iterNode = self._iterNode.nextNode
-            return temp   
+            return temp.element   
         raise StopIteration
     #
     def __str__(self):

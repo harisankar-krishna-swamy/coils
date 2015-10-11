@@ -209,7 +209,7 @@ class LinkedList_TestCase_Check_Tail_On_Remove_In_4_Element_List(unittest.TestCa
         self._linkedList = None    
 
 class LinkedList_TestCase_Check_Head_On_Remove_In_4_Element_List(unittest.TestCase):
-    
+
     def setUp(self):
         self._linkedList = LinkedList()
         self._linkedList.append(1)

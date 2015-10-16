@@ -4,7 +4,7 @@ Created on Aug 5, 2015
 '''
 class Heap(object):
     """
-    Implements heap class in python. Heap holds an array so that for index i, 2*i is left child and 2*i+1 is right child 
+    Implements heap class in python. Heap holds an array(Python list) so that for index i, 2*i is left child and 2*i+1 is right child 
     in heap tree (if Min heap i.e).
      0   1   2   3   4   5   6   7   8   9
     [#] [y] [c] [b] [e] [g] [f] [z] [a] [p] ........
@@ -14,7 +14,7 @@ class Heap(object):
         Initiate the heap's internal list storage. 
         """
         self._heapList = []
-        self._heapList.append(None)
+        self._heapList.append(None) # 0 index is not used.
         self._count = 0
         if minHeap is True:
             self._siftUp = self._siftUpMinHeap
@@ -25,12 +25,15 @@ class Heap(object):
         
         self._isMinHeap = minHeap
     
+    @property
     def isMinHeap(self):
         return self._isMinHeap
     
     def addElements(self, element_list):
         """
         Helper method that allows for multiple insertions.
+        
+        element_list: a Python list. 
         """
         if element_list is None:
             return
@@ -65,7 +68,8 @@ class Heap(object):
     
     def _siftUpMinHeap(self, N):
         """
-        MinHeap: Move the element up until post condition is element is lower than its parent
+        MinHeap: Move the element at index N up until post condition is every heap element is lower than its children
+        This operation maintains the min-heap condition after adding an element.
         """
         I = N
         parent = None
@@ -75,7 +79,7 @@ class Heap(object):
                 self._heapList[I/2] = self._heapList[I]
                 self._heapList[I] = parent
             else:
-                # we reach a situation where the element is not less than the parent. Break.
+                # we reach a situation where the element is at I is not less than the parent. Break.
                 break
             #Continue moving up the heap tree
             I = I / 2
@@ -83,7 +87,8 @@ class Heap(object):
                 
     def _siftDownMinHeap(self):
         """
-        MinHeap: We move the element at index 1 down so that post condition is both children are greater.
+        MinHeap: We move the element at index 1 down so that heap post condition every node in the heap is less than its own child nodes.
+        Maintains heap property after removing an element from the heap.
         """
         I = 1
         C = 1
@@ -102,7 +107,7 @@ class Heap(object):
     
     def _siftUpMaxHeap(self, N):
         """
-        MinHeap: Move the element up until post condition is element is lower than its parent
+        MaxHeap: Move the element up until post condition is every element is less than its parent
         """
         I = N
         parent = None
@@ -120,7 +125,7 @@ class Heap(object):
                 
     def _siftDownMaxHeap(self):
         """
-        MinHeap: We move the element at index 1 down so that post condition is both children are greater.
+        MaxHeap: We move the element at index 1 down so that post condition is every node element is greater than its children.
         """
         I = 1
         C = 1
@@ -137,9 +142,20 @@ class Heap(object):
                 break
             I = C
     
-    
     def __str__(self):
         return str(self._heapList)
+    #
+    def __iter__(self):
+        '''
+        Support for iterating through the heap.
+        '''
+        return self
+    #
+    def next(self):
+        if self._count != 0:
+            temp = self.getElement()
+            return temp
+        raise StopIteration
     
     def _getHeapAsList(self):
         """
@@ -155,3 +171,6 @@ if __name__ == '__main__':
     print h
     from tests.test_min_heap import assert_min_heap_property
     print assert_min_heap_property(h._getHeapAsList())
+    
+    for element in h:
+        print element

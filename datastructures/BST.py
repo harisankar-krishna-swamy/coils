@@ -1,6 +1,9 @@
 '''
 Created on Aug 15, 2015
 @author: hari
+TODO: 
+1) do we call search by element or key. key is something that is unique to an element. For example elmployee id for element employee
+2) while searching for node and parent. Can we just sent both in a tuple as return value.
 '''
 class BSTTreeNode(object):
     '''
@@ -182,41 +185,41 @@ class BinarySearchTree(object):
                 else:
                     parent_of_node_to_delete.right_child = None
             else:
-                self._root = None
+                self._root_node = None
             
             self._node_count = self._node_count - 1
             return    
         
         if node_to_delete.has_only_left_child or node_to_delete.has_only_right_child:
-            if node_to_delete == parent_of_node_to_delete.left_child:
+            if parent_of_node_to_delete != None:
+                if node_to_delete == parent_of_node_to_delete.left_child:
+                    if node_to_delete.has_only_left_child :
+                        parent_of_node_to_delete.left_child = node_to_delete.left_child
+                    elif node_to_delete.has_only_right_child:
+                        parent_of_node_to_delete.left_child = node_to_delete.right_child    
+                elif node_to_delete == parent_of_node_to_delete.right_child:
+                    if node_to_delete.has_only_left_child :
+                        parent_of_node_to_delete.right_child = node_to_delete.left_child
+                    elif node_to_delete.has_only_right_child:
+                        parent_of_node_to_delete.right_child = node_to_delete.right_child
+            else:#root with only one child
                 if node_to_delete.has_only_left_child :
-                    parent_of_node_to_delete.left_child = node_to_delete.left_child
+                    self._root_node = node_to_delete.left_child
                 elif node_to_delete.has_only_right_child:
-                    parent_of_node_to_delete.left_child = node_to_delete.right_child    
-            elif node_to_delete == parent_of_node_to_delete.right_child:
-                if node_to_delete.has_only_left_child :
-                    parent_of_node_to_delete.right_child = node_to_delete.left_child
-                elif node_to_delete.has_only_right_child:
-                    parent_of_node_to_delete.right_child = node_to_delete.right_child
+                    self._root_node = node_to_delete.right_child
             self._node_count = self._node_count - 1
             return
     
         #node has left and right children. find inorder successor of the right child of node to delete
-        
         inorder_successor = self._find_inorder_successor(node_to_delete.right_child)
         parent_of_inorder_successor = self._find_parent_of_node(inorder_successor)
         
-        parent_of_inorder_successor.left_child = inorder_successor.right_child
-        inorder_successor.left_child = node_to_delete.left_child
-        inorder_successor.right_child = node_to_delete.right_child
+        right_child_of_inorder_successor = inorder_successor.right_child
+        node_to_delete.element = inorder_successor.element #swap elements only.
         
-        if node_to_delete != self._root_node:
-            if node_to_delete == parent_of_node_to_delete.left_child:
-                parent_of_node_to_delete.left_child = inorder_successor
-            else:
-                parent_of_node_to_delete.right_child = inorder_successor
+        if parent_of_inorder_successor != node_to_delete:
+            parent_of_inorder_successor.left_child = right_child_of_inorder_successor
         else:
-            self._root_node = inorder_successor
-            
+            parent_of_inorder_successor.right_child = right_child_of_inorder_successor
         self._node_count = self._node_count - 1
         return

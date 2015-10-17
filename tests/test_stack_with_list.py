@@ -2,7 +2,6 @@
 Created on Aug 14, 2015
 @author: topcat
 '''
-import unittest
 from unittest.case import TestCase
 from datastructures.Stack import Stack
 
@@ -93,3 +92,20 @@ class TestCase_Pop_To_Empty_With_Predictable_Stack_Of_4_Elements(TestCase):
     def tearDown(self):
         del self._stack
 
+class TestCase_Iterator_With_Stack_Of_4_Elements(TestCase):
+    
+    def setUp(self):
+        self._stack = Stack()
+        self._stack.push(1)
+        self._stack.push(2)
+        self._stack.push(3)
+        self._stack.push(4)
+    
+    def test_iterator_with_stack_with_4_elements(self):
+        elements = [4, 3, 2, 1]
+        for stack_element in self._stack:
+            self.assertEquals(stack_element, elements[0], 'Stack Iterator must match expected elements.')
+            del elements[0]
+            
+    def tearDown(self):
+        del self._stack

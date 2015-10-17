@@ -30,10 +30,18 @@ class Stack(object):
             return self._list[len(self._list) - 1]
         else:
             return None
-    
     @property
     def size(self):
         return len(self._list)
+    
+    def __iter__(self):
+        return self
+    
+    def next(self):
+        stack_element = self.pop()
+        if stack_element == None:
+            raise StopIteration
+        return stack_element 
     
     def __str__(self):
         return '%s size [%s] elements %s' % (self.__class__.__name__, len(self), self._list)

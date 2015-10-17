@@ -1,8 +1,11 @@
 '''
 Created on Aug 15, 2015
-@author: topcat
+@author: hari
 '''
 class BSTTreeNode(object):
+    '''
+    A binary search tree node.
+    '''
 
     def __init__(self, element = None, left_child = None, right_child = None):
         self._element = element
@@ -23,7 +26,7 @@ class BSTTreeNode(object):
         
     @left_child.setter
     def left_child(self, value):
-        return self._left_child
+        self._left_child = value
     
     @property
     def right_child(self):
@@ -61,7 +64,11 @@ class BSTTreeNode(object):
         return '%s element %s' % (self.__class__.__name__, str(self._element))
 
 class BinarySearchTree(object):
-    
+    '''
+    A binary search tree. Insertion is done such that if new element/key is >= current node we go to the right child. else we go to the
+    left child. Duplicates are allowed as such. When deletion or find is done, the element encountered first is returned and this 
+    depends on the tree structure and as such no guarantees are given on this order.
+    '''
     def __init__(self, root_node = None):
     
         self._root_node = root_node
@@ -69,10 +76,10 @@ class BinarySearchTree(object):
         
         if self._root_node != None:
             self._node_count = 1
+            
     @property    
     def node_count(self):
         return self._node_count
-    
     
     def addElement(self, element):
     
@@ -91,13 +98,12 @@ class BinarySearchTree(object):
             else:
                 current_node = current_node.left_child
                 
-            
         if element >= parent_node.element:
             parent_node.right_child = BSTTreeNode(element = element)
         else:
             parent_node.left_child = BSTTreeNode(element = element)
         
-        self._node_count = 1
+        self._node_count = self._node_count + 1
         #    
             
     def _find_node_with_element(self, element):

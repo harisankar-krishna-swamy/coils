@@ -76,7 +76,7 @@ class BinarySearchTree(object):
         
         if self._root_node != None:
             self._node_count = 1
-            
+
     @property    
     def node_count(self):
         return self._node_count
@@ -141,10 +141,10 @@ class BinarySearchTree(object):
         
         while (current_node != None):
             
-            if current_node.left_child.element == bst_tree_node.element:
+            if current_node.has_left_child and current_node.left_child.element == bst_tree_node.element:
                 return current_node
             
-            if current_node.left_child.element == bst_tree_node.element:
+            if current_node.has_right_child and current_node.right_child.element == bst_tree_node.element:
                 return current_node
                 
             if bst_tree_node.element >= current_node.element:
@@ -191,12 +191,12 @@ class BinarySearchTree(object):
             if node_to_delete == parent_of_node_to_delete.left_child:
                 if node_to_delete.has_only_left_child :
                     parent_of_node_to_delete.left_child = node_to_delete.left_child
-                if node_to_delete.has_only_right_child:
+                elif node_to_delete.has_only_right_child:
                     parent_of_node_to_delete.left_child = node_to_delete.right_child    
-            elif node_to_delete == parent_of_node_to_delete.rigth_child:
+            elif node_to_delete == parent_of_node_to_delete.right_child:
                 if node_to_delete.has_only_left_child :
                     parent_of_node_to_delete.right_child = node_to_delete.left_child
-                if node_to_delete.has_only_right_chilf:
+                elif node_to_delete.has_only_right_child:
                     parent_of_node_to_delete.right_child = node_to_delete.right_child
             self._node_count = self._node_count - 1
             return
@@ -204,16 +204,19 @@ class BinarySearchTree(object):
         #node has left and right children. find inorder successor of the right child of node to delete
         
         inorder_successor = self._find_inorder_successor(node_to_delete.right_child)
-        parent_of_inorder_successor = self._find_parent_node(inorder_successor)
+        parent_of_inorder_successor = self._find_parent_of_node(inorder_successor)
         
         parent_of_inorder_successor.left_child = inorder_successor.right_child
         inorder_successor.left_child = node_to_delete.left_child
         inorder_successor.right_child = node_to_delete.right_child
         
-        if node_to_delete == parent_of_node_to_delete.left_child:
-            parent_of_node_to_delete.left_child = inorder_successor
+        if node_to_delete != self._root_node:
+            if node_to_delete == parent_of_node_to_delete.left_child:
+                parent_of_node_to_delete.left_child = inorder_successor
+            else:
+                parent_of_node_to_delete.right_child = inorder_successor
         else:
-            parent_of_node_to_delete.right_child = inorder_successor
+            self._root_node = inorder_successor
             
         self._node_count = self._node_count - 1
         return

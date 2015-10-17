@@ -77,3 +77,19 @@ class TestCase_Front_Len_While_Enqueuing_And_Dequeuing_A_Predictable_Queue_With_
     
     def tearDown(self):
         del self._q
+    
+class TestCase_Iterator_Of_Predictable_Queue_With_4_Elements(TestCase):
+    
+    def setUp(self):
+        self._q = Queue()
+        self.a_list = [1,2,3,4]
+        
+        for element in self.a_list:
+            self._q.enqueue(element)
+    
+    def test_iterator_of_queue_with_4_elements(self):
+        for element in self._q:
+            self.assertEquals(element, self.a_list[0], 'Iteration over Q did not give correct element')
+            del self.a_list[0]
+    def tearDown(self):
+        del self._q

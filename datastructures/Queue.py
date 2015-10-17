@@ -22,7 +22,15 @@ class Queue(object):
     
     def __len__(self):
         return len(self._list)
-            
+    
+    def __iter__(self):
+        return self
+    
+    def next(self):
+        if len(self._list) != 0:
+            return self.dequeue()
+        raise StopIteration
+    
     @property
     def front(self):
         if len(self._list) == 0:

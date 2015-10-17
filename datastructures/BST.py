@@ -128,7 +128,7 @@ class BinarySearchTree(object):
             
     def _find_parent_of_node(self, bst_tree_node):
     
-        if self._root_node == None:
+        if self._root_node == None or self._root_node.element == bst_tree_node.element:
             return None
     
         current_node = self._root_node
@@ -158,10 +158,11 @@ class BinarySearchTree(object):
     def deleteElement(self, element):
 
         node_to_delete = self._find_node_with_element(element)
-        parent_of_node_to_delete = self._find_parent_node(node_to_delete)        
         
         if node_to_delete == None:
             return
+        
+        parent_of_node_to_delete = self._find_parent_of_node(node_to_delete)        
             
         '''
         if the node to delete is a leaf node and it has a parent, set the parent child reference to None.

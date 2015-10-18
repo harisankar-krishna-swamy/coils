@@ -6,6 +6,7 @@ TODO:
 2) while searching for node and parent. Can we just sent both in a tuple as return value.
 '''
 from datastructures.Stack import Stack
+from meld.vc.svk import NULL
 class BSTTreeNode(object):
     '''
     A binary search tree node.
@@ -15,6 +16,7 @@ class BSTTreeNode(object):
         self._element = element
         self._right_child = right_child
         self._left_child = left_child
+        self._link_inversion_traversal_tag = 0
         
     @property
     def element(self):
@@ -64,6 +66,15 @@ class BSTTreeNode(object):
     def has_only_right_child(self):
         return not self.has_left_child and self.has_right_child
     
+    @property
+    def link_inversion_traversal_tag(self):
+        return self._link_inversion_traversal_tag
+    
+    @link_inversion_traversal_tag.setter
+    def link_inversion_traversal_tag(self, value):
+        self._link_inversion_traversal_tag = value
+    
+            
     def __str__(self):
         return '%s element %s' % (self.__class__.__name__, str(self._element))
 
@@ -225,23 +236,44 @@ class BinarySearchTree(object):
         self._node_count = self._node_count - 1
         return
     
-    def preorder(self):
+    def traversal(self, want_pre_order = False, want_post_order = False, want_in_order = False):
         '''
         A yield is used to return the node elements while traversing the tree
         '''
-        stack_of_nodes_to_visit = Stack()
-        stack_of_nodes_to_visit.push(self._root_node)
-        for node in stack_of_nodes_to_visit:
-            if node == None:
-                continue
-            yield node.element
-            if node.right_child != None:
-                stack_of_nodes_to_visit.push(node.right_child)
-            if node.left_child != None:
-                stack_of_nodes_to_visit.push(node.left_child)
+        prev = None
+        curr = self._root_node
+        temp = None
+        
+        while 1==1:
+            while curr != None: #fall down to left
+                curr.link_inversion_traversal_tag = False
+                if want_pre_order: 
+                    yield curr.element
+                temp = curr.left_child
+                curr.left_child = prev
+                prev = curr
+                curr = temp
+                
+            while prev != None and prev.link_inversion_traversal_tag == True: #Rise from right
+                temp = prev.right_child #has our way up
+                prev.right_child = curr #Reset pointer
+                curr = prev         #Move up
+                if want_post_order:
+                    yield curr.element 
+                prev = temp
             
-    def inorder(self):
-        pass
-    
-    def postorder(self):
-        pass
+            if prev == None: 
+                return
+            else:
+                    temp = prev.left_child
+                    prev.left_child = curr
+                    curr = prev;
+                    prev = temp;
+                    #We are comparing with pre-order traversal.
+                    if want_in_order:
+                        yield curr.element 
+                    curr.link_inversion_traversal_tag = True
+                    temp = curr.right_child
+                    curr.right_child = prev
+                    prev = curr;
+                    curr = temp;    

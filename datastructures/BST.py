@@ -5,6 +5,7 @@ TODO:
 1) do we call search by element or key. key is something that is unique to an element. For example elmployee id for element employee
 2) while searching for node and parent. Can we just sent both in a tuple as return value.
 '''
+from datastructures.Stack import Stack
 class BSTTreeNode(object):
     '''
     A binary search tree node.
@@ -223,3 +224,24 @@ class BinarySearchTree(object):
             parent_of_inorder_successor.right_child = right_child_of_inorder_successor
         self._node_count = self._node_count - 1
         return
+    
+    def preorder(self):
+        '''
+        A yield is used to return the node elements while traversing the tree
+        '''
+        stack_of_nodes_to_visit = Stack()
+        stack_of_nodes_to_visit.push(self._root_node)
+        for node in stack_of_nodes_to_visit:
+            if node == None:
+                continue
+            yield node.element
+            if node.right_child != None:
+                stack_of_nodes_to_visit.push(node.right_child)
+            if node.left_child != None:
+                stack_of_nodes_to_visit.push(node.left_child)
+            
+    def inorder(self):
+        pass
+    
+    def postorder(self):
+        pass

@@ -13,10 +13,39 @@ class BinarySplayTree(BinarySearchTree):
     
     def _splay_node_with_key(self, key):
         '''
-        Splay the node with key to the root.
+        TODO: Splay the node with key to the root.
         '''
         pass
-
+        '''
+        node_to_splay, parent = self._find_node_with_key(key)
+        while True:
+            if parent == None or (self._root_node.left_child == node_to_splay or self._root_node.right_child == node_to_splay):
+               break#if node is root or child of root break
+               
+            if node_to_splay.isLeftChildOfRightChild:
+                self._rotate_right_for(node_to_splay)
+                self._rotate_left_for(node_to_splay)
+                continue
+            if node_to_splay.isRightChildOfLeftChild:
+                self._rotate_left_for(node_to_splay)
+                self._rotate_right_for(node_to_splay)
+                continue
+            if node_to_splay.isLeftChildOfLeftChild:
+                self._rotate_right_for(parent)
+                self._rotate_right_for(node_to_splay)
+                continue
+            if node_to_splay.isRightChildOfRightChild:
+                self._rotate_left_for(parent)
+                self._rotate_right_for(node_to_splay)
+        #while
+        #node_to_splay is either root or a child of root
+        if node_to_splay.isRoot:
+            return
+        if node_to_splay.isLeftChild:
+            self._rotate_right_for(node_to_splay)
+        else:
+            self._rotate_left_for(node_to_splay)
+        '''
     def remove(self, key):
         return BinarySearchTree.remove(self, key)
     

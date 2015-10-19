@@ -2,14 +2,13 @@
 Created on Aug 15, 2015
 @author: hari
 '''
-from datastructures.Stack import Stack
 from collections import namedtuple
 
 KeyValuePair = namedtuple('KeyValuePair', 'key value')
 
 class BSTTreeNode(object):
     '''
-    A binary search tree node. 
+    A binary search tree node. For example, key can be a unique employee id and value is a python object for employee.
     '''
     def __init__(self, key = None, value = None, left_child = None, right_child = None):
         self._kvpair = KeyValuePair(key, value)
@@ -22,7 +21,7 @@ class BSTTreeNode(object):
         return self._kvpair
     
     @kvpair.setter
-    def kvpair(self, value):#replacing data in a node is used in node removal.
+    def kvpair(self, value):#for replacing data in a node. this is used in node removal.
         self._kvpair = value
         
     @property
@@ -85,15 +84,16 @@ class BSTTreeNode(object):
     def link_inversion_traversal_tag(self, value):
         self._link_inversion_traversal_tag = value
     
-            
     def __str__(self):
-        return '%s element %s' % (self.__class__.__name__, str(self._element))
+        return '%s key[%s] value[%s]' % (self.__class__.__name__, str(self._kvpair.key), str(self._kvpair.value))
 
 class BinarySearchTree(object):
     '''
-    A binary search tree. Insertion is done such that if new key is >= current node we go to the right child. else we go to the
-    left child. Duplicates are allowed as such. When deletion or find is done, the element encountered first is returned and this 
-    depends on the tree structure and as such no guarantees are given on this order.
+    A binary search tree. At each node, the key > than keys in left sub-tree and <= keys in right sub-tree.Duplicates are allowed 
+    as such. When deletion or find is done, the key encountered first is returned and this depends on the tree structure and 
+    as such no guarantees are given on this order.
+    
+    Note* Tree traversals: pre-order, in-order and post-order are implemented as constant-space link inversion traversals.
     '''
     def __init__(self, root_node = None):
         self._root_node = root_node
@@ -107,7 +107,9 @@ class BinarySearchTree(object):
         return self._node_count
     
     def insert(self, key = None, obj = None):
-        
+        '''
+        Add a key and its object value to the tree.
+        '''
         if key == None or obj == None:
             return
         
@@ -156,7 +158,9 @@ class BinarySearchTree(object):
         return (None, None)        
         
     def find(self, key):
-        
+        '''
+        Find the value associated with key. Returns None if nothing is found.
+        '''
         node_with_key, parent_node = self._find_node_with_key(key)
         
         if node_with_key  != None:
@@ -180,7 +184,9 @@ class BinarySearchTree(object):
         return node
         
     def remove(self, key):
-
+        '''
+        Remove the node with key.
+        '''
         node_to_delete, parent_of_node_to_delete = self._find_node_with_key(key)
         
         if node_to_delete == None:
@@ -280,3 +286,11 @@ class BinarySearchTree(object):
                     curr.right_child = prev
                     prev = curr;
                     curr = temp;    
+    #
+    def has_key(self, key):
+        node_with_key, parent = self._find_node_with_key(key)
+        if node_with_key != None:
+            return True
+        return False
+    
+        

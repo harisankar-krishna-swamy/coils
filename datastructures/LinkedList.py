@@ -1,6 +1,7 @@
 '''
 Created on Aug 12, 2015
 @author: hari
+TODO: insert after index, element
 '''
 class LinkedNode(object):
     """

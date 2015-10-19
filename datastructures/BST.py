@@ -292,5 +292,4 @@ class BinarySearchTree(object):
         if node_with_key != None:
             return True
         return False
-    
         

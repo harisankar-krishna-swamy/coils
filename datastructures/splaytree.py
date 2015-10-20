@@ -1,7 +1,6 @@
 '''
 Created on Oct 19, 2015
 @author: hari
-TODO: 1) cannot allow duplicates in the tree!
 '''
 from datastructures.BST import BinarySearchTree
 

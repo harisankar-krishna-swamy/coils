@@ -1,7 +1,6 @@
 '''
 Created on Oct 19, 2015
 @author: hari
-TODO: Delete and then traverse check.
 '''
 from unittest import TestCase
 from datastructures.splaytree import BinarySplayTree
@@ -43,7 +42,7 @@ class Splay_Tree_Test_Tree_With_1_Element(TestCase):
         self._splaytree = None
 
 class Splay_Tree_Test_Tree_Count_Find_Element_With_10_Elements(TestCase):
-    
+
     def setUp(self):
         self._splaytree = BinarySplayTree()
         self._splaytree.insert(key = 5, obj = 5)
@@ -213,5 +212,91 @@ class Splay_Tree_Test_Has_Key_With_10_Elements(TestCase):
         for i in range(1, 11): # 1 to 10
             self.assertEquals(self._splaytree.has_key(i), True, 'has_key operation must return True for existing key.')
     
+    def tearDown(self):
+        self._splaytree = None
+#
+#Splay tree tests that do ops and check nodes with in-order traversal
+#
+class Splay_Tree_Test_Tree_Structure_After_Insert_With_Inorder_Traversal(TestCase):
+    '''
+    The purpose of this test is to make sure that the splay op does not ruin the tree. So after each insert we check the
+    tree structure.
+    '''
+    def setUp(self):
+        self._splaytree = BinarySplayTree()
+        
+    def test_tree_structure_after_each_insert_with_inorder_traversal(self):
+        expected_inorder_list = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+        inorder_from_tree = []
+        for i in range(1, 11): # 1 to 10
+            tree_element = self._splaytree.insert(i, i)
+            for element in self._splaytree.traversal(want_in_order = True):
+                inorder_from_tree.append(element)
+            self.assertEquals(inorder_from_tree, expected_inorder_list[:len(inorder_from_tree)], 'Tree ruined during insert splays')
+            inorder_from_tree = []
+        
+    def tearDown(self):
+        self._splaytree = None
+
+class Splay_Tree_Test_Tree_Structure_After_Delete_With_Inorder_Traversal(TestCase):
+    '''
+    The purpose of this test is to make sure that the splay op does not ruin the tree. So after each insert we check the
+    tree structure.
+    '''
+    def setUp(self):
+        self._splaytree = BinarySplayTree()
+        self._splaytree.insert(key = 5, obj = 5)
+        self._splaytree.insert(key = 8, obj = 8)
+        self._splaytree.insert(key = 7, obj = 7)
+        self._splaytree.insert(key = 9, obj = 9)
+        self._splaytree.insert(key = 10, obj = 10)
+        self._splaytree.insert(key = 2, obj = 2)
+        self._splaytree.insert(key = 1, obj = 1)
+        self._splaytree.insert(key = 3, obj = 3)
+        self._splaytree.insert(key = 4, obj = 4)
+        self._splaytree.insert(key = 6, obj = 6)
+
+    def test_tree_structure_after_each_delete_with_inorder_traversal(self):
+        expected_inorder_list = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+        inorder_from_tree = []
+        for i in range(1, 11): # 1 to 10
+            tree_element = self._splaytree.remove(i)
+            for element in self._splaytree.traversal(want_in_order = True):
+                inorder_from_tree.append(element)
+            self.assertEquals(inorder_from_tree, expected_inorder_list[i:10], 'Tree ruined during insert splays')
+            inorder_from_tree = []
+        
+    def tearDown(self):
+        self._splaytree = None
+
+
+class Splay_Tree_Test_Tree_Structure_After_Find_With_Inorder_Traversal(TestCase):
+    '''
+    The purpose of this test is to make sure that the splay op does not ruin the tree. So after each insert we check the
+    tree structure.
+    '''
+    def setUp(self):
+        self._splaytree = BinarySplayTree()
+        self._splaytree.insert(key = 5, obj = 5)
+        self._splaytree.insert(key = 8, obj = 8)
+        self._splaytree.insert(key = 7, obj = 7)
+        self._splaytree.insert(key = 9, obj = 9)
+        self._splaytree.insert(key = 10, obj = 10)
+        self._splaytree.insert(key = 2, obj = 2)
+        self._splaytree.insert(key = 1, obj = 1)
+        self._splaytree.insert(key = 3, obj = 3)
+        self._splaytree.insert(key = 4, obj = 4)
+        self._splaytree.insert(key = 6, obj = 6)
+
+    def test_tree_structure_after_each_find_with_inorder_traversal(self):
+        expected_inorder_list = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+        inorder_from_tree = []
+        for i in range(1, 11): # 1 to 10
+            self.assertEquals(self._splaytree.find(i), i, 'Element not found in Splay Tree!')
+            for element in self._splaytree.traversal(want_in_order = True):
+                inorder_from_tree.append(element)
+            self.assertEquals(inorder_from_tree, expected_inorder_list, 'Tree ruined during insert splays')
+            inorder_from_tree = []
+        
     def tearDown(self):
         self._splaytree = None

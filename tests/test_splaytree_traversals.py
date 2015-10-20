@@ -56,7 +56,7 @@ class Splay_Tree_Test_Preorder_Traversal_with_10_Node_Tree(TestCase):
             pre_order_elements.append(element)
         print 'Pre order traversal of 10 node tree %s' % pre_order_elements
         self.assertEquals(10, len(pre_order_elements), 'Pre order traversal on 10 node tree must yield 10 elements')
-        self.assertEquals(pre_order_elements, [5, 2, 1, 3, 4, 8, 7, 6, 9, 10], 'Pre order traversal did not yield expected elements in order')
+        self.assertEquals(pre_order_elements, [6, 4, 3, 1, 2, 5, 10, 7, 8, 9], 'Pre order traversal did not yield expected elements in order')
     
     def tearDown(self):
         self._splay_tree = None        
@@ -113,7 +113,7 @@ class Splay_Tree_Test_Postorder_Traversal_with_10_Node_Tree(TestCase):
             post_order_elements.append(element)
         print 'Post order traversal of 10 node tree %s' % post_order_elements
         self.assertEquals(10, len(post_order_elements), 'Post order traversal on 10 node tree must yield 10 elements')
-        self.assertEquals(post_order_elements, [1, 4, 3, 2, 6, 7, 10, 9, 8, 5], 'Post order traversal did not yield expected elements in order')
+        self.assertEquals(post_order_elements, [2, 1, 3, 5, 4, 9, 8, 7, 10, 6], 'Post order traversal did not yield expected elements in order')
     
     def tearDown(self):
         self._splay_tree = None
@@ -203,14 +203,14 @@ class Splay_Tree_Test_All_Traversals_Consecutively_For_Tree_Integirty_With_10_No
             post_order_elements.append(element)
         print 'Post order traversal of 10 node tree %s' % post_order_elements
         self.assertEquals(10, len(post_order_elements), 'Post order traversal on 10 node tree must yield 10 elements')
-        self.assertEquals(post_order_elements, [1, 4, 3, 2, 6, 7, 10, 9, 8, 5], 'Post order traversal did not yield expected elements in order')
+        self.assertEquals(post_order_elements, [2, 1, 3, 5, 4, 9, 8, 7, 10, 6], 'Post order traversal did not yield expected elements in order')
     
         pre_order_elements = []
         for element in self._splay_tree.traversal(want_pre_order = True, want_in_order = False, want_post_order = False):
             pre_order_elements.append(element)
         print 'Pre order traversal of 10 node tree %s' % pre_order_elements
         self.assertEquals(10, len(pre_order_elements), 'Pre order traversal on 10 node tree must yield 10 elements')
-        self.assertEquals(pre_order_elements, [5, 2, 1, 3, 4, 8, 7, 6, 9, 10], 'Pre order traversal did not yield expected elements in order')
+        self.assertEquals(pre_order_elements, [6, 4, 3, 1, 2, 5, 10, 7, 8, 9], 'Pre order traversal did not yield expected elements in order')
     
     def tearDown(self):
         self._splay_tree = None                

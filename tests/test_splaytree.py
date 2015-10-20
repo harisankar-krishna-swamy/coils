@@ -1,6 +1,7 @@
 '''
 Created on Oct 19, 2015
 @author: hari
+TODO: Delete and then traverse check.
 '''
 from unittest import TestCase
 from datastructures.splaytree import BinarySplayTree
@@ -71,7 +72,7 @@ class Splay_Tree_Test_Tree_Count_Find_Element_With_10_Elements(TestCase):
     
     def tearDown(self):
         self._splaytree = None
-        
+
 class Splay_Tree_Test_Tree_Delete_Element_With_10_Elements(TestCase):
     
     def setUp(self):

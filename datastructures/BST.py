@@ -3,15 +3,37 @@ Created on Aug 15, 2015
 @author: hari
 '''
 from collections import namedtuple
+from functools import total_ordering
 
-KeyValuePair = namedtuple('KeyValuePair', 'key value')
+@total_ordering
+class KeyValuePair:# Save space in key value pair by using slots? 
+    __slots__ = '_key', '_value'
+    def __init__(self, key = None, value = None):
+        self._key = key
+        self._value = value
+    @property
+    def key(self):
+        return self._key
+    @property
+    def value(self):
+        return self._value
+    @key.setter
+    def key(self, new_key):
+        self._key = new_key
+    @value.setter
+    def value(self, new_value):
+        self._value = new_value
+    def __eq__(self, other_kv_pair):
+        return self._key == other_kv_pair.key 
+    def __lt__(self, other_kv_pair):
+        return self._key < other_kv_pair.key
 
 class BSTTreeNode(object):
     '''
     A binary search tree node. For example, key can be a unique employee id and value is a python object for employee.
-    '''
+    '''    
     def __init__(self, key = None, value = None, left_child = None, right_child = None):
-        self._kvpair = KeyValuePair(key, value)
+        self._kvpair = KeyValuePair(key = key, value = value)
         self._right_child = right_child
         self._left_child = left_child
         self._link_inversion_traversal_tag = False #used for constant space traversal using link inversion.
@@ -21,8 +43,8 @@ class BSTTreeNode(object):
         return self._kvpair
     
     @kvpair.setter
-    def kvpair(self, value):#for replacing data in a node. this is used in node removal.
-        self._kvpair = value
+    def kvpair(self, new_kv_pair):#for replacing data in a node. this is used in node removal.
+        self._kvpair = new_kv_pair
         
     @property
     def key(self):
@@ -33,24 +55,24 @@ class BSTTreeNode(object):
         return self._kvpair.value
     
     @value.setter
-    def value(self, value):
-        self._kvpair.value = value
+    def value(self, new_value):
+        self._kvpair.value = new_value
     
     @property
     def left_child(self):
         return self._left_child
         
     @left_child.setter
-    def left_child(self, value):
-        self._left_child = value
+    def left_child(self, new_left_child):
+        self._left_child = new_left_child
     
     @property
     def right_child(self):
         return self._right_child
     
     @right_child.setter
-    def right_child(self, value):
-        self._right_child = value
+    def right_child(self, new_right_child):
+        self._right_child = new_right_child
     
     @property
     def has_left_child(self):
@@ -81,8 +103,8 @@ class BSTTreeNode(object):
         return self._link_inversion_traversal_tag
     
     @link_inversion_traversal_tag.setter
-    def link_inversion_traversal_tag(self, value):
-        self._link_inversion_traversal_tag = value
+    def link_inversion_traversal_tag(self, new_link_inversion_traversal_tag):
+        self._link_inversion_traversal_tag = new_link_inversion_traversal_tag
     
     def __str__(self):
         return '%s key[%s] value[%s]' % (self.__class__.__name__, str(self._kvpair.key), str(self._kvpair.value))

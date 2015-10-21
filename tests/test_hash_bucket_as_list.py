@@ -3,11 +3,11 @@ Created on Oct 21, 2015
 @author: hari
 '''
 from unittest import TestCase
-from datastructures.HashTables import HashBucketList
+from datastructures.HashTables import ListBasedHashBucket
 
-class HashBucketList_TestCase_Len_With_0_Elements(TestCase):
+class ListBasedHashBucket_TestCase_Len_With_0_Elements(TestCase):
     def setUp(self):
-        self._hash_bucket = HashBucketList()
+        self._hash_bucket = ListBasedHashBucket()
     
     def test_count_of_empty_list(self):
         self.assertEquals(len(self._hash_bucket), 0, 'Empty bucket length must be 0')
@@ -15,9 +15,9 @@ class HashBucketList_TestCase_Len_With_0_Elements(TestCase):
     def tearDown(self):
         self._hash_bucket = None
 
-class HashBucketList_TestCase_Len_With_4_Elements(TestCase):
+class ListBasedHashBucket_TestCase_Len_With_4_Elements(TestCase):
     def setUp(self):
-        self._hash_bucket = HashBucketList()
+        self._hash_bucket = ListBasedHashBucket()
         self._hash_bucket[1] = 1
         self._hash_bucket[2] = 2
         self._hash_bucket[3] = 3
@@ -29,9 +29,9 @@ class HashBucketList_TestCase_Len_With_4_Elements(TestCase):
     def tearDown(self):
         self._hash_bucket = None
 
-class HashBucketList_TestCase_Get_Item_With_4_Elements(TestCase):
+class ListBasedHashBucket_TestCase_Get_Item_With_4_Elements(TestCase):
     def setUp(self):
-        self._hash_bucket = HashBucketList()
+        self._hash_bucket = ListBasedHashBucket()
         self._hash_bucket[1] = 1
         self._hash_bucket[2] = 2
         self._hash_bucket[3] = 3
@@ -44,9 +44,9 @@ class HashBucketList_TestCase_Get_Item_With_4_Elements(TestCase):
     def tearDown(self):
         self._hash_bucket = None
     
-class HashBucketList_TestCase_Get_Non_Existing_Item_With_4_Elements(TestCase):
+class ListBasedHashBucket_TestCase_Get_Non_Existing_Item_With_4_Elements(TestCase):
     def setUp(self):
-        self._hash_bucket = HashBucketList()
+        self._hash_bucket = ListBasedHashBucket()
                 
     def test_get_non_exiting_item_of_hash_bucket(self):
         self.assertRaises(KeyError, callableObj = lambda : self._hash_bucket[1])
@@ -54,10 +54,10 @@ class HashBucketList_TestCase_Get_Non_Existing_Item_With_4_Elements(TestCase):
     def tearDown(self):
         self._hash_bucket = None
 
-class HashBucketList_TestCase_Delete_Item_With_4_Elements(TestCase):
+class ListBasedHashBucket_TestCase_Delete_Item_With_4_Elements(TestCase):
     
     def setUp(self):
-        self._hash_bucket = HashBucketList()
+        self._hash_bucket = ListBasedHashBucket()
         self._hash_bucket[1] = 1
         self._hash_bucket[2] = 2
         self._hash_bucket[3] = 3
@@ -72,10 +72,10 @@ class HashBucketList_TestCase_Delete_Item_With_4_Elements(TestCase):
     def tearDown(self):
         self._hash_bucket = None
 
-class HashBucketList_TestCase_Set_Item_With_4_Elements(TestCase):
+class ListBasedHashBucket_TestCase_Set_Item_With_4_Elements(TestCase):
     
     def setUp(self):
-        self._hash_bucket = HashBucketList()
+        self._hash_bucket = ListBasedHashBucket()
         self._hash_bucket[1] = 1
         self._hash_bucket[2] = 2
         self._hash_bucket[3] = 3
@@ -90,10 +90,10 @@ class HashBucketList_TestCase_Set_Item_With_4_Elements(TestCase):
     def tearDown(self):
         self._hash_bucket = None
 
-class HashBucketList_TestCase_Iter_Keys_With_4_Elements(TestCase):
+class ListBasedHashBucket_TestCase_Iter_Keys_With_4_Elements(TestCase):
     
     def setUp(self):
-        self._hash_bucket = HashBucketList()
+        self._hash_bucket = ListBasedHashBucket()
         self._hash_bucket[1] = 1
         self._hash_bucket[2] = 2
         self._hash_bucket[3] = 3

@@ -9,7 +9,7 @@ class LinkedNode(object):
     def __init__(self, element = None, nextNode = None):
         '''
         a node is created with the element object and the next node. If any of these
-        are not available use the default value None.
+        are not available, use the default value None.
         '''
         self._next = nextNode
         self._element = element
@@ -39,6 +39,9 @@ class LinkedNode(object):
 class LinkedList(object):
     '''
     A Linked list implementation. More pythonic by using iterator features.
+    Note:
+    1) Iterating over the list does not take out the nodes.
+    2) Node with duplicate elements are allowed.
     '''
     def __init__(self):
         self._head = None
@@ -70,6 +73,7 @@ class LinkedList(object):
             self._tail = new_node
         
         self._length = self._length + 1
+    #
     
     def index(self, element):
         '''
@@ -89,6 +93,22 @@ class LinkedList(object):
         return -1
     #
     
+    def insert_at(self, index, element):
+        if index <= 0 or index >= self._length: #insert at head or at tail
+            self.append(element) #takes care of length, head, tail etc
+            return
+        #index is somewhere in between head and tail locations. we find the node at index - 1
+        count = 0
+        till_where = index - 1 #calculate this before hand rather than leave it to the while condition. Helps in very large index.
+        current_node = self._head
+        
+        while count != till_where:
+            current_node = current_node.nextNode
+            count = count + 1
+        temp = current_node.nextNode
+        current_node.nextNode = LinkedNode(element = element, nextNode = temp)
+        self._length = self._length + 1
+            
     def extend(self, linked_list):
         '''
         extend takes another LinkedList instance and adds each element of linked_list as a NEW

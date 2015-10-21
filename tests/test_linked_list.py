@@ -1,6 +1,6 @@
 '''
 Created on Aug 12, 2015
-@author: topcat
+@author: hari
 '''
 import unittest
 from datastructures.LinkedList import LinkedList
@@ -233,3 +233,89 @@ class LinkedList_TestCase_Check_Head_On_Remove_In_4_Element_List(unittest.TestCa
         
     def tearDown(self):
         self._linkedList = None    
+
+class LinkedList_TestCase_Insert_At_0_With_0_Elements(unittest.TestCase):
+    
+    def setUp(self):
+        self._linkedList = LinkedList()
+    
+    def test_insert_at_0_of_empty_list(self):
+        self._linkedList.insert_at(0, 20)
+        self.assertEquals(self._linkedList.length, 1, 'Linked list length must be 1 after inserting to empty list')
+        self.assertEquals(self._linkedList.head, self._linkedList.tail, 'Linked list length must be same node after inserting to empty list')
+    
+    def tearDown(self):
+        self._linkedList = None
+
+class LinkedList_TestCase_Insert_At_Negative_Index_With_0_Elements(unittest.TestCase):
+    
+    def setUp(self):
+        self._linkedList = LinkedList()
+    
+    def test_insert_at_negative_index_of_empty_list(self):
+        self._linkedList.insert_at(-2, 20)
+        self.assertEquals(self._linkedList.length, 1, 'Linked list length must be 1 after inserting to empty list at negative index')
+        self.assertEquals(self._linkedList.head, self._linkedList.tail, 'Linked list length must be same node after inserting to empty list at negative index')
+    
+    def tearDown(self):
+        self._linkedList = None
+
+class LinkedList_TestCase_Insert_At_Index_Larger_Than_Length_With_0_Elements(unittest.TestCase):
+    
+    def setUp(self):
+        self._linkedList = LinkedList()
+    
+    def test_insert_at_negative_index_of_empty_list(self):
+        self._linkedList.insert_at(100, 20)
+        self.assertEquals(self._linkedList.length, 1, 'Linked list length must be 1 after inserting to empty list at huge index')
+        self.assertEquals(self._linkedList.head, self._linkedList.tail, 'Linked list length must be same node after inserting to empty list at huge index')
+    
+    def tearDown(self):
+        self._linkedList = None
+
+class LinkedList_TestCase_Insert_At_Index_Larger_Than_Length_With_4_Elements(unittest.TestCase):
+    
+    def setUp(self):
+        self._linkedList = LinkedList()
+        self._linkedList.append(1)
+        self._linkedList.append(2)
+        self._linkedList.append(3)
+        self._linkedList.append(4)
+        
+    def test_insert_at_negative_index_of_empty_list(self):
+        expected_length = self._linkedList.length + 1
+        element_to_insert = 20
+        self._linkedList.insert_at(100, element_to_insert)
+        self.assertEquals(self._linkedList.length, expected_length, 'Linked list length did not tally after insert at huge index')
+        self.assertEquals(self._linkedList.tail.element, element_to_insert, 'Linked list tail must be same as new element inserted at huge index')
+        self.assertEquals(self._linkedList.index(20), expected_length - 1, 'index of new element did not add up')
+    
+    def tearDown(self):
+        self._linkedList = None
+
+
+class LinkedList_TestCase_Insert_At_Index_In_Middle_With_4_Elements(unittest.TestCase):
+    
+    def setUp(self):
+        self._linkedList = LinkedList()
+        self._linkedList.append(1)
+        self._linkedList.append(2)
+        self._linkedList.append(4)
+        self._linkedList.append(5)
+        
+    def test_insert_at_negative_index_of_empty_list(self):
+        expected_length = self._linkedList.length + 1
+        element_to_insert = 3
+        insert_at_index = 2
+        self._linkedList.insert_at(insert_at_index, element_to_insert)# list will become 1, 2, 3, 4, 5
+        self.assertEquals(self._linkedList.length, expected_length, 'Linked list length did not tally after insert in the middle')
+        self.assertEquals(self._linkedList.index(3), insert_at_index, 'index of new element is not where we insert it at!')
+        
+        #iterate and check
+        expected_list = []
+        for element in self._linkedList:
+            expected_list.append(element)
+        self.assertEquals(expected_list, [1, 2, 3, 4, 5], 'List was not same as expected after insert At index')
+    
+    def tearDown(self):
+        self._linkedList = None

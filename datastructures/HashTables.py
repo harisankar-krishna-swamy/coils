@@ -14,7 +14,7 @@ import collections
 class ListBasedHashBucket(object):
     '''
     A hash bucket is used to hold objects that hash to the same value in a hash table. This is hash bucket
-    using a list. This masquerades as a python dist in code where it is used.
+    using a list. This masquerades as a python dict in code where it is used.
     
     Note: HASHBUCKET ITERATION YIELDS KEYS. not the key value pairs in the bucket. 
     '''
@@ -22,7 +22,18 @@ class ListBasedHashBucket(object):
         self._list_of_kv_pairs = LinkedList() #we use our linked list!
     
     def __len__(self):
-        return self._list_of_kv_pairs.length # TODO: must implement __len__ for LinkedList!
+        return self._list_of_kv_pairs.length
+    
+    def get(self, key, default = None):
+        '''
+        Get object associated with a key and on key miss return specified default. This is there in Python dict and this class
+        masquerades as dict, we implement it.
+        '''
+        try:
+            value = self[key]
+            return value
+        except KeyError:
+            return default            
     
     def __getitem__(self, key):
         for kv_pair in self._list_of_kv_pairs:
@@ -47,8 +58,7 @@ class ListBasedHashBucket(object):
     def __iter__(self):
         for kvpair in self._list_of_kv_pairs:
             yield kvpair.key
-    #
-
+            
 class SeperateChainHashTable(collections.MutableMapping):
     '''
     The table uses ListBasedHashBucket for its buckets. This uses the MAD compression algorithm. 

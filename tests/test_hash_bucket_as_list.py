@@ -36,21 +36,33 @@ class ListBasedHashBucket_TestCase_Get_Item_With_4_Elements(TestCase):
         self._hash_bucket[2] = 2
         self._hash_bucket[3] = 3
         self._hash_bucket[4] = 4
-        
+    
+    def test_get_item_hash_bucket_with_default_return(self):
+        for i in range(1, 5):
+            self.assertEquals(self._hash_bucket.get(i), i, 'Hash bucket items did not match on retirieval')
+    
     def test_get_item_hash_bucket(self):
         for i in range(1, 5):
             self.assertEquals(self._hash_bucket[i], i, 'Hash bucket items did not match on retirieval')
-        
+
     def tearDown(self):
         self._hash_bucket = None
     
 class ListBasedHashBucket_TestCase_Get_Non_Existing_Item_With_4_Elements(TestCase):
     def setUp(self):
         self._hash_bucket = ListBasedHashBucket()
-                
+    
+    def test_get_non_exiting_item_of_hash_bucket_expect_None_as_default(self):
+        self.assertEquals(self._hash_bucket.get(1), None, 
+                                        'default value for non existing key was not used')
+    
     def test_get_non_exiting_item_of_hash_bucket(self):
         self.assertRaises(KeyError, callableObj = lambda : self._hash_bucket[1])
         
+    def test_get_non_exiting_item_of_hash_bucket_expect_Something_as_default(self):
+        expected_default_return = "Default"
+        self.assertEquals(self._hash_bucket.get(1, default = expected_default_return), expected_default_return, 
+                                        'default value for non existing key was not used')
     def tearDown(self):
         self._hash_bucket = None
 

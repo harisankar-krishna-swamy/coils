@@ -11,7 +11,7 @@ from datastructures.common import KeyValuePair
 from random import randrange
 import collections
 
-class ListBasedHashBucket(object):
+class ChainedHashBucket(object):
     '''
     A hash bucket is used to hold objects that hash to the same value in a hash table. This is hash bucket
     using a list. This masquerades as a python dict in code where it is used.
@@ -61,9 +61,11 @@ class ListBasedHashBucket(object):
             
 class SeperateChainHashTable(collections.MutableMapping):
     '''
-    The table uses ListBasedHashBucket for its buckets. This uses the MAD compression algorithm. 
+    The table uses ListBasedHashBucket (Chain) for its buckets. This uses the MAD compression algorithm. 
     compressed_key = ((scale*key + shift) mod P) mod N. N is the size. P is a
     large prime > N. scale and shift are random integers less than P, scale must be > 0.
+    Mutable Mapping? have a look at "cat /usr/lib/python2.7/_abcoll.py" Do not use this directly is advised in the file so we use
+    from collections.MutableMapping as advised :-P Basically we dont have to write the methods in Mutable mapping by inheriting.
     '''
     def __init__(self, initial_capacity = 17, large_prime_P = 98764321261, load_factor_limit = 0.75):
         self._large_prime_P = large_prime_P
@@ -103,7 +105,7 @@ class SeperateChainHashTable(collections.MutableMapping):
     def _set_item_in_bucket(self, bucket_index, key, obj):
         bucket = self._table[bucket_index]
         if bucket == None:
-            bucket = ListBasedHashBucket()
+            bucket = ChainedHashBucket()
             self._table[bucket_index] = bucket
         items_count_in_bucket = len(bucket)
         bucket[key] = obj 

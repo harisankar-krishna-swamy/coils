@@ -124,7 +124,17 @@ class SeperateChainHashTable(collections.MutableMapping):
             if bucket != None:
                 for key in bucket:
                     yield key
-            
+                    
+    def __len__(self):
+        return self._hash_table_items_count
+    
+    def has_key(self, key):
+        try:
+            self[key]
+        except KeyError:
+            return False
+        return True
+    
     def _resize(self, new_capacity):
         list_of_key_value_pairs = list(self.items())
         self._table = new_capacity * [None]

@@ -3,9 +3,10 @@ Created on Oct 21, 2015
 @author: hari
 '''
 from unittest import TestCase
-from datastructures.HashTables import ChainedHashBucket
+from datastructures.HashTables import ChainedHashBucket, SeperateChainHashTable
 
-class ChainedHashBucket_TestCase_Len_With_0_Elements(TestCase):
+class ChainedHashBucket_TestCase_With_0_Elements(TestCase):
+    
     def setUp(self):
         self._hash_bucket = ChainedHashBucket()
     

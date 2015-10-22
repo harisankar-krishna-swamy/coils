@@ -5,7 +5,10 @@ Created on Oct 22, 2015
 from unittest import TestCase
 from datastructures.HashTables import SeperateChainHashTable
 
-class SeperateChainHashTable_TestCase_With_0_Elements(TestCase):
+#want to use string keys and values. rather than hash (1, 17) 17 is initial capacity
+list_of_strings_used_as_keys_and_values = ['one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten',
+                                           'eleven', 'twelve', 'thirteen', 'fourteen', 'fifteen', 'sixteen', 'seventeen'] 
+class SeperateChainHashTable_Test_With_0_Elements(TestCase):
     
     def setUp(self):
         self._chained_hash_table = SeperateChainHashTable()
@@ -32,7 +35,7 @@ class SeperateChainHashTable_TestCase_With_0_Elements(TestCase):
     def tearDown(self):
         self._chained_hash_table = None
 
-class SeperateChainHashTable_TestCase_With_1_Elements(TestCase):
+class SeperateChainHashTable_Test_With_1_Elements(TestCase):
     
     def setUp(self):
         self._chained_hash_table = SeperateChainHashTable()
@@ -56,24 +59,73 @@ class SeperateChainHashTable_TestCase_With_1_Elements(TestCase):
     def tearDown(self):
         self._chained_hash_table = None
 
-class SeperateChainHashTable_TestCase_With_Full_Initial_Capacity_Elements(TestCase):
-    
+class SeperateChainHashTable_Test_Capacity_On_Resize(TestCase):
     def setUp(self):
         self._chained_hash_table = SeperateChainHashTable()
         self._default_initial_capacity = 17
-        for i in range(1, 18):# 1 to 17 default initial capacity is 17
+        for i in list_of_strings_used_as_keys_and_values:# 1 to 17 default initial capacity is 17
+            self._chained_hash_table[i] = i
+             
+    def test_capacity_on_resize(self):
+        for i in list_of_strings_used_as_keys_and_values:
+            self.assertEquals(self._chained_hash_table.get(key = i), i, 'get on existing key failed')
+            self.assertEquals(self._chained_hash_table[i], i, 'get on existing key failed')
+        #would have resized but number of items would be same
+        self.assertEquals(len(self._chained_hash_table), self._default_initial_capacity, 'hash table length does not add up')
+        #but table size would have doubled
+        self.assertEquals(self._chained_hash_table.current_capacity, self._default_initial_capacity * 2, 'hash table capacity does not add up')    
+                
+    def tearDown(self):
+        self._chained_hash_table = None
+        
+class SeperateChainHashTable_Test_With_Full_Initial_Capacity_Elements_Forces_Resize(TestCase):
+    def setUp(self):
+        self._chained_hash_table = SeperateChainHashTable()
+        self._default_initial_capacity = 17
+        for i in list_of_strings_used_as_keys_and_values:# 1 to 17 default initial capacity is 17
             self._chained_hash_table[i] = i
              
     def test_get_and_len_on_full_initial_capacity_hash_table(self):
-        for i in range(1, 18):
+        for i in list_of_strings_used_as_keys_and_values:
+            self.assertEquals(self._chained_hash_table.get(key = i), i, 'get on existing key failed')
+            self.assertEquals(self._chained_hash_table[i], i, 'get on existing key failed')
+        #would have resized but number of items would be same
+        self.assertEquals(len(self._chained_hash_table), self._default_initial_capacity, 'hash table length does not add up')
+        #but table size would have doubled
+        self.assertEquals(self._chained_hash_table.current_capacity, self._default_initial_capacity * 2, 'hash table capacity does not add up')    
+        
+    def test_del_then_get_and_len_on_full_initial_capacity_hash_table(self):
+        rolling_capacity = len(self._chained_hash_table)
+        for i in list_of_strings_used_as_keys_and_values:
+            del self._chained_hash_table[i]
+            rolling_capacity = rolling_capacity - 1
+            self.assertEquals(self._chained_hash_table.get(key = i), None, 'get on Non existing key must return None')
+            self.assertRaises(KeyError, callableObj = lambda : self._chained_hash_table[i])
+            self.assertEquals(len(self._chained_hash_table), rolling_capacity, 'hash table length did not add up after delete')
+            
+    def tearDown(self):
+        self._chained_hash_table = None
+        
+class SeperateChainHashTable_Test_With_Less_Than_Initial_Capacity_Elements_Cause_No_Resize(TestCase):
+    '''
+    By adding 5 elements to an initial capacity of 17 the load factor is just 0.2941 which is < 0.75 loadfactor threshold for resize.
+    '''
+    def setUp(self):
+        self._chained_hash_table = SeperateChainHashTable()
+        self._default_initial_capacity = 5
+        for i in list_of_strings_used_as_keys_and_values[0:5]:
+            self._chained_hash_table[i] = i
+             
+    def test_get_and_len_on_less_than_initial_capacity_hash_table(self):
+        for i in list_of_strings_used_as_keys_and_values[0:5]:
             self.assertEquals(self._chained_hash_table.get(key = i), i, 'get on existing key failed')
             self.assertEquals(self._chained_hash_table[i], i, 'get on existing key failed')
             
         self.assertEquals(len(self._chained_hash_table), self._default_initial_capacity, 'hash table length must be same as full initial capacity')    
     
-    def test_del_then_get_and_len__on_full_initial_capacity_hash_table(self):
+    def test_del_then_get_and_len_on_less_thaninitial_capacity_hash_table(self):
         rolling_capacity = self._default_initial_capacity
-        for i in range(1, 18):
+        for i in list_of_strings_used_as_keys_and_values[0:5]:
             del self._chained_hash_table[i]
             rolling_capacity = rolling_capacity - 1
             self.assertEquals(self._chained_hash_table.get(key = i), None, 'get on Non existing key must return None')

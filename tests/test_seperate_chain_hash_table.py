@@ -58,7 +58,7 @@ class SeperateChainHashTable_Test_With_1_Elements(TestCase):
     
     def tearDown(self):
         self._chained_hash_table = None
-
+'''
 class SeperateChainHashTable_Test_Capacity_On_Resize(TestCase):
     def setUp(self):
         self._chained_hash_table = SeperateChainHashTable()
@@ -105,7 +105,7 @@ class SeperateChainHashTable_Test_With_Full_Initial_Capacity_Elements_Forces_Res
             
     def tearDown(self):
         self._chained_hash_table = None
-        
+'''       
 class SeperateChainHashTable_Test_With_Less_Than_Initial_Capacity_Elements_Cause_No_Resize(TestCase):
     '''
     By adding 5 elements to an initial capacity of 17 the load factor is just 0.2941 which is < 0.75 loadfactor threshold for resize.
@@ -132,5 +132,40 @@ class SeperateChainHashTable_Test_With_Less_Than_Initial_Capacity_Elements_Cause
             self.assertRaises(KeyError, callableObj = lambda : self._chained_hash_table[i])
             self.assertEquals(len(self._chained_hash_table), rolling_capacity, 'hash table length did not add up after delete')
             
+    def tearDown(self):
+        self._chained_hash_table = None
+        
+class SeperateChainHashTable_Test_Multiple_Resizes(TestCase):
+    def setUp(self):
+        self._chained_hash_table = SeperateChainHashTable()
+        self._default_initial_capacity = 17 
+        self._length_upper_limit = 1001 #always choose some multiple of 100 + 1
+    def test_get_and_len_with_a_truck_load_of_resizes(self):
+        
+        for i in range(1, self._length_upper_limit): # will trigger resize 
+            self._chained_hash_table[i] = i
+
+        for i in range(1, self._length_upper_limit): # will trigger 
+            self.assertEquals(self._chained_hash_table.get(key = i), i, 'get on existing key failed')
+            self.assertEquals(self._chained_hash_table[i], i, 'get on existing key failed')
+        #would have resized but number of items would be same
+        self.assertEquals(len(self._chained_hash_table), self._length_upper_limit - 1, 'hash table length does not add up')
+        #but table size would have doubled
+        current_capacity_would_be = 2176 #coz 13 is where a default size 17 table resizes at first.
+        self.assertEquals(self._chained_hash_table.current_capacity, current_capacity_would_be,'hash table capacity does not add up')    
+    
+    def test_del_then_get_and_len_with_a_truck_load_of_resizes(self):
+        
+        for i in range(1, self._length_upper_limit): # will trigger resize 
+            self._chained_hash_table[i] = i
+            
+        rolling_length = len(self._chained_hash_table)
+        for i in range(1, self._length_upper_limit): # will trigger
+            del self._chained_hash_table[i]
+            rolling_length = rolling_length - 1
+            self.assertEquals(self._chained_hash_table.get(key = i), None, 'get on Non existing key must return None')
+            self.assertRaises(KeyError, callableObj = lambda : self._chained_hash_table[i])
+            self.assertEquals(len(self._chained_hash_table), rolling_length, 'hash table length did not add up after delete')
+        
     def tearDown(self):
         self._chained_hash_table = None

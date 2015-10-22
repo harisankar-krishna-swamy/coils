@@ -66,6 +66,8 @@ class SeperateChainHashTable(collections.MutableMapping):
     large prime > N. scale and shift are random integers less than P, scale must be > 0.
     Mutable Mapping? have a look at "cat /usr/lib/python2.7/_abcoll.py" Do not use this directly is advised in the file so we use
     from collections.MutableMapping as advised :-P Basically we dont have to write the methods in Mutable mapping by inheriting.
+    Note:-
+    - Length of the hash table is the number of items in it. 
     '''
     def __init__(self, initial_capacity = 17, large_prime_P = 98764321261, load_factor_limit = 0.75):
         self._large_prime_P = large_prime_P
@@ -75,6 +77,10 @@ class SeperateChainHashTable(collections.MutableMapping):
         self._table = initial_capacity * [None]
         self._hash_table_items_count = 0
         self._load_factor_limit = load_factor_limit
+    
+    @property
+    def current_capacity(self):
+        return len(self._table)
     
     def _find_bucket_for_key(self, key):#which bucket?
         hash_key = hash(key) #Pythons hash
@@ -116,7 +122,7 @@ class SeperateChainHashTable(collections.MutableMapping):
     def __setitem__(self, key, obj):
         bucket_index = self._find_bucket_for_key(key)
         self._set_item_in_bucket(bucket_index, key, obj)
-        if float(self._hash_table_items_count / len(self._table)) >= self._load_factor_limit:
+        if self._hash_table_items_count / float(len(self._table)) >= self._load_factor_limit:
             self._resize(self._table_max_size * 2)
              
     def __iter__(self):
@@ -124,9 +130,20 @@ class SeperateChainHashTable(collections.MutableMapping):
             if bucket != None:
                 for key in bucket:
                     yield key
-            
+                    
+    def __len__(self):
+        return self._hash_table_items_count
+    
+    def has_key(self, key):
+        try:
+            self[key]
+        except KeyError:
+            return False
+        return True
+    
     def _resize(self, new_capacity):
         list_of_key_value_pairs = list(self.items())
+        self._table_max_size = new_capacity
         self._table = new_capacity * [None]
         self._hash_table_items_count = 0
         

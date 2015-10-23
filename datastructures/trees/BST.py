@@ -91,7 +91,9 @@ class BinarySearchTree(object):
     as such. When deletion or find is done, the key encountered first is returned and this depends on the tree structure and 
     as such no guarantees are given on this order.
     
-    Note* Tree traversals: pre-order, in-order and post-order are implemented as constant-space link inversion traversals.
+    Note* Tree traversals yield(key, value) tuples 
+          pre-order, in-order and post-order are implemented as constant-space link inversion traversals.               
+          iter gives keys not values. This is so that the tree can be used in buckets for hash tables
     '''
     def __init__(self, root_node = None):
         self._root_node = root_node
@@ -267,7 +269,7 @@ class BinarySearchTree(object):
             while curr != None: #fall down to left
                 curr.link_inversion_traversal_tag = False
                 if want_pre_order: 
-                    yield curr.value
+                    yield (curr.key, curr.value)
                 temp = curr.left_child
                 curr.left_child = prev
                 prev = curr
@@ -278,7 +280,7 @@ class BinarySearchTree(object):
                 prev.right_child = curr #Reset pointer
                 curr = prev         #Move up
                 if want_post_order:
-                    yield curr.value 
+                    yield (curr.key, curr.value) 
                 prev = temp
             
             if prev == None: 
@@ -290,7 +292,7 @@ class BinarySearchTree(object):
                     prev = temp;
                     #We are comparing with pre-order traversal.
                     if want_in_order:
-                        yield curr.value 
+                        yield (curr.key, curr.value) 
                     curr.link_inversion_traversal_tag = True
                     temp = curr.right_child
                     curr.right_child = prev
@@ -302,4 +304,7 @@ class BinarySearchTree(object):
         if node_with_key != None:
             return True
         return False
-        
+    
+    def __iter__(self):
+        for node_key, node_value in self.traversal(want_in_order = True):
+            yield node_key

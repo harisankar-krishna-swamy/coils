@@ -3,12 +3,12 @@ Created on Oct 21, 2015
 @author: hari
 '''
 import unittest
-from datastructures.hashtables.HashTables import ChainedHashBucket
+from datastructures.hashtables.hashbuckets import LinkedListHashBucket
 
-class ChainedHashBucket_TestCase_With_0_Elements(unittest.TestCase):
+class LinkedListHashBucket_TestCase_With_0_Elements(unittest.TestCase):
     
     def setUp(self):
-        self._hash_bucket = ChainedHashBucket()
+        self._hash_bucket = LinkedListHashBucket()
     
     def test_count_of_empty_list(self):
         self.assertEquals(len(self._hash_bucket), 0, 'Empty bucket length must be 0')
@@ -16,9 +16,9 @@ class ChainedHashBucket_TestCase_With_0_Elements(unittest.TestCase):
     def tearDown(self):
         self._hash_bucket = None
 
-class ChainedHashBucket_TestCase_Len_With_4_Elements(unittest.TestCase):
+class LinkedListHashBucket_TestCase_Len_With_4_Elements(unittest.TestCase):
     def setUp(self):
-        self._hash_bucket = ChainedHashBucket()
+        self._hash_bucket = LinkedListHashBucket()
         self._hash_bucket[1] = 1
         self._hash_bucket[2] = 2
         self._hash_bucket[3] = 3
@@ -30,9 +30,9 @@ class ChainedHashBucket_TestCase_Len_With_4_Elements(unittest.TestCase):
     def tearDown(self):
         self._hash_bucket = None
 
-class ChainedHashBucket_TestCase_Get_Item_With_4_Elements(unittest.TestCase):
+class LinkedListHashBucket_TestCase_Get_Item_With_4_Elements(unittest.TestCase):
     def setUp(self):
-        self._hash_bucket = ChainedHashBucket()
+        self._hash_bucket = LinkedListHashBucket()
         self._hash_bucket[1] = 1
         self._hash_bucket[2] = 2
         self._hash_bucket[3] = 3
@@ -49,9 +49,9 @@ class ChainedHashBucket_TestCase_Get_Item_With_4_Elements(unittest.TestCase):
     def tearDown(self):
         self._hash_bucket = None
     
-class ChainedHashBucket_TestCase_Get_Non_Existing_Item_With_4_Elements(unittest.TestCase):
+class LinkedListHashBucket_TestCase_Get_Non_Existing_Item_With_4_Elements(unittest.TestCase):
     def setUp(self):
-        self._hash_bucket = ChainedHashBucket()
+        self._hash_bucket = LinkedListHashBucket()
     
     def test_get_non_exiting_item_of_hash_bucket_expect_None_as_default(self):
         self.assertEquals(self._hash_bucket.get(1), None, 
@@ -67,10 +67,10 @@ class ChainedHashBucket_TestCase_Get_Non_Existing_Item_With_4_Elements(unittest.
     def tearDown(self):
         self._hash_bucket = None
 
-class ChainedHashBucket_TestCase_Delete_Item_With_4_Elements(unittest.TestCase):
+class LinkedListHashBucket_TestCase_Delete_Item_With_4_Elements(unittest.TestCase):
     
     def setUp(self):
-        self._hash_bucket = ChainedHashBucket()
+        self._hash_bucket = LinkedListHashBucket()
         self._hash_bucket[1] = 1
         self._hash_bucket[2] = 2
         self._hash_bucket[3] = 3
@@ -85,10 +85,10 @@ class ChainedHashBucket_TestCase_Delete_Item_With_4_Elements(unittest.TestCase):
     def tearDown(self):
         self._hash_bucket = None
 
-class ChainedHashBucket_TestCase_Set_Item_With_4_Elements(unittest.TestCase):
+class LinkedListHashBucket_TestCase_Set_Item_With_4_Elements(unittest.TestCase):
     
     def setUp(self):
-        self._hash_bucket = ChainedHashBucket()
+        self._hash_bucket = LinkedListHashBucket()
         self._hash_bucket[1] = 1
         self._hash_bucket[2] = 2
         self._hash_bucket[3] = 3
@@ -103,10 +103,10 @@ class ChainedHashBucket_TestCase_Set_Item_With_4_Elements(unittest.TestCase):
     def tearDown(self):
         self._hash_bucket = None
 
-class ChainedHashBucket_TestCase_Iter_Keys_With_4_Elements(unittest.TestCase):
+class LinkedListHashBucket_TestCase_Iter_Keys_With_4_Elements(unittest.TestCase):
     
     def setUp(self):
-        self._hash_bucket = ChainedHashBucket()
+        self._hash_bucket = LinkedListHashBucket()
         self._hash_bucket[1] = 1
         self._hash_bucket[2] = 2
         self._hash_bucket[3] = 3

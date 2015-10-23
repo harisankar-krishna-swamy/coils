@@ -8,58 +8,37 @@ from datastructures.stackNqueues.Stack import Stack
 class BSTTreeNode(object):
     '''
     A binary search tree node. For example, key can be a unique employee id and value is a python object for employee.
-    '''    
+    '''     
+    __slots__ = 'kvpair', 'left_child', 'right_child', 'link_inversion_traversal_tag'
     def __init__(self, key = None, value = None, left_child = None, right_child = None):
-        self._kvpair = KeyValuePair(key = key, value = value)
-        self._right_child = right_child
-        self._left_child = left_child
-        self._link_inversion_traversal_tag = False #used for constant space traversal using link inversion.
+        self.kvpair = KeyValuePair(key = key, value = value)
+        self.right_child = right_child
+        self.left_child = left_child
+        self.link_inversion_traversal_tag = False #used for constant space traversal using link inversion.
     
-    @property
-    def kvpair(self):
-        return self._kvpair
-    
-    @kvpair.setter
-    def kvpair(self, new_kv_pair):#for replacing data in a node. this is used in node removal.
-        self._kvpair = new_kv_pair
-        
     @property
     def key(self):
-        return self._kvpair.key
-    
+        return self.kvpair.key
+    @key.setter
+    def key(self, new_key):
+        self.kvpair.key = new_key
     @property
     def value(self):
-        return self._kvpair.value
-    
+        return self.kvpair.value
+
     @value.setter
     def value(self, new_value):
-        self._kvpair.value = new_value
-    
-    @property
-    def left_child(self):
-        return self._left_child
-        
-    @left_child.setter
-    def left_child(self, new_left_child):
-        self._left_child = new_left_child
-    
-    @property
-    def right_child(self):
-        return self._right_child
-    
-    @right_child.setter
-    def right_child(self, new_right_child):
-        self._right_child = new_right_child
+        self.kvpair.value = new_value
     
     @property
     def has_left_child(self):
-        if self._left_child != None:
+        if self.left_child != None:
             return True
         return False
     
     @property
     def has_right_child(self):
-        if self._right_child != None:
+        if self.right_child != None:
             return True
         return False
     
@@ -74,15 +53,7 @@ class BSTTreeNode(object):
     @property
     def has_only_right_child(self):
         return not self.has_left_child and self.has_right_child
-    
-    @property
-    def link_inversion_traversal_tag(self):
-        return self._link_inversion_traversal_tag
-    
-    @link_inversion_traversal_tag.setter
-    def link_inversion_traversal_tag(self, new_link_inversion_traversal_tag):
-        self._link_inversion_traversal_tag = new_link_inversion_traversal_tag
-    
+        
     def __str__(self):
         return '%s key[%s] value[%s]' % (self.__class__.__name__, str(self._kvpair.key), str(self._kvpair.value))
 

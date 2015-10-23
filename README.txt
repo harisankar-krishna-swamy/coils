@@ -14,3 +14,8 @@ Features to Implement:
    also get(key, default = None). This seems better.
 
 
+TESTING
+=======
+On command prompt type
+
+python -m unittest discover tests

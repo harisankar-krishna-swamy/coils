@@ -3,6 +3,7 @@ Created on Aug 15, 2015
 @author: hari
 '''
 from datastructures.common import KeyValuePair
+from datastructures.stackNqueues.Stack import Stack
 
 class BSTTreeNode(object):
     '''
@@ -305,6 +306,20 @@ class BinarySearchTree(object):
             return True
         return False
     
-    def __iter__(self):
-        for node_key, node_value in self.traversal(want_in_order = True):
+    def inorder_traversal_with_stack(self):
+        stack = Stack()
+        current_node = self._root_node
+        while 1 == 1:
+            while(current_node != None):
+                stack.push(current_node)
+                current_node = current_node.left_child
+            if stack.size == 0:
+                break
+            popped_node = stack.pop()
+            yield (popped_node.key, popped_node.value)
+            current_node = popped_node.right_child
+    
+    def __iter__(self):#iter is used to loop through the keys. this is used in BSTHashBucket
+        for node_key, node_value in self.inorder_traversal_with_stack():
             yield node_key
+        

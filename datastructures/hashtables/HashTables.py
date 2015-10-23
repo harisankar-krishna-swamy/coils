@@ -21,7 +21,7 @@ class SeperateChainHashTable(collections.MutableMapping):
     Note:-
     - Length of the hash table is the number of items in it.
     - You must specify bucket_type_class for controlling the datastructure used for separate chaining. Default is LinkedListHashBucket.
-      Other options are: TODO:
+      Other options are: SplayedHashBucket, BSTHashBucket
     '''
     def __init__(self, initial_capacity = 17, large_prime_P = 98764321261, load_factor_limit = 0.75, bucket_type_class = LinkedListHashBucket):
         self._large_prime_P = large_prime_P

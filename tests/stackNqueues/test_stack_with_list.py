@@ -2,10 +2,10 @@
 Created on Aug 14, 2015
 @author: topcat
 '''
-from unittest.case import TestCase
+import unittest
 from datastructures.stackNqueues.Stack import Stack
 
-class TestCase_Empty_Stack_Initialization(TestCase):
+class TestCase_Empty_Stack_Initialization(unittest.TestCase):
     
     def setUp(self):
         self._stack = Stack()
@@ -17,7 +17,7 @@ class TestCase_Empty_Stack_Initialization(TestCase):
     def tearDown(self):
         del self._stack
 
-class TestCase_Empty_Stack_Pop(TestCase):
+class TestCase_Empty_Stack_Pop(unittest.TestCase):
     
     def setUp(self):
         self._stack = Stack()
@@ -28,7 +28,7 @@ class TestCase_Empty_Stack_Pop(TestCase):
     def tearDown(self):
         del self._stack
 
-class TestCase_Empty_Stack_Top(TestCase):
+class TestCase_Empty_Stack_Top(unittest.TestCase):
         
     def setUp(self):
         self._stack = Stack()
@@ -40,7 +40,7 @@ class TestCase_Empty_Stack_Top(TestCase):
         del self._stack
 
 
-class TestCase_Predictable_Stack_Size_With_4_Elements(TestCase):
+class TestCase_Predictable_Stack_Size_With_4_Elements(unittest.TestCase):
     
     def setUp(self):
         self._stack = Stack()
@@ -55,7 +55,7 @@ class TestCase_Predictable_Stack_Size_With_4_Elements(TestCase):
     def tearDown(self):
         del self._stack
 
-class TestCase_Predictable_Stack_Top_With_4_Elements(TestCase):
+class TestCase_Predictable_Stack_Top_With_4_Elements(unittest.TestCase):
     
     def setUp(self):
         self._stack = Stack()
@@ -70,7 +70,7 @@ class TestCase_Predictable_Stack_Top_With_4_Elements(TestCase):
     def tearDown(self):
         del self._stack
 
-class TestCase_Pop_To_Empty_With_Predictable_Stack_Of_4_Elements(TestCase):
+class TestCase_Pop_To_Empty_With_Predictable_Stack_Of_4_Elements(unittest.TestCase):
     
     def setUp(self):
         self._stack = Stack()
@@ -92,7 +92,7 @@ class TestCase_Pop_To_Empty_With_Predictable_Stack_Of_4_Elements(TestCase):
     def tearDown(self):
         del self._stack
 
-class TestCase_Iterator_With_Stack_Of_4_Elements(TestCase):
+class TestCase_Iterator_With_Stack_Of_4_Elements(unittest.TestCase):
     
     def setUp(self):
         self._stack = Stack()
@@ -109,3 +109,6 @@ class TestCase_Iterator_With_Stack_Of_4_Elements(TestCase):
             
     def tearDown(self):
         del self._stack
+#Allows running as python run.
+if __name__ == '__main__':
+    unittest.main()

@@ -4,6 +4,7 @@ Created on Oct 17, 2015
 '''
 from unittest import TestCase
 from datastructures.trees.BST import BinarySearchTree
+import unittest
 
 class BST_Test_Empty_Tree(TestCase):    
     def setUp(self):
@@ -214,3 +215,7 @@ class BST_Test_Has_Key_With_10_Elements(TestCase):
     
     def tearDown(self):
         self._bst = None
+
+#Allows running as python run.
+if __name__ == '__main__':
+    unittest.main()

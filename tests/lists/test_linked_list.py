@@ -319,3 +319,6 @@ class LinkedList_TestCase_Insert_At_Index_In_Middle_With_4_Elements(unittest.Tes
     
     def tearDown(self):
         self._linkedList = None
+#Allows running as python run.
+if __name__ == '__main__':
+    unittest.main()

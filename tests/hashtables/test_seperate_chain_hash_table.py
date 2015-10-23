@@ -2,13 +2,13 @@
 Created on Oct 22, 2015
 @author: hari
 '''
-from unittest import TestCase
+import unittest
 from datastructures.hashtables.HashTables import SeperateChainHashTable
 
 #want to use string keys and values. rather than hash (1, 17) 17 is initial capacity
 list_of_strings_used_as_keys_and_values = ['one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten',
                                            'eleven', 'twelve', 'thirteen', 'fourteen', 'fifteen', 'sixteen', 'seventeen'] 
-class SeperateChainHashTable_Test_With_0_Elements(TestCase):
+class SeperateChainHashTable_Test_With_0_Elements(unittest.TestCase):
     
     def setUp(self):
         self._chained_hash_table = SeperateChainHashTable()
@@ -35,7 +35,7 @@ class SeperateChainHashTable_Test_With_0_Elements(TestCase):
     def tearDown(self):
         self._chained_hash_table = None
 
-class SeperateChainHashTable_Test_With_1_Elements(TestCase):
+class SeperateChainHashTable_Test_With_1_Elements(unittest.TestCase):
     
     def setUp(self):
         self._chained_hash_table = SeperateChainHashTable()
@@ -59,7 +59,7 @@ class SeperateChainHashTable_Test_With_1_Elements(TestCase):
     def tearDown(self):
         self._chained_hash_table = None
 '''
-class SeperateChainHashTable_Test_Capacity_On_Resize(TestCase):
+class SeperateChainHashTable_Test_Capacity_On_Resize(unittest.TestCase):
     def setUp(self):
         self._chained_hash_table = SeperateChainHashTable()
         self._default_initial_capacity = 17
@@ -78,7 +78,7 @@ class SeperateChainHashTable_Test_Capacity_On_Resize(TestCase):
     def tearDown(self):
         self._chained_hash_table = None
         
-class SeperateChainHashTable_Test_With_Full_Initial_Capacity_Elements_Forces_Resize(TestCase):
+class SeperateChainHashTable_Test_With_Full_Initial_Capacity_Elements_Forces_Resize(unittest.TestCase):
     def setUp(self):
         self._chained_hash_table = SeperateChainHashTable()
         self._default_initial_capacity = 17
@@ -106,7 +106,7 @@ class SeperateChainHashTable_Test_With_Full_Initial_Capacity_Elements_Forces_Res
     def tearDown(self):
         self._chained_hash_table = None
 '''       
-class SeperateChainHashTable_Test_With_Less_Than_Initial_Capacity_Elements_Cause_No_Resize(TestCase):
+class SeperateChainHashTable_Test_With_Less_Than_Initial_Capacity_Elements_Cause_No_Resize(unittest.TestCase):
     '''
     By adding 5 elements to an initial capacity of 17 the load factor is just 0.2941 which is < 0.75 loadfactor threshold for resize.
     '''
@@ -135,7 +135,7 @@ class SeperateChainHashTable_Test_With_Less_Than_Initial_Capacity_Elements_Cause
     def tearDown(self):
         self._chained_hash_table = None
         
-class SeperateChainHashTable_Test_Multiple_Resizes(TestCase):
+class SeperateChainHashTable_Test_Multiple_Resizes(unittest.TestCase):
     def setUp(self):
         self._chained_hash_table = SeperateChainHashTable()
         self._default_initial_capacity = 17 
@@ -169,3 +169,6 @@ class SeperateChainHashTable_Test_Multiple_Resizes(TestCase):
         
     def tearDown(self):
         self._chained_hash_table = None
+#Allows running as python run.
+if __name__ == '__main__':
+    unittest.main()

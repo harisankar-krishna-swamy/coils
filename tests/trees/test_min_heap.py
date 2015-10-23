@@ -180,3 +180,6 @@ class MinHeap_TestCase_Iterator_Element(unittest.TestCase):
     
     def tearDown(self):
         unittest.TestCase.tearDown(self) 
+
+if __name__ == '__main__':
+    unittest.main()

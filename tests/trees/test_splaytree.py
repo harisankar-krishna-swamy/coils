@@ -2,10 +2,10 @@
 Created on Oct 19, 2015
 @author: hari
 '''
-from unittest import TestCase
 from datastructures.trees.splaytree import BinarySplayTree
+import unittest
 
-class Splay_Tree_Test_Empty_Tree(TestCase):    
+class Splay_Tree_Test_Empty_Tree(unittest.TestCase):    
     def setUp(self):
         self._splaytree = BinarySplayTree()
     
@@ -21,7 +21,7 @@ class Splay_Tree_Test_Empty_Tree(TestCase):
     def tearDown(self):
         self._splaytree = None
 
-class Splay_Tree_Test_Tree_With_1_Element(TestCase):
+class Splay_Tree_Test_Tree_With_1_Element(unittest.TestCase):
     
     def setUp(self):
         self._splaytree = BinarySplayTree()
@@ -41,7 +41,7 @@ class Splay_Tree_Test_Tree_With_1_Element(TestCase):
     def tearDown(self):
         self._splaytree = None
 
-class Splay_Tree_Test_Tree_Count_Find_Element_With_10_Elements(TestCase):
+class Splay_Tree_Test_Tree_Count_Find_Element_With_10_Elements(unittest.TestCase):
 
     def setUp(self):
         self._splaytree = BinarySplayTree()
@@ -72,7 +72,7 @@ class Splay_Tree_Test_Tree_Count_Find_Element_With_10_Elements(TestCase):
     def tearDown(self):
         self._splaytree = None
 
-class Splay_Tree_Test_Tree_Delete_Element_With_10_Elements(TestCase):
+class Splay_Tree_Test_Tree_Delete_Element_With_10_Elements(unittest.TestCase):
     
     def setUp(self):
         self._splaytree = BinarySplayTree()
@@ -105,7 +105,7 @@ class Splay_Tree_Test_Tree_Delete_Element_With_10_Elements(TestCase):
     def tearDown(self):
         self._splaytree = None
 
-class Splay_Tree_Test_Tree_Delete_Element_With_10_Sorted_Elements(TestCase):
+class Splay_Tree_Test_Tree_Delete_Element_With_10_Sorted_Elements(unittest.TestCase):
     
     def setUp(self):
         self._splaytree = BinarySplayTree()
@@ -138,7 +138,7 @@ class Splay_Tree_Test_Tree_Delete_Element_With_10_Sorted_Elements(TestCase):
     def tearDown(self):
         self._splaytree = None
 
-class Splay_Tree_Test_Tree_Delete_Element_With_10_Reverse_Sorted_Elements(TestCase):
+class Splay_Tree_Test_Tree_Delete_Element_With_10_Reverse_Sorted_Elements(unittest.TestCase):
     
     def setUp(self):
         self._splaytree = BinarySplayTree()
@@ -170,7 +170,7 @@ class Splay_Tree_Test_Tree_Delete_Element_With_10_Reverse_Sorted_Elements(TestCa
     def tearDown(self):
         self._splaytree = None
         
-class Splay_Tree_Test_Has_Key_with_Empty_Tree(TestCase):    
+class Splay_Tree_Test_Has_Key_with_Empty_Tree(unittest.TestCase):    
     def setUp(self):
         self._splaytree = BinarySplayTree()
     
@@ -180,7 +180,7 @@ class Splay_Tree_Test_Has_Key_with_Empty_Tree(TestCase):
     def tearDown(self):
         self._splaytree = None
 
-class Splay_Tree_Test_Has_Key_with_Single_Node_Tree(TestCase):    
+class Splay_Tree_Test_Has_Key_with_Single_Node_Tree(unittest.TestCase):    
     def setUp(self):
         self._splaytree = BinarySplayTree()
         self._splaytree.insert(key = 10, obj = 'Object value')
@@ -191,7 +191,7 @@ class Splay_Tree_Test_Has_Key_with_Single_Node_Tree(TestCase):
     def tearDown(self):
         self._splaytree = None
 
-class Splay_Tree_Test_Has_Key_With_10_Elements(TestCase):
+class Splay_Tree_Test_Has_Key_With_10_Elements(unittest.TestCase):
     
     def setUp(self):
         self._splaytree = BinarySplayTree()
@@ -217,7 +217,7 @@ class Splay_Tree_Test_Has_Key_With_10_Elements(TestCase):
 #
 #Splay tree tests that do ops and check nodes with in-order traversal
 #
-class Splay_Tree_Test_Tree_Structure_After_Insert_With_Inorder_Traversal(TestCase):
+class Splay_Tree_Test_Tree_Structure_After_Insert_With_Inorder_Traversal(unittest.TestCase):
     '''
     The purpose of this test is to make sure that the splay op does not ruin the tree. So after each insert we check the
     tree structure.
@@ -238,7 +238,7 @@ class Splay_Tree_Test_Tree_Structure_After_Insert_With_Inorder_Traversal(TestCas
     def tearDown(self):
         self._splaytree = None
 
-class Splay_Tree_Test_Tree_Structure_After_Delete_With_Inorder_Traversal(TestCase):
+class Splay_Tree_Test_Tree_Structure_After_Delete_With_Inorder_Traversal(unittest.TestCase):
     '''
     The purpose of this test is to make sure that the splay op does not ruin the tree. So after each insert we check the
     tree structure.
@@ -270,7 +270,7 @@ class Splay_Tree_Test_Tree_Structure_After_Delete_With_Inorder_Traversal(TestCas
         self._splaytree = None
 
 
-class Splay_Tree_Test_Tree_Structure_After_Find_With_Inorder_Traversal(TestCase):
+class Splay_Tree_Test_Tree_Structure_After_Find_With_Inorder_Traversal(unittest.TestCase):
     '''
     The purpose of this test is to make sure that the splay op does not ruin the tree. So after each insert we check the
     tree structure.
@@ -300,3 +300,7 @@ class Splay_Tree_Test_Tree_Structure_After_Find_With_Inorder_Traversal(TestCase)
         
     def tearDown(self):
         self._splaytree = None
+
+#Allows running as python run.
+if __name__ == '__main__':
+    unittest.main()

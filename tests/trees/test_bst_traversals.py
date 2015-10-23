@@ -4,6 +4,7 @@ Created on Oct 19, 2015
 '''
 from unittest import TestCase
 from datastructures.trees.BST import BinarySearchTree        
+import unittest
 # Preorder traversal
 class BST_Test_Preorder_Traversal_with_empty_Tree(TestCase):
     def setUp(self):
@@ -212,4 +213,8 @@ class BST_Test_All_Traversals_Consecutively_For_Tree_Integirty_With_10_Node_Tree
         self.assertEquals(pre_order_elements, [5, 2, 1, 3, 4, 8, 7, 6, 9, 10], 'Pre order traversal did not yield expected elements in order')
     
     def tearDown(self):
-        self._bst = None                
+        self._bst = None      
+                  
+#Allows running as python run.
+if __name__ == '__main__':
+    unittest.main()

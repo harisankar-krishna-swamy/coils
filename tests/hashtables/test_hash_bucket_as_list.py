@@ -2,10 +2,10 @@
 Created on Oct 21, 2015
 @author: hari
 '''
-from unittest import TestCase
+import unittest
 from datastructures.hashtables.HashTables import ChainedHashBucket
 
-class ChainedHashBucket_TestCase_With_0_Elements(TestCase):
+class ChainedHashBucket_TestCase_With_0_Elements(unittest.TestCase):
     
     def setUp(self):
         self._hash_bucket = ChainedHashBucket()
@@ -16,7 +16,7 @@ class ChainedHashBucket_TestCase_With_0_Elements(TestCase):
     def tearDown(self):
         self._hash_bucket = None
 
-class ChainedHashBucket_TestCase_Len_With_4_Elements(TestCase):
+class ChainedHashBucket_TestCase_Len_With_4_Elements(unittest.TestCase):
     def setUp(self):
         self._hash_bucket = ChainedHashBucket()
         self._hash_bucket[1] = 1
@@ -30,7 +30,7 @@ class ChainedHashBucket_TestCase_Len_With_4_Elements(TestCase):
     def tearDown(self):
         self._hash_bucket = None
 
-class ChainedHashBucket_TestCase_Get_Item_With_4_Elements(TestCase):
+class ChainedHashBucket_TestCase_Get_Item_With_4_Elements(unittest.TestCase):
     def setUp(self):
         self._hash_bucket = ChainedHashBucket()
         self._hash_bucket[1] = 1
@@ -49,7 +49,7 @@ class ChainedHashBucket_TestCase_Get_Item_With_4_Elements(TestCase):
     def tearDown(self):
         self._hash_bucket = None
     
-class ChainedHashBucket_TestCase_Get_Non_Existing_Item_With_4_Elements(TestCase):
+class ChainedHashBucket_TestCase_Get_Non_Existing_Item_With_4_Elements(unittest.TestCase):
     def setUp(self):
         self._hash_bucket = ChainedHashBucket()
     
@@ -67,7 +67,7 @@ class ChainedHashBucket_TestCase_Get_Non_Existing_Item_With_4_Elements(TestCase)
     def tearDown(self):
         self._hash_bucket = None
 
-class ChainedHashBucket_TestCase_Delete_Item_With_4_Elements(TestCase):
+class ChainedHashBucket_TestCase_Delete_Item_With_4_Elements(unittest.TestCase):
     
     def setUp(self):
         self._hash_bucket = ChainedHashBucket()
@@ -85,7 +85,7 @@ class ChainedHashBucket_TestCase_Delete_Item_With_4_Elements(TestCase):
     def tearDown(self):
         self._hash_bucket = None
 
-class ChainedHashBucket_TestCase_Set_Item_With_4_Elements(TestCase):
+class ChainedHashBucket_TestCase_Set_Item_With_4_Elements(unittest.TestCase):
     
     def setUp(self):
         self._hash_bucket = ChainedHashBucket()
@@ -103,7 +103,7 @@ class ChainedHashBucket_TestCase_Set_Item_With_4_Elements(TestCase):
     def tearDown(self):
         self._hash_bucket = None
 
-class ChainedHashBucket_TestCase_Iter_Keys_With_4_Elements(TestCase):
+class ChainedHashBucket_TestCase_Iter_Keys_With_4_Elements(unittest.TestCase):
     
     def setUp(self):
         self._hash_bucket = ChainedHashBucket()
@@ -120,3 +120,6 @@ class ChainedHashBucket_TestCase_Iter_Keys_With_4_Elements(TestCase):
         self.assertEquals(expected_key_list, actual_key_list, 'Iterating over bucket keys did not match expected list of keys')
     def tearDown(self):
         self._hash_bucket = None
+#Allows running as python run.
+if __name__ == '__main__':
+    unittest.main()

@@ -2,11 +2,11 @@
 Created on Oct 19, 2015
 @author: hari
 '''
-from unittest import TestCase
+import unittest
 from datastructures.trees.splaytree import BinarySplayTree
         
 # Preorder traversal
-class Splay_Tree_Test_Preorder_Traversal_with_empty_Tree(TestCase):
+class Splay_Tree_Test_Preorder_Traversal_with_empty_Tree(unittest.TestCase):
     def setUp(self):
         self._splay_tree = BinarySplayTree()
     
@@ -20,7 +20,7 @@ class Splay_Tree_Test_Preorder_Traversal_with_empty_Tree(TestCase):
     def tearDown(self):
         self._splay_tree = None
 
-class Splay_Tree_Test_Preorder_Traversal_with_Single_Node_Tree(TestCase):
+class Splay_Tree_Test_Preorder_Traversal_with_Single_Node_Tree(unittest.TestCase):
     def setUp(self):
         self._splay_tree = BinarySplayTree()
         self._splay_tree.insert(key = 10, obj = 10)
@@ -36,7 +36,7 @@ class Splay_Tree_Test_Preorder_Traversal_with_Single_Node_Tree(TestCase):
     def tearDown(self):
         self._splay_tree = None
 
-class Splay_Tree_Test_Preorder_Traversal_with_10_Node_Tree(TestCase):
+class Splay_Tree_Test_Preorder_Traversal_with_10_Node_Tree(unittest.TestCase):
     def setUp(self):
         self._splay_tree = BinarySplayTree()
         self._splay_tree.insert(key = 5, obj = 5)
@@ -62,7 +62,7 @@ class Splay_Tree_Test_Preorder_Traversal_with_10_Node_Tree(TestCase):
         self._splay_tree = None        
 
 # Postorder traversal
-class Splay_Tree_Test_Postorder_Traversal_with_empty_Tree(TestCase):
+class Splay_Tree_Test_Postorder_Traversal_with_empty_Tree(unittest.TestCase):
     
     def setUp(self):
         self._splay_tree = BinarySplayTree()
@@ -77,7 +77,7 @@ class Splay_Tree_Test_Postorder_Traversal_with_empty_Tree(TestCase):
     def tearDown(self):
         self._splay_tree = None
 
-class Splay_Tree_Test_Postorder_Traversal_with_Single_Node_Tree(TestCase):
+class Splay_Tree_Test_Postorder_Traversal_with_Single_Node_Tree(unittest.TestCase):
     def setUp(self):
         self._splay_tree = BinarySplayTree()
         self._splay_tree.insert(key = 10, obj = 10)
@@ -93,7 +93,7 @@ class Splay_Tree_Test_Postorder_Traversal_with_Single_Node_Tree(TestCase):
     def tearDown(self):
         self._splay_tree = None
 
-class Splay_Tree_Test_Postorder_Traversal_with_10_Node_Tree(TestCase):
+class Splay_Tree_Test_Postorder_Traversal_with_10_Node_Tree(unittest.TestCase):
     def setUp(self):
         self._splay_tree = BinarySplayTree()
         self._splay_tree.insert(key = 5, obj = 5)
@@ -119,7 +119,7 @@ class Splay_Tree_Test_Postorder_Traversal_with_10_Node_Tree(TestCase):
         self._splay_tree = None
 
 # Inorder traversal
-class Splay_Tree_Test_Inorder_Traversal_with_empty_Tree(TestCase):
+class Splay_Tree_Test_Inorder_Traversal_with_empty_Tree(unittest.TestCase):
     def setUp(self):
         self._splay_tree = BinarySplayTree()
     
@@ -133,7 +133,7 @@ class Splay_Tree_Test_Inorder_Traversal_with_empty_Tree(TestCase):
     def tearDown(self):
         self._splay_tree = None
 
-class Splay_Tree_Test_Inorder_Traversal_with_Single_Node_Tree(TestCase):
+class Splay_Tree_Test_Inorder_Traversal_with_Single_Node_Tree(unittest.TestCase):
     def setUp(self):
         self._splay_tree = BinarySplayTree()
         self._splay_tree.insert(key = 10, obj = 10)
@@ -149,7 +149,7 @@ class Splay_Tree_Test_Inorder_Traversal_with_Single_Node_Tree(TestCase):
     def tearDown(self):
         self._splay_tree = None
 
-class Splay_Tree_Test_Inorder_Traversal_with_10_Node_Tree(TestCase):
+class Splay_Tree_Test_Inorder_Traversal_with_10_Node_Tree(unittest.TestCase):
     def setUp(self):
         self._splay_tree = BinarySplayTree()
         self._splay_tree.insert(key = 5, obj = 5)
@@ -174,7 +174,7 @@ class Splay_Tree_Test_Inorder_Traversal_with_10_Node_Tree(TestCase):
     def tearDown(self):
         self._splay_tree = None
         
-class Splay_Tree_Test_All_Traversals_Consecutively_For_Tree_Integirty_With_10_Node_Tree(TestCase):
+class Splay_Tree_Test_All_Traversals_Consecutively_For_Tree_Integirty_With_10_Node_Tree(unittest.TestCase):
     def setUp(self):
         self._splay_tree = BinarySplayTree()
         self._splay_tree.insert(key = 5, obj = 5)
@@ -214,3 +214,6 @@ class Splay_Tree_Test_All_Traversals_Consecutively_For_Tree_Integirty_With_10_No
     
     def tearDown(self):
         self._splay_tree = None                
+
+if __name__ == '__main__':
+    unittest.main()

@@ -179,3 +179,7 @@ class MaxHeap_TestCase_Iterator_Element(unittest.TestCase):
     
     def tearDown(self):
         unittest.TestCase.tearDown(self) 
+                  
+#Allows running as python run.
+if __name__ == '__main__':
+    unittest.main()

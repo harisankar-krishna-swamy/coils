@@ -2,18 +2,19 @@
 Created on Oct 23, 2015
 @author: hari
 '''
-#TESTS FOR SeperateChainHashTable with BSTHashBucket 
+
+#TESTS FOR SeperateChainHashTable with SplayedHashBucket 
 import unittest
 from datastructures.hashtables.HashTables import SeperateChainHashTable
-from datastructures.hashtables.hashbuckets import BSTHashBucket
+from datastructures.hashtables.hashbuckets import SplayedHashBucket
 
 #want to use string keys and values. rather than hash (1, 17) 17 is initial capacity
 list_of_strings_used_as_keys_and_values = ['one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten',
                                            'eleven', 'twelve', 'thirteen', 'fourteen', 'fifteen', 'sixteen', 'seventeen'] 
-class SeperateChainHashTable_with_BSTHashBucket_with_BSTHashBucket_Test_With_0_Elements(unittest.TestCase):
+class SeperateChainHashTable_with_SplayedHashBucket_with_SplayedHashBucket_Test_With_0_Elements(unittest.TestCase):
     
     def setUp(self):
-        self._chained_hash_table = SeperateChainHashTable(bucket_type_class = BSTHashBucket)
+        self._chained_hash_table = SeperateChainHashTable(bucket_type_class = SplayedHashBucket)
     
     def test_get_empty_hash_table(self):
         non_existing_key = "SomeKey"
@@ -37,10 +38,10 @@ class SeperateChainHashTable_with_BSTHashBucket_with_BSTHashBucket_Test_With_0_E
     def tearDown(self):
         self._chained_hash_table = None
 
-class SeperateChainHashTable_with_BSTHashBucket_Test_With_1_Elements(unittest.TestCase):
+class SeperateChainHashTable_with_SplayedHashBucket_Test_With_1_Elements(unittest.TestCase):
     
     def setUp(self):
-        self._chained_hash_table = SeperateChainHashTable(bucket_type_class = BSTHashBucket)
+        self._chained_hash_table = SeperateChainHashTable(bucket_type_class = SplayedHashBucket)
         self._key = 'some_key'
         self._value = 'some_value'
         self._chained_hash_table[self._key] = self._value
@@ -61,9 +62,9 @@ class SeperateChainHashTable_with_BSTHashBucket_Test_With_1_Elements(unittest.Te
     def tearDown(self):
         self._chained_hash_table = None
 
-class SeperateChainHashTable_with_BSTHashBucket_Test_Capacity_On_Resize(unittest.TestCase):
+class SeperateChainHashTable_with_SplayedHashBucket_Test_Capacity_On_Resize(unittest.TestCase):
     def setUp(self):
-        self._chained_hash_table = SeperateChainHashTable(bucket_type_class = BSTHashBucket)
+        self._chained_hash_table = SeperateChainHashTable(bucket_type_class = SplayedHashBucket)
         self._default_initial_capacity = 17
         for i in list_of_strings_used_as_keys_and_values:# 1 to 17 default initial capacity is 17
             self._chained_hash_table[i] = i
@@ -80,9 +81,9 @@ class SeperateChainHashTable_with_BSTHashBucket_Test_Capacity_On_Resize(unittest
     def tearDown(self):
         self._chained_hash_table = None
         
-class SeperateChainHashTable_with_BSTHashBucket_Test_With_Full_Initial_Capacity_Elements_Forces_Resize(unittest.TestCase):
+class SeperateChainHashTable_with_SplayedHashBucket_Test_With_Full_Initial_Capacity_Elements_Forces_Resize(unittest.TestCase):
     def setUp(self):
-        self._chained_hash_table = SeperateChainHashTable(bucket_type_class = BSTHashBucket)
+        self._chained_hash_table = SeperateChainHashTable(bucket_type_class = SplayedHashBucket)
         self._default_initial_capacity = 17
         for i in list_of_strings_used_as_keys_and_values:# 1 to 17 default initial capacity is 17
             self._chained_hash_table[i] = i
@@ -108,12 +109,12 @@ class SeperateChainHashTable_with_BSTHashBucket_Test_With_Full_Initial_Capacity_
     def tearDown(self):
         self._chained_hash_table = None
 
-class SeperateChainHashTable_with_BSTHashBucket_Test_With_Less_Than_Initial_Capacity_Elements_Cause_No_Resize(unittest.TestCase):
+class SeperateChainHashTable_with_SplayedHashBucket_Test_With_Less_Than_Initial_Capacity_Elements_Cause_No_Resize(unittest.TestCase):
     '''
     By adding 5 elements to an initial capacity of 17 the load factor is just 0.2941 which is < 0.75 loadfactor threshold for resize.
     '''
     def setUp(self):
-        self._chained_hash_table = SeperateChainHashTable(bucket_type_class = BSTHashBucket)
+        self._chained_hash_table = SeperateChainHashTable(bucket_type_class = SplayedHashBucket)
         self._default_initial_capacity = 5
         for i in list_of_strings_used_as_keys_and_values[0:5]:
             self._chained_hash_table[i] = i
@@ -137,9 +138,9 @@ class SeperateChainHashTable_with_BSTHashBucket_Test_With_Less_Than_Initial_Capa
     def tearDown(self):
         self._chained_hash_table = None
         
-class SeperateChainHashTable_with_BSTHashBucket_Test_Multiple_Resizes(unittest.TestCase):
+class SeperateChainHashTable_with_SplayedHashBucket_Test_Multiple_Resizes(unittest.TestCase):
     def setUp(self):
-        self._chained_hash_table = SeperateChainHashTable(bucket_type_class = BSTHashBucket)
+        self._chained_hash_table = SeperateChainHashTable(bucket_type_class = SplayedHashBucket)
         self._default_initial_capacity = 17 
         self._length_upper_limit = 1001 #always choose some multiple of 100 + 1
     def test_get_and_len_with_a_truck_load_of_resizes(self):

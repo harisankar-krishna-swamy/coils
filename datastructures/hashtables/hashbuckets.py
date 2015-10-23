@@ -99,7 +99,7 @@ class BSTHashBucket(object):
             self._bst.insert(key, obj)
             
     def __iter__(self):
-        for key, value in self._bst.traversal(want_in_order = True):
+        for key, value in self._bst.inorder_traversal_with_stack():
             yield key
 
 class SplayedHashBucket(object):
@@ -145,5 +145,5 @@ class SplayedHashBucket(object):
             self._st.insert(key, obj)
             
     def __iter__(self):
-        for key, value in self._st.traversal(want_in_order = True):
+        for key, value in self._st.inorder_traversal_with_stack():
             yield key

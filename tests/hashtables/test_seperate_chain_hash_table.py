@@ -58,7 +58,7 @@ class SeperateChainHashTable_Test_With_1_Elements(unittest.TestCase):
     
     def tearDown(self):
         self._chained_hash_table = None
-'''
+
 class SeperateChainHashTable_Test_Capacity_On_Resize(unittest.TestCase):
     def setUp(self):
         self._chained_hash_table = SeperateChainHashTable()
@@ -105,7 +105,7 @@ class SeperateChainHashTable_Test_With_Full_Initial_Capacity_Elements_Forces_Res
             
     def tearDown(self):
         self._chained_hash_table = None
-'''       
+
 class SeperateChainHashTable_Test_With_Less_Than_Initial_Capacity_Elements_Cause_No_Resize(unittest.TestCase):
     '''
     By adding 5 elements to an initial capacity of 17 the load factor is just 0.2941 which is < 0.75 loadfactor threshold for resize.

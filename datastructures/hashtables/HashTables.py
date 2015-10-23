@@ -6,58 +6,10 @@ the key and get a bucket number B. This is just an index to a table. A bucket ca
 or any other ds you like. A Bucket, which is a list masquerading as a python dict, holds multiple objects which 
 happened to have keys k1 and k2 that mapped into the same bucket B.    
 '''
-from datastructures.lists.LinkedList import LinkedList
-from datastructures.common import KeyValuePair
+
 from random import randrange
 import collections
-
-class ChainedHashBucket(object):
-    '''
-    A hash bucket is used to hold objects that hash to the same value in a hash table. This is hash bucket
-    using a list. This masquerades as a python dict in code where it is used.
-    
-    Note: HASHBUCKET ITERATION YIELDS KEYS. not the key value pairs in the bucket. 
-    '''
-    def __init__(self):
-        self._list_of_kv_pairs = LinkedList() #we use our linked list!
-    
-    def __len__(self):
-        return self._list_of_kv_pairs.length
-    
-    def get(self, key, default = None):
-        '''
-        Get object associated with a key and on key miss return specified default. This is there in Python dict and this class
-        masquerades as dict, we implement it.
-        '''
-        try:
-            value = self[key]
-            return value
-        except KeyError:
-            return default            
-    
-    def __getitem__(self, key):
-        for kv_pair in self._list_of_kv_pairs:
-            if kv_pair.key == key:
-                return kv_pair.value
-        raise KeyError('Key Error: %s ' % repr(key))
-    
-    def __delitem__(self, key):
-        for kv_pair in self._list_of_kv_pairs:
-            if kv_pair.key == key:
-                self._list_of_kv_pairs.remove(kv_pair)
-                return    
-        raise KeyError('Key Error: %s ' % repr(key))
-    
-    def __setitem__(self, key, obj):
-        for kv_pair in self._list_of_kv_pairs:
-            if kv_pair.key == key:
-                kv_pair.value = obj
-                return    
-        self._list_of_kv_pairs.append(KeyValuePair(key = key, value = obj))
-  
-    def __iter__(self):
-        for kvpair in self._list_of_kv_pairs:
-            yield kvpair.key
+from datastructures.hashtables.hashbuckets import LinkedListHashBucket
             
 class SeperateChainHashTable(collections.MutableMapping):
     '''
@@ -67,9 +19,11 @@ class SeperateChainHashTable(collections.MutableMapping):
     Mutable Mapping? have a look at "cat /usr/lib/python2.7/_abcoll.py" Do not use this directly is advised in the file so we use
     from collections.MutableMapping as advised :-P Basically we dont have to write the methods in Mutable mapping by inheriting.
     Note:-
-    - Length of the hash table is the number of items in it. 
+    - Length of the hash table is the number of items in it.
+    - You must specify bucket_type_class for controlling the datastructure used for separate chaining. Default is LinkedListHashBucket.
+      Other options are: TODO:
     '''
-    def __init__(self, initial_capacity = 17, large_prime_P = 98764321261, load_factor_limit = 0.75):
+    def __init__(self, initial_capacity = 17, large_prime_P = 98764321261, load_factor_limit = 0.75, bucket_type_class = LinkedListHashBucket):
         self._large_prime_P = large_prime_P
         self._table_max_size = initial_capacity
         self._scale = 1 + randrange(self._large_prime_P - 1)
@@ -77,6 +31,7 @@ class SeperateChainHashTable(collections.MutableMapping):
         self._table = initial_capacity * [None]
         self._hash_table_items_count = 0
         self._load_factor_limit = load_factor_limit
+        self._bucket_class = bucket_type_class
     
     @property
     def current_capacity(self):
@@ -111,7 +66,7 @@ class SeperateChainHashTable(collections.MutableMapping):
     def _set_item_in_bucket(self, bucket_index, key, obj):
         bucket = self._table[bucket_index]
         if bucket == None:
-            bucket = ChainedHashBucket()
+            bucket = self._bucket_class()
             self._table[bucket_index] = bucket
         items_count_in_bucket = len(bucket)
         bucket[key] = obj 

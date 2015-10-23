@@ -42,6 +42,7 @@ class LinkedList(object):
     Note:
     1) Iterating over the list does not take out the nodes.
     2) Node with duplicate elements are allowed.
+    3) LinkedNode A == LinkedNode B does not compare their elements. You must do A.element == B.element 
     '''
     def __init__(self):
         self._head = None
@@ -162,5 +163,9 @@ class LinkedList(object):
             return temp.element   
         raise StopIteration
     #
+    
+    def __len__(self):
+        return self._length
+    
     def __str__(self):
         return '%s has %s element(s)' % (self.__class__.__name__, str(self._length))

@@ -3,7 +3,7 @@ Created on Oct 19, 2015
 @author: hari
 '''
 from unittest import TestCase
-from datastructures.splaytree import BinarySplayTree
+from datastructures.trees.splaytree import BinarySplayTree
         
 # Preorder traversal
 class Splay_Tree_Test_Preorder_Traversal_with_empty_Tree(TestCase):

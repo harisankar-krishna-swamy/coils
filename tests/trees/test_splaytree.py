@@ -3,7 +3,7 @@ Created on Oct 19, 2015
 @author: hari
 '''
 from unittest import TestCase
-from datastructures.splaytree import BinarySplayTree
+from datastructures.trees.splaytree import BinarySplayTree
 
 class Splay_Tree_Test_Empty_Tree(TestCase):    
     def setUp(self):

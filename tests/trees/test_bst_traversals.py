@@ -3,7 +3,7 @@ Created on Oct 19, 2015
 @author: hari
 '''
 from unittest import TestCase
-from datastructures.BST import BinarySearchTree        
+from datastructures.trees.BST import BinarySearchTree        
 # Preorder traversal
 class BST_Test_Preorder_Traversal_with_empty_Tree(TestCase):
     def setUp(self):

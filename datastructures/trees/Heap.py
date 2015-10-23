@@ -162,15 +162,3 @@ class Heap(object):
         Returns the internal array representation of the heap.
         """
         return self._heapList
-        
-if __name__ == '__main__':
-    h = Heap()
-    h.addElements([20, 2, 10, 5, 4, 100, 9, 7, 0])
-    print h
-    print h.getElement()
-    print h
-    from tests.test_min_heap import assert_min_heap_property
-    print assert_min_heap_property(h._getHeapAsList())
-    
-    for element in h:
-        print element

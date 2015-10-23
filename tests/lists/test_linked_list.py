@@ -3,7 +3,7 @@ Created on Aug 12, 2015
 @author: hari
 '''
 import unittest
-from datastructures.LinkedList import LinkedList
+from datastructures.lists.LinkedList import LinkedList
 from random import randint
 
 class LinkedList_TestCase_Count_With_0_Elements(unittest.TestCase):

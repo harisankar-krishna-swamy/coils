@@ -3,7 +3,7 @@ Created on Oct 21, 2015
 @author: hari
 '''
 from unittest import TestCase
-from datastructures.HashTables import ChainedHashBucket, SeperateChainHashTable
+from datastructures.hashtables.HashTables import ChainedHashBucket
 
 class ChainedHashBucket_TestCase_With_0_Elements(TestCase):
     

@@ -230,7 +230,7 @@ class Splay_Tree_Test_Tree_Structure_After_Insert_With_Inorder_Traversal(unittes
         inorder_from_tree = []
         for i in range(1, 11): # 1 to 10
             tree_element = self._splaytree.insert(i, i)
-            for element in self._splaytree.traversal(want_in_order = True):
+            for key, element in self._splaytree.traversal(want_in_order = True):
                 inorder_from_tree.append(element)
             self.assertEquals(inorder_from_tree, expected_inorder_list[:len(inorder_from_tree)], 'Tree ruined during insert splays')
             inorder_from_tree = []
@@ -261,7 +261,7 @@ class Splay_Tree_Test_Tree_Structure_After_Delete_With_Inorder_Traversal(unittes
         inorder_from_tree = []
         for i in range(1, 11): # 1 to 10
             tree_element = self._splaytree.remove(i)
-            for element in self._splaytree.traversal(want_in_order = True):
+            for key, element in self._splaytree.traversal(want_in_order = True):
                 inorder_from_tree.append(element)
             self.assertEquals(inorder_from_tree, expected_inorder_list[i:10], 'Tree ruined during insert splays')
             inorder_from_tree = []
@@ -293,7 +293,7 @@ class Splay_Tree_Test_Tree_Structure_After_Find_With_Inorder_Traversal(unittest.
         inorder_from_tree = []
         for i in range(1, 11): # 1 to 10
             self.assertEquals(self._splaytree.find(i), i, 'Element not found in Splay Tree!')
-            for element in self._splaytree.traversal(want_in_order = True):
+            for key, element in self._splaytree.traversal(want_in_order = True):
                 inorder_from_tree.append(element)
             self.assertEquals(inorder_from_tree, expected_inorder_list, 'Tree ruined during insert splays')
             inorder_from_tree = []

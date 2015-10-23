@@ -3,7 +3,7 @@ Created on Aug 5, 2015
 @author: topcat
 '''
 import unittest
-from datastructures.Heap import Heap
+from datastructures.trees.Heap import Heap
 from random import random, randint
 
 def assert_min_heap_property(heap_list):

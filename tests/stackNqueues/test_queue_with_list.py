@@ -3,7 +3,7 @@ Created on Aug 14, 2015
 @author: topcat
 '''
 from unittest import TestCase
-from datastructures.Queue import Queue
+from datastructures.stackNqueues.Queue import Queue
 
 class TestCase_Len_Of_Empty_Queue(TestCase):
     

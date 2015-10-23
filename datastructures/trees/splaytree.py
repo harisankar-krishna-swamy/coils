@@ -2,7 +2,7 @@
 Created on Oct 19, 2015
 @author: hari
 '''
-from datastructures.BST import BinarySearchTree
+from datastructures.trees.BST import BinarySearchTree
 
 class BinarySplayTree(BinarySearchTree):
     '''

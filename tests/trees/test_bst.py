@@ -3,7 +3,7 @@ Created on Oct 17, 2015
 @author: hari
 '''
 from unittest import TestCase
-from datastructures.BST import BinarySearchTree
+from datastructures.trees.BST import BinarySearchTree
 
 class BST_Test_Empty_Tree(TestCase):    
     def setUp(self):

@@ -6,7 +6,7 @@ the key and get a bucket number B. This is just an index to a table. A bucket ca
 or any other ds you like. A Bucket, which is a list masquerading as a python dict, holds multiple objects which 
 happened to have keys k1 and k2 that mapped into the same bucket B.    
 '''
-from datastructures.LinkedList import LinkedList
+from datastructures.lists.LinkedList import LinkedList
 from datastructures.common import KeyValuePair
 from random import randrange
 import collections

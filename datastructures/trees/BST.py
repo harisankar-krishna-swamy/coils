@@ -154,7 +154,19 @@ class BinarySearchTree(object):
                 current_node = current_node.left_child
         #while
         return (None, None)        
+    
+    
+    def replace(self, key, obj):
+        '''
+        Replace the object associated with the key
+        '''
+        node_with_key, parent_node = self._find_node_with_key(key)
         
+        if node_with_key  == None:
+            raise KeyError('Key not found %s' % repr(key))
+        
+        node_with_key.value = obj
+    
     def find(self, key):
         '''
         Find the value associated with key. Returns None if nothing is found.

@@ -216,6 +216,69 @@ class BST_Test_Has_Key_With_10_Elements(TestCase):
     def tearDown(self):
         self._bst = None
 
+class BST_Test_Replace_Empty_Tree(TestCase):    
+    def setUp(self):
+        self._bst = BinarySearchTree()
+    
+    def test_replace_with_empty_tree(self):
+        self.assertRaises(KeyError, callableObj = lambda : self._bst.replace('key', None))
+        
+    def tearDown(self):
+        self._bst = None
+
+class BST_Test_Replace_With_10_Elements_Non_Existing_Key(TestCase):
+    
+    def setUp(self):
+        self._bst = BinarySearchTree()
+        self._bst.insert(key = 5, obj = 5)
+        self._bst.insert(key = 8, obj = 8)
+        self._bst.insert(key = 7, obj = 7)
+        self._bst.insert(key = 9, obj = 9)
+        self._bst.insert(key = 10, obj = 10)
+        self._bst.insert(key = 2, obj = 2)
+        self._bst.insert(key = 1, obj = 1)
+        self._bst.insert(key = 3, obj = 3)
+        self._bst.insert(key = 4, obj = 4)
+        self._bst.insert(key = 6, obj = 6)
+        
+        self._bst_node_count = 10
+    
+    def test_replace_with_full_tree(self):
+        self.assertRaises(KeyError, callableObj = lambda : self._bst.replace('key', None))
+        
+    def tearDown(self):
+        self._bst = None
+
+class BST_Test_Replace_With_10_Elements_Existing_Key(TestCase):
+    
+    def setUp(self):
+        self._bst = BinarySearchTree()
+        self._bst.insert(key = 5, obj = 5)
+        self._bst.insert(key = 8, obj = 8)
+        self._bst.insert(key = 7, obj = 7)
+        self._bst.insert(key = 9, obj = 9)
+        self._bst.insert(key = 10, obj = 10)
+        self._bst.insert(key = 2, obj = 2)
+        self._bst.insert(key = 1, obj = 1)
+        self._bst.insert(key = 3, obj = 3)
+        self._bst.insert(key = 4, obj = 4)
+        self._bst.insert(key = 6, obj = 6)
+        
+        self._bst_node_count = 10
+    
+    def test_replace_with_existing_key_on_tree(self):
+        key_to_replace = 5
+        value_to_set = -5
+        
+        self._bst.replace(key_to_replace, value_to_set)
+        
+        self.assertEquals(self._bst.has_key(key_to_replace), True, 'Tree has_key operation must return True for existing key')
+        self.assertEquals(self._bst.find(key_to_replace), value_to_set, 'Find operation failed on tree after replace')
+        self.assertNotEquals(self._bst.find(key_to_replace), key_to_replace, 'replaced key still exists!')
+        
+    def tearDown(self):
+        self._bst = None
+
 #Allows running as python run.
 if __name__ == '__main__':
     unittest.main()

@@ -6,29 +6,14 @@ class LinkedNode(object):
     """
     A node in a Linked list.
     """
+    __slots__ = 'element', 'nextNode'
     def __init__(self, element = None, nextNode = None):
         '''
         a node is created with the element object and the next node. If any of these
         are not available, use the default value None.
         '''
-        self._next = nextNode
-        self._element = element
-    
-    @property
-    def nextNode(self):
-        return self._next
-    
-    @nextNode.setter
-    def nextNode(self, value):
-        self._next = value
-    
-    @property
-    def element(self):
-        return self._element
-    
-    @element.setter
-    def element(self, value):
-        self._element = value
+        self.nextNode = nextNode
+        self.element = element
         
     def __str__(self):
         return '%s %s' % (self.__class__.__name__, self._element)

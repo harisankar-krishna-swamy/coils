@@ -19,7 +19,7 @@ class LinkedNode(object):
         return '%s %s' % (self.__class__.__name__, self._element)
     
     def __repr__(self):
-        return '%s(element = %s, nextNode = %s)' % (self.__class__.__name__, self._element, self._next)
+        return '%s(element = %s)' % (self.__class__.__name__, self._element)
         
 class LinkedList(object):
     '''
@@ -27,7 +27,8 @@ class LinkedList(object):
     Note:
     1) Iterating over the list does not take out the nodes.
     2) Node with duplicate elements are allowed.
-    3) LinkedNode A == LinkedNode B does not compare their elements. You must do A.element == B.element 
+    3) LinkedNode A == LinkedNode B does not compare their elements. You must do 
+       A.element == B.element How element objects match is up to the application. 
     '''
     def __init__(self):
         self._head = None
@@ -154,3 +155,30 @@ class LinkedList(object):
     
     def __str__(self):
         return '%s has %s element(s)' % (self.__class__.__name__, str(self._length))
+    
+    def remove_duplicates(self):
+        '''
+        Removes nodes with duplicate elements. We build the corrected list.
+        '''
+        if self.length < 2:
+            return
+        last_node_of_corrected_list = self._head
+        running_node = self._head
+        current_node = last_node_of_corrected_list.nextNode
+        
+        while current_node != None:#all the way until end
+            running_node = self._head
+            while running_node != current_node:
+                if running_node.element == current_node.element: #duplicate
+                    nxt_of_duplicate = current_node.nextNode
+                    last_node_of_corrected_list.nextNode = nxt_of_duplicate
+                    self._length = self._length - 1 
+                    current_node = nxt_of_duplicate
+                    break
+                running_node = running_node.nextNode
+                
+            if running_node == current_node:# current node did not have a duplicate element in the list seen so far
+                last_node_of_corrected_list = current_node
+                current_node = current_node.nextNode
+        
+        self._tail = last_node_of_corrected_list    

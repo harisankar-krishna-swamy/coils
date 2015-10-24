@@ -1,15 +1,15 @@
 '''
-Created on Aug 12, 2015
+Created on Oct 24, 2015
 @author: hari
 '''
 import unittest
-from datastructures.lists.singly_linked_list import LinkedList
+from datastructures.lists.doubly_linked_list import DoublyLinkedList
 from random import randint
 
-class LinkedList_Test_Count_With_0_Elements(unittest.TestCase):
+class DoublyLinkedList_Test_Count_With_0_Elements(unittest.TestCase):
     
     def setUp(self):
-        self._linkedList = LinkedList()
+        self._linkedList = DoublyLinkedList()
     
     def test_count_of_empty_list(self):
         self.assertEquals(self._linkedList.length, 0, 'Empty List length must be 0')
@@ -17,10 +17,10 @@ class LinkedList_Test_Count_With_0_Elements(unittest.TestCase):
     def tearDown(self):
         self._linkedList = None
 
-class LinkedList_Test_Head_n_Tail_With_0_Elements(unittest.TestCase):
+class DoublyLinkedList_Test_Head_n_Tail_With_0_Elements(unittest.TestCase):
     
     def setUp(self):
-        self._linkedList = LinkedList()
+        self._linkedList = DoublyLinkedList()
     
     def test_count_of_empty_list(self):
         self.assertEquals(self._linkedList.head, None, 'Head of 0 element list must be None')
@@ -30,10 +30,10 @@ class LinkedList_Test_Head_n_Tail_With_0_Elements(unittest.TestCase):
         self._linkedList = None
     
         
-class LinkedList_Test_Count_With_4_Predictable_Elements(unittest.TestCase):
+class DoublyLinkedList_Test_Count_With_4_Predictable_Elements(unittest.TestCase):
     
     def setUp(self):
-        self._linkedList = LinkedList()
+        self._linkedList = DoublyLinkedList()
         self._linkedList.append(1)
         self._linkedList.append(2)
         self._linkedList.append(3)
@@ -45,10 +45,10 @@ class LinkedList_Test_Count_With_4_Predictable_Elements(unittest.TestCase):
     def tearDown(self):
         self._linkedList = None
 
-class LinkedList_Test_Remove_Non_Existing_Element_From_0_Element_List(unittest.TestCase):
+class DoublyLinkedList_Test_Remove_Non_Existing_Element_From_0_Element_List(unittest.TestCase):
     
     def setUp(self):
-        self._linkedList = LinkedList()
+        self._linkedList = DoublyLinkedList()
     
     def test_count_of_list(self):
         self._linkedList.remove(-1)
@@ -57,10 +57,10 @@ class LinkedList_Test_Remove_Non_Existing_Element_From_0_Element_List(unittest.T
     def tearDown(self):
         self._linkedList = None
 
-class LinkedList_Test_Remove_Non_Existing_Element_From_4_Element_List(unittest.TestCase):
+class DoublyLinkedList_Test_Remove_Non_Existing_Element_From_4_Element_List(unittest.TestCase):
     
     def setUp(self):
-        self._linkedList = LinkedList()
+        self._linkedList = DoublyLinkedList()
         self._linkedList.append(1)
         self._linkedList.append(2)
         self._linkedList.append(3)
@@ -73,10 +73,10 @@ class LinkedList_Test_Remove_Non_Existing_Element_From_4_Element_List(unittest.T
     def tearDown(self):
         self._linkedList = None
 
-class LinkedList_Test_Remove_Middle_Element_From_4_Element_List(unittest.TestCase):
+class DoublyLinkedList_Test_Remove_Middle_Element_From_4_Element_List(unittest.TestCase):
     
     def setUp(self):
-        self._linkedList = LinkedList()
+        self._linkedList = DoublyLinkedList()
         self._linkedList.append(1)
         self._linkedList.append(2)
         self._linkedList.append(3)
@@ -89,10 +89,10 @@ class LinkedList_Test_Remove_Middle_Element_From_4_Element_List(unittest.TestCas
     def tearDown(self):
         self._linkedList = None
 
-class LinkedList_Test_IndexOf_Element_In_Empty_List(unittest.TestCase):
+class DoublyLinkedList_Test_IndexOf_Element_In_Empty_List(unittest.TestCase):
     
     def setUp(self):
-        self._linkedList = LinkedList()
+        self._linkedList = DoublyLinkedList()
     
     def test_index(self):
         index = self._linkedList.index(8)
@@ -101,10 +101,10 @@ class LinkedList_Test_IndexOf_Element_In_Empty_List(unittest.TestCase):
     def tearDown(self):
         self._linkedList = None
 
-class LinkedList_Test_IndexOf_Elements_In_4_Element_List(unittest.TestCase):
+class DoublyLinkedList_Test_IndexOf_Elements_In_4_Element_List(unittest.TestCase):
     
     def setUp(self):
-        self._linkedList = LinkedList()
+        self._linkedList = DoublyLinkedList()
         self._linkedList.append(1)
         self._linkedList.append(2)
         self._linkedList.append(3)
@@ -118,9 +118,9 @@ class LinkedList_Test_IndexOf_Elements_In_4_Element_List(unittest.TestCase):
     def tearDown(self):
         self._linkedList = None    
 
-class LinkedList_Test_Operations_On_List_with_1000_Random_Elements(unittest.TestCase):
+class DoublyLinkedList_Test_Operations_On_List_with_1000_Random_Elements(unittest.TestCase):
     def setUp(self):
-        self._linked_list = LinkedList()
+        self._linked_list = DoublyLinkedList()
         self._shadow_list = []
         for i in range(10):
             random_element = randint(0, 1000)
@@ -147,22 +147,22 @@ class LinkedList_Test_Operations_On_List_with_1000_Random_Elements(unittest.Test
             
             self.assertEquals(self._linked_list.length, len(self._shadow_list))
 
-class LinkedList_Test_extend_With_Predictable_Elements(unittest.TestCase):
+class DoublyLinkedList_Test_extend_With_Predictable_Elements(unittest.TestCase):
     '''
-    Test the extend operation of singly_linked_list. 
+    Test the extend operation of LinkedList. 
     a) Create 2 lists. 
     b) Add the second list to the end of the first list. 
     c) Check the indices of the newly added elements.
     '''
     
     def setUp(self):
-        self._linkedList = LinkedList()
+        self._linkedList = DoublyLinkedList()
         self._linkedList.append(1)
         self._linkedList.append(2)
         self._linkedList.append(3)
         self._linkedList.append(4)
         #create a second linkedlist with 5, 6, 7
-        self._secondList = LinkedList()
+        self._secondList = DoublyLinkedList()
         self._secondList.append(5)
         self._secondList.append(6)
         self._secondList.append(7)
@@ -184,10 +184,10 @@ class LinkedList_Test_extend_With_Predictable_Elements(unittest.TestCase):
         self._linkedList = None
         self._secondList = None
 
-class LinkedList_Test_Check_Tail_On_Remove_In_4_Element_List(unittest.TestCase):
+class DoublyLinkedList_Test_Check_Tail_On_Remove_In_4_Element_List(unittest.TestCase):
     
     def setUp(self):
-        self._linkedList = LinkedList()
+        self._linkedList = DoublyLinkedList()
         self._linkedList.append(1)
         self._linkedList.append(2)
         self._linkedList.append(3)
@@ -208,10 +208,10 @@ class LinkedList_Test_Check_Tail_On_Remove_In_4_Element_List(unittest.TestCase):
     def tearDown(self):
         self._linkedList = None    
 
-class LinkedList_Test_Check_Head_On_Remove_In_4_Element_List(unittest.TestCase):
+class DoublyLinkedList_Test_Check_Head_On_Remove_In_4_Element_List(unittest.TestCase):
 
     def setUp(self):
-        self._linkedList = LinkedList()
+        self._linkedList = DoublyLinkedList()
         self._linkedList.append(1)
         self._linkedList.append(2)
         self._linkedList.append(3)
@@ -234,10 +234,10 @@ class LinkedList_Test_Check_Head_On_Remove_In_4_Element_List(unittest.TestCase):
     def tearDown(self):
         self._linkedList = None    
 
-class LinkedList_Test_Insert_At_0_With_0_Elements(unittest.TestCase):
+class DoublyLinkedList_Test_Insert_At_0_With_0_Elements(unittest.TestCase):
     
     def setUp(self):
-        self._linkedList = LinkedList()
+        self._linkedList = DoublyLinkedList()
     
     def test_insert_at_0_of_empty_list(self):
         self._linkedList.insert_at(0, 20)
@@ -247,10 +247,10 @@ class LinkedList_Test_Insert_At_0_With_0_Elements(unittest.TestCase):
     def tearDown(self):
         self._linkedList = None
 
-class LinkedList_Test_Insert_At_Negative_Index_With_0_Elements(unittest.TestCase):
+class DoublyLinkedList_Test_Insert_At_Negative_Index_With_0_Elements(unittest.TestCase):
     
     def setUp(self):
-        self._linkedList = LinkedList()
+        self._linkedList = DoublyLinkedList()
     
     def test_insert_at_negative_index_of_empty_list(self):
         self._linkedList.insert_at(-2, 20)
@@ -260,10 +260,10 @@ class LinkedList_Test_Insert_At_Negative_Index_With_0_Elements(unittest.TestCase
     def tearDown(self):
         self._linkedList = None
 
-class LinkedList_Test_Insert_At_Index_Larger_Than_Length_With_0_Elements(unittest.TestCase):
+class DoublyLinkedList_Test_Insert_At_Index_Larger_Than_Length_With_0_Elements(unittest.TestCase):
     
     def setUp(self):
-        self._linkedList = LinkedList()
+        self._linkedList = DoublyLinkedList()
     
     def test_insert_at_negative_index_of_empty_list(self):
         self._linkedList.insert_at(100, 20)
@@ -273,10 +273,10 @@ class LinkedList_Test_Insert_At_Index_Larger_Than_Length_With_0_Elements(unittes
     def tearDown(self):
         self._linkedList = None
 
-class LinkedList_Test_Insert_At_Index_Larger_Than_Length_With_4_Elements(unittest.TestCase):
+class DoublyLinkedList_Test_Insert_At_Index_Larger_Than_Length_With_4_Elements(unittest.TestCase):
     
     def setUp(self):
-        self._linkedList = LinkedList()
+        self._linkedList = DoublyLinkedList()
         self._linkedList.append(1)
         self._linkedList.append(2)
         self._linkedList.append(3)
@@ -294,10 +294,10 @@ class LinkedList_Test_Insert_At_Index_Larger_Than_Length_With_4_Elements(unittes
         self._linkedList = None
 
 
-class LinkedList_Test_Insert_At_Index_In_Middle_With_4_Elements(unittest.TestCase):
+class DoublyLinkedList_Test_Insert_At_Index_In_Middle_With_4_Elements(unittest.TestCase):
     
     def setUp(self):
-        self._linkedList = LinkedList()
+        self._linkedList = DoublyLinkedList()
         self._linkedList.append(1)
         self._linkedList.append(2)
         self._linkedList.append(4)
@@ -320,10 +320,10 @@ class LinkedList_Test_Insert_At_Index_In_Middle_With_4_Elements(unittest.TestCas
     def tearDown(self):
         self._linkedList = None
 
-class LinkedList_Test_Remove_Duplicates_With_0_Elements(unittest.TestCase):
+class DoublyLinkedList_Test_Remove_Duplicates_With_0_Elements(unittest.TestCase):
     
     def setUp(self):
-        self._linkedList = LinkedList()
+        self._linkedList = DoublyLinkedList()
     
     def test_remove_duplicate_of_empty_list(self):
         self._linkedList.remove_duplicates()
@@ -331,10 +331,10 @@ class LinkedList_Test_Remove_Duplicates_With_0_Elements(unittest.TestCase):
     def tearDown(self):
         self._linkedList = None
 
-class LinkedList_Test_Remove_Duplicates_With_1_Elements(unittest.TestCase):
+class DoublyLinkedList_Test_Remove_Duplicates_With_1_Elements(unittest.TestCase):
     
     def setUp(self):
-        self._linkedList = LinkedList()
+        self._linkedList = DoublyLinkedList()
         element_to_append = 1
         self._linkedList.append(element_to_append)
         
@@ -352,10 +352,10 @@ class LinkedList_Test_Remove_Duplicates_With_1_Elements(unittest.TestCase):
     def tearDown(self):
         self._linkedList = None
 
-class LinkedList_Test_Remove_Duplicates_With_2_Identical_Elements(unittest.TestCase):
+class DoublyLinkedList_Test_Remove_Duplicates_With_2_Identical_Elements(unittest.TestCase):
     
     def setUp(self):
-        self._linkedList = LinkedList()
+        self._linkedList = DoublyLinkedList()
         element_to_append = 1
         self._linkedList.append(element_to_append)
         self._linkedList.append(element_to_append)
@@ -373,11 +373,11 @@ class LinkedList_Test_Remove_Duplicates_With_2_Identical_Elements(unittest.TestC
     def tearDown(self):
         self._linkedList = None
         
-class LinkedList_Test_Remove_Duplicates_With_Duplicates_At_Head(unittest.TestCase):
+class DoublyLinkedList_Test_Remove_Duplicates_With_Duplicates_At_Head(unittest.TestCase):
     
     def setUp(self):
         #build [1, 1, 1, 2]
-        self._linkedList = LinkedList()
+        self._linkedList = DoublyLinkedList()
         element_to_append = 1
         self._linkedList.extend([element_to_append, element_to_append, element_to_append])
         tail_element = 2
@@ -396,11 +396,11 @@ class LinkedList_Test_Remove_Duplicates_With_Duplicates_At_Head(unittest.TestCas
     def tearDown(self):
         self._linkedList = None
 
-class LinkedList_Test_Remove_Duplicates_With_Duplicates_At_Tail(unittest.TestCase):
+class DoublyLinkedList_Test_Remove_Duplicates_With_Duplicates_At_Tail(unittest.TestCase):
     
     def setUp(self):
         #build [2, 1, 1, 1]
-        self._linkedList = LinkedList()
+        self._linkedList = DoublyLinkedList()
         self._linkedList.append(2)
         element_to_append = 1
         self._linkedList.extend([element_to_append, element_to_append, element_to_append])
@@ -418,11 +418,11 @@ class LinkedList_Test_Remove_Duplicates_With_Duplicates_At_Tail(unittest.TestCas
     def tearDown(self):
         self._linkedList = None
 
-class LinkedList_Test_Remove_Duplicates_With_Duplicates_At_Middle(unittest.TestCase):
+class DoublyLinkedList_Test_Remove_Duplicates_With_Duplicates_At_Middle(unittest.TestCase):
     
     def setUp(self):
         #build [2, 1, 1, 1, 3]
-        self._linkedList = LinkedList()
+        self._linkedList = DoublyLinkedList()
         self._linkedList.append(2)
         element_to_append = 1
         self._linkedList.extend([element_to_append, element_to_append, element_to_append])
@@ -441,11 +441,11 @@ class LinkedList_Test_Remove_Duplicates_With_Duplicates_At_Middle(unittest.TestC
     def tearDown(self):
         self._linkedList = None
 
-class LinkedList_Test_Remove_Duplicates_With_Recurring_Duplicates(unittest.TestCase):
+class DoublyLinkedList_Test_Remove_Duplicates_With_Recurring_Duplicates(unittest.TestCase):
     
     def setUp(self):
         #build [2, 1, 1, 1, 3, 1, 1, 1, 4]
-        self._linkedList = LinkedList()
+        self._linkedList = DoublyLinkedList()
         self._linkedList.append(2)
         element_to_append = 1
         self._linkedList.extend([element_to_append, element_to_append, element_to_append])
@@ -468,4 +468,5 @@ class LinkedList_Test_Remove_Duplicates_With_Recurring_Duplicates(unittest.TestC
 
 #Allows running as python run.
 if __name__ == '__main__':
+    print 'Doubly Linked List tests'
     unittest.main()

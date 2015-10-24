@@ -1,19 +1,20 @@
 '''
-Created on Aug 12, 2015
+Created on Oct 24, 2015
 @author: hari
 '''
-class LinkedNode(object):
+class DoublyLinkedNode(object):
     """
     A node in a Linked list.
     """
-    __slots__ = 'element', 'nextNode'
-    def __init__(self, element = None, nextNode = None):
+    __slots__ = 'element', 'nextNode', 'previousNode'
+    def __init__(self, element = None, nextNode = None, previousNode = None):
         '''
         a node is created with the element object and the next node. If any of these
         are not available, use the default value None.
         '''
         self.nextNode = nextNode
         self.element = element
+        self.previousNode = previousNode
         
     def __str__(self):
         return '%s %s' % (self.__class__.__name__, self._element)
@@ -21,9 +22,9 @@ class LinkedNode(object):
     def __repr__(self):
         return '%s(element = %s)' % (self.__class__.__name__, self._element)
         
-class LinkedList(object):
+class DoublyLinkedList(object):
     '''
-    A Linked list implementation. More pythonic by using iterator features.
+    A Doubly Linked list implementation. More pythonic by using iterator features.
     Note:
     1) Iterating over the list does not take out the nodes.
     2) Node with duplicate elements are allowed.
@@ -52,10 +53,10 @@ class LinkedList(object):
         Adds an element to the end of the list as a Node.
         """
         if self._head is None:
-            self._head = LinkedNode(element)
+            self._head = DoublyLinkedNode(element)
             self._tail = self._head
         else:
-            new_node = LinkedNode(element)
+            new_node = DoublyLinkedNode(element, nextNode = None, previousNode = self._tail)
             self._tail.nextNode = new_node
             self._tail = new_node
         
@@ -93,7 +94,7 @@ class LinkedList(object):
             current_node = current_node.nextNode
             count = count + 1
         temp = current_node.nextNode
-        current_node.nextNode = LinkedNode(element = element, nextNode = temp)
+        current_node.nextNode = DoublyLinkedNode(element = element, nextNode = temp, previousNode = current_node)
         self._length = self._length + 1
             
     def extend(self, linked_list):
@@ -117,6 +118,7 @@ class LinkedList(object):
                 self._tail = None
             else:
                 self._head = self._head.nextNode
+                self._head.previousNode = None
             self._length = self._length - 1
             return
         
@@ -136,18 +138,21 @@ class LinkedList(object):
         prev_node.nextNode = current_node.nextNode
         if prev_node.nextNode == None: #Prev is the tail now.
             self._tail = prev_node
+        else:
+            prev_node.nextNode.previousNode = prev_node
         self._length = self._length - 1
     #
     def __iter__(self):
-        self._iterNode = self._head
-        return self
+        start_node = self._head
+        while start_node != None:
+            yield start_node.element
+            start_node = start_node.nextNode
     #
-    def next(self):
-        if self._iterNode is not None:
-            temp = self._iterNode
-            self._iterNode = self._iterNode.nextNode
-            return temp.element   
-        raise StopIteration
+    def __reverse__(self):
+        start_node = self._tail
+        while start_node != None:
+            yield start_node.element
+            start_node = start_node.previousNode
     #
     
     def __len__(self):
@@ -172,6 +177,8 @@ class LinkedList(object):
                 if running_node.element == current_node.element: #duplicate
                     nxt_of_duplicate = current_node.nextNode
                     last_node_of_corrected_list.nextNode = nxt_of_duplicate
+                    if nxt_of_duplicate != None:
+                        nxt_of_duplicate.previousNode = last_node_of_corrected_list
                     self._length = self._length - 1 
                     current_node = nxt_of_duplicate
                     break

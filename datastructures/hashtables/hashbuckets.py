@@ -2,7 +2,7 @@
 Created on Oct 23, 2015
 @author: hari
 '''
-from datastructures.lists import singly_linked_list.LinkedList
+from datastructures.lists.singly_linked_list import LinkedList
 from datastructures.common import KeyValuePair
 from datastructures.trees.BST import BinarySearchTree
 from datastructures.trees import splaytree
@@ -17,7 +17,7 @@ class LinkedListHashBucket(collections.MutableMapping):
     Note: HASHBUCKET ITERATION YIELDS KEYS. not the key value pairs in the bucket. 
     '''
     def __init__(self):
-        self._list_of_kv_pairs = singly_linked_list() #we use our linked list!
+        self._list_of_kv_pairs = LinkedList() #we use our linked list!
     
     def __len__(self):
         '''

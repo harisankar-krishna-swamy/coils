@@ -26,7 +26,7 @@ class SplayedHashBucket_TestCase_Len_With_4_Elements(unittest.TestCase):
         self._hash_bucket[4] = 4
         
     def test_len_of_empty_hash_bucket(self):
-        self.assertEquals(len(self._hash_bucket), 4, 'Empty bucket length must be 0')
+        self.assertEquals(len(self._hash_bucket), 4, 'Empty bucket length did not add up')
     
     def tearDown(self):
         self._hash_bucket = None

@@ -7,7 +7,8 @@ from datastructures.hashtables.HashTables import SeperateChainHashTable
 
 #want to use string keys and values. rather than hash (1, 17) 17 is initial capacity
 list_of_strings_used_as_keys_and_values = ['one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten',
-                                           'eleven', 'twelve', 'thirteen', 'fourteen', 'fifteen', 'sixteen', 'seventeen'] 
+                                           'eleven', 'twelve', 'thirteen', 'fourteen', 'fifteen', 'sixteen', 'seventeen']
+ 
 class SeperateChainHashTable_Test_With_0_Elements(unittest.TestCase):
     
     def setUp(self):

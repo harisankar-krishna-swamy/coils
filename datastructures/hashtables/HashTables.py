@@ -1,29 +1,29 @@
 '''
 Created on Oct 21, 2015
 @author: hari
-This borrows MAD hashing. A hash table takes a key k (you decide for the object) and the object itself. We hash 
-the key and get a bucket number B. This is just an index to a table. A bucket can implemented as a list (here) 
-or any other ds you like. A Bucket, which is a list masquerading as a python dict, holds multiple objects which 
-happened to have keys k1 and k2 that mapped into the same bucket B.    
+A hash table takes a key k (you decide for the object) and the object itself. We hash 
+the key and get a bucket number B. This is just an index to a table. A bucket can implemented as a list 
+or any other ds you like. A Bucket, which is masquerading as a python dict, holds multiple objects which 
+happened to have keys k1 and k2 that mapped into the same bucket B. (collision)    
 '''
-
 from random import randrange
 import collections
 from datastructures.hashtables.hashbuckets import LinkedListHashBucket
             
 class SeperateChainHashTable(collections.MutableMapping):
     '''
-    The table uses ListBasedHashBucket (Chain) for its buckets. This uses the MAD compression algorithm. 
-    compressed_key = ((scale*key + shift) mod P) mod N. N is the size. P is a
-    large prime > N. scale and shift are random integers less than P, scale must be > 0.
-    Mutable Mapping? have a look at "cat /usr/lib/python2.7/_abcoll.py" Do not use this directly is advised in the file so we use
-    from collections.MutableMapping as advised :-P Basically we dont have to write the methods in Mutable mapping by inheriting.
+    The table uses ,as default, ListBasedHashBucket (Chain) for its buckets. This uses the MAD compression algorithm. 
+    compressed_key = ((scale*key + shift) mod P) mod N. N is the size. P is a large prime > N. scale and shift are 
+    random integers less than P, scale must be > 0. Mutable Mapping? have a look at "cat /usr/lib/python2.7/_abcoll.py" 
+    Do not use this directly is advised in the file so we use from collections.MutableMapping as advised :-P Basically 
+    we dont have to write the methods in Mutable mapping by inheriting.
     Note:-
     - Length of the hash table is the number of items in it.
-    - You must specify bucket_type_class for controlling the datastructure used for separate chaining. Default is LinkedListHashBucket.
-      Other options are: SplayedHashBucket, BSTHashBucket
+    - You must specify bucket_type_class for controlling the datastructure used for separate chaining. Default is 
+      LinkedListHashBucket. Other options are: SplayedHashBucket, BSTHashBucket
     '''
-    def __init__(self, initial_capacity = 17, large_prime_P = 98764321261, load_factor_limit = 0.75, bucket_type_class = LinkedListHashBucket):
+    def __init__(self, initial_capacity = 17, large_prime_P = 98764321261, load_factor_limit = 0.75, 
+                                                                            bucket_type_class = LinkedListHashBucket):
         self._large_prime_P = large_prime_P
         self._table_max_size = initial_capacity
         self._scale = 1 + randrange(self._large_prime_P - 1)

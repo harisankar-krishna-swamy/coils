@@ -10,7 +10,7 @@ from datastructures.hashtables.hashbuckets import BSTHashBucket
 #want to use string keys and values. rather than hash (1, 17) 17 is initial capacity
 list_of_strings_used_as_keys_and_values = ['one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten',
                                            'eleven', 'twelve', 'thirteen', 'fourteen', 'fifteen', 'sixteen', 'seventeen'] 
-class SeperateChainHashTable_with_BSTHashBucket_with_BSTHashBucket_Test_With_0_Elements(unittest.TestCase):
+class SeperateChainHashTable_with_BSTHashBucket_Test_With_0_Elements(unittest.TestCase):
     
     def setUp(self):
         self._chained_hash_table = SeperateChainHashTable(bucket_type_class = BSTHashBucket)
@@ -138,10 +138,12 @@ class SeperateChainHashTable_with_BSTHashBucket_Test_With_Less_Than_Initial_Capa
         self._chained_hash_table = None
         
 class SeperateChainHashTable_with_BSTHashBucket_Test_Multiple_Resizes(unittest.TestCase):
+    
     def setUp(self):
         self._chained_hash_table = SeperateChainHashTable(bucket_type_class = BSTHashBucket)
         self._default_initial_capacity = 17 
         self._length_upper_limit = 1001 #always choose some multiple of 100 + 1
+        
     def test_get_and_len_with_a_truck_load_of_resizes(self):
         
         for i in range(1, self._length_upper_limit): # will trigger resize 

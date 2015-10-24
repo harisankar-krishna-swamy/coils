@@ -5,7 +5,7 @@ Created on Oct 21, 2015
 import unittest
 from datastructures.hashtables.hashbuckets import LinkedListHashBucket
 
-class LinkedListHashBucket_TestCase_With_0_Elements(unittest.TestCase):
+class LinkedListHashBucket_Test_With_0_Elements(unittest.TestCase):
     
     def setUp(self):
         self._hash_bucket = LinkedListHashBucket()
@@ -16,7 +16,8 @@ class LinkedListHashBucket_TestCase_With_0_Elements(unittest.TestCase):
     def tearDown(self):
         self._hash_bucket = None
 
-class LinkedListHashBucket_TestCase_Len_With_4_Elements(unittest.TestCase):
+class LinkedListHashBucket_Test_Len_With_4_Elements(unittest.TestCase):
+    
     def setUp(self):
         self._hash_bucket = LinkedListHashBucket()
         self._hash_bucket[1] = 1
@@ -25,12 +26,13 @@ class LinkedListHashBucket_TestCase_Len_With_4_Elements(unittest.TestCase):
         self._hash_bucket[4] = 4
         
     def test_len_of_empty_hash_bucket(self):
-        self.assertEquals(len(self._hash_bucket), 4, 'Empty bucket length must be 0')
+        self.assertEquals(len(self._hash_bucket), 4, 'Empty bucket length did not add up')
     
     def tearDown(self):
         self._hash_bucket = None
 
-class LinkedListHashBucket_TestCase_Get_Item_With_4_Elements(unittest.TestCase):
+class LinkedListHashBucket_Test_Get_Item_With_4_Elements(unittest.TestCase):
+    
     def setUp(self):
         self._hash_bucket = LinkedListHashBucket()
         self._hash_bucket[1] = 1
@@ -49,7 +51,8 @@ class LinkedListHashBucket_TestCase_Get_Item_With_4_Elements(unittest.TestCase):
     def tearDown(self):
         self._hash_bucket = None
     
-class LinkedListHashBucket_TestCase_Get_Non_Existing_Item_With_4_Elements(unittest.TestCase):
+class LinkedListHashBucket_Test_Get_Non_Existing_Item_With_4_Elements(unittest.TestCase):
+    
     def setUp(self):
         self._hash_bucket = LinkedListHashBucket()
     
@@ -67,7 +70,7 @@ class LinkedListHashBucket_TestCase_Get_Non_Existing_Item_With_4_Elements(unitte
     def tearDown(self):
         self._hash_bucket = None
 
-class LinkedListHashBucket_TestCase_Delete_Item_With_4_Elements(unittest.TestCase):
+class LinkedListHashBucket_Test_Delete_Item_With_4_Elements(unittest.TestCase):
     
     def setUp(self):
         self._hash_bucket = LinkedListHashBucket()
@@ -85,7 +88,7 @@ class LinkedListHashBucket_TestCase_Delete_Item_With_4_Elements(unittest.TestCas
     def tearDown(self):
         self._hash_bucket = None
 
-class LinkedListHashBucket_TestCase_Set_Item_With_4_Elements(unittest.TestCase):
+class LinkedListHashBucket_Test_Set_Item_With_4_Elements(unittest.TestCase):
     
     def setUp(self):
         self._hash_bucket = LinkedListHashBucket()
@@ -103,7 +106,7 @@ class LinkedListHashBucket_TestCase_Set_Item_With_4_Elements(unittest.TestCase):
     def tearDown(self):
         self._hash_bucket = None
 
-class LinkedListHashBucket_TestCase_Iter_Keys_With_4_Elements(unittest.TestCase):
+class LinkedListHashBucket_Test_Iter_Keys_With_4_Elements(unittest.TestCase):
     
     def setUp(self):
         self._hash_bucket = LinkedListHashBucket()
@@ -120,6 +123,7 @@ class LinkedListHashBucket_TestCase_Iter_Keys_With_4_Elements(unittest.TestCase)
         self.assertEquals(expected_key_list, actual_key_list, 'Iterating over bucket keys did not match expected list of keys')
     def tearDown(self):
         self._hash_bucket = None
+        
 #Allows running as python run.
 if __name__ == '__main__':
     unittest.main()

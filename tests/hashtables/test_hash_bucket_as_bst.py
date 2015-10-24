@@ -5,7 +5,7 @@ Created on Oct 23, 2015
 import unittest
 from datastructures.hashtables.hashbuckets import BSTHashBucket
 
-class BSTHashBucket_TestCase_With_0_Elements(unittest.TestCase):
+class BSTHashBucket_Test_With_0_Elements(unittest.TestCase):
     
     def setUp(self):
         self._hash_bucket = BSTHashBucket()
@@ -16,7 +16,8 @@ class BSTHashBucket_TestCase_With_0_Elements(unittest.TestCase):
     def tearDown(self):
         self._hash_bucket = None
 
-class BSTHashBucket_TestCase_Len_With_4_Elements(unittest.TestCase):
+class BSTHashBucket_Test_Len_With_4_Elements(unittest.TestCase):
+    
     def setUp(self):
         self._hash_bucket = BSTHashBucket()
         self._hash_bucket[1] = 1
@@ -25,12 +26,13 @@ class BSTHashBucket_TestCase_Len_With_4_Elements(unittest.TestCase):
         self._hash_bucket[4] = 4
         
     def test_len_of_empty_hash_bucket(self):
-        self.assertEquals(len(self._hash_bucket), 4, 'Empty bucket length must be 0')
+        self.assertEquals(len(self._hash_bucket), 4, 'Hash bucket length did not match up')
     
     def tearDown(self):
         self._hash_bucket = None
 
-class BSTHashBucket_TestCase_Get_Item_With_4_Elements(unittest.TestCase):
+class BSTHashBucket_Test_Get_Item_With_4_Elements(unittest.TestCase):
+    
     def setUp(self):
         self._hash_bucket = BSTHashBucket()
         self._hash_bucket[1] = 1
@@ -40,16 +42,17 @@ class BSTHashBucket_TestCase_Get_Item_With_4_Elements(unittest.TestCase):
     
     def test_get_item_hash_bucket_with_default_return(self):
         for i in range(1, 5):
-            self.assertEquals(self._hash_bucket.get(i), i, 'Hash bucket items did not match on retirieval')
+            self.assertEquals(self._hash_bucket.get(i), i, 'Hash bucket items did not match on retrieval')
     
     def test_get_item_hash_bucket(self):
         for i in range(1, 5):
-            self.assertEquals(self._hash_bucket[i], i, 'Hash bucket items did not match on retirieval')
+            self.assertEquals(self._hash_bucket[i], i, 'Hash bucket items did not match on retrieval')
 
     def tearDown(self):
         self._hash_bucket = None
     
-class BSTHashBucket_TestCase_Get_Non_Existing_Item_With_4_Elements(unittest.TestCase):
+class BSTHashBucket_Test_Get_Non_Existing_Item_With_4_Elements(unittest.TestCase):
+    
     def setUp(self):
         self._hash_bucket = BSTHashBucket()
     
@@ -67,7 +70,7 @@ class BSTHashBucket_TestCase_Get_Non_Existing_Item_With_4_Elements(unittest.Test
     def tearDown(self):
         self._hash_bucket = None
 
-class BSTHashBucket_TestCase_Delete_Item_With_4_Elements(unittest.TestCase):
+class BSTHashBucket_Test_Delete_Item_With_4_Elements(unittest.TestCase):
     
     def setUp(self):
         self._hash_bucket = BSTHashBucket()
@@ -85,7 +88,7 @@ class BSTHashBucket_TestCase_Delete_Item_With_4_Elements(unittest.TestCase):
     def tearDown(self):
         self._hash_bucket = None
 
-class BSTHashBucket_TestCase_Set_Item_With_4_Elements(unittest.TestCase):
+class BSTHashBucket_Test_Set_Item_With_4_Elements(unittest.TestCase):
     
     def setUp(self):
         self._hash_bucket = BSTHashBucket()
@@ -103,7 +106,7 @@ class BSTHashBucket_TestCase_Set_Item_With_4_Elements(unittest.TestCase):
     def tearDown(self):
         self._hash_bucket = None
 
-class BSTHashBucket_TestCase_Iter_Keys_With_4_Elements(unittest.TestCase):
+class BSTHashBucket_Test_Iter_Keys_With_4_Elements(unittest.TestCase):
     
     def setUp(self):
         self._hash_bucket = BSTHashBucket()

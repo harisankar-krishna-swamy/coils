@@ -7,11 +7,12 @@ from datastructures.common import KeyValuePair
 from datastructures.trees.BST import BinarySearchTree
 from datastructures.trees import splaytree
 from datastructures.trees.splaytree import BinarySplayTree
+import collections
 
-class LinkedListHashBucket(object):
+class LinkedListHashBucket(collections.MutableMapping):
     '''
-    A hash bucket is used to hold objects that hash to the same value in a hash table. This is hash bucket
-    using a list. This masquerades as a python dict in code where it is used.
+    A hash bucket is used to hold objects that 'hash to the same value' (collision) in a hash table. 
+    This is hash a bucket using a LIST. This masquerades as a python dict in code where it is used.
     
     Note: HASHBUCKET ITERATION YIELDS KEYS. not the key value pairs in the bucket. 
     '''
@@ -19,12 +20,15 @@ class LinkedListHashBucket(object):
         self._list_of_kv_pairs = LinkedList() #we use our linked list!
     
     def __len__(self):
+        '''
+        The number of entries in the bucket!
+        '''
         return self._list_of_kv_pairs.length
     
     def get(self, key, default = None):
         '''
-        Get object associated with a key and on key miss return specified default. This is there in Python dict and this class
-        masquerades as dict, we implement it.
+        Get object associated with a key and on key miss return specified default. This is there in 
+        Python dict and this class masquerades as dict, so we implement it.
         '''
         try:
             value = self[key]
@@ -56,10 +60,11 @@ class LinkedListHashBucket(object):
         for kvpair in self._list_of_kv_pairs:
             yield kvpair.key
 
-class BSTHashBucket(object):
+class BSTHashBucket(collections.MutableMapping):
     '''
-    A hash bucket is used to hold objects that hash to the same value in a hash table. This is hash bucket
-    using a binary search tree. This masquerades as a python dict in code where it is used.
+    A hash bucket is used to hold objects that hash to the same value in a hash table. This is hash 
+    bucket using a binary search tree. This masquerades as a python dict in code where it is used.
+    Since bst is used as bucket datastructure, searches take O log(n) rather than O n
     
     Note: HASHBUCKET ITERATION YIELDS KEYS. not the key value pairs in the bucket. 
     '''
@@ -67,12 +72,15 @@ class BSTHashBucket(object):
         self._bst = BinarySearchTree()
     
     def __len__(self):
+        '''
+        The number of elements in the hash bucket
+        '''
         return self._bst.node_count
     
     def get(self, key, default = None):
         '''
-        Get object associated with a key and on key miss return specified default. This is there in Python dict and this class
-        masquerades as dict, we implement it.
+        Get object associated with a key and on key miss return specified default. This is 
+        there in Python dict and this class masquerades as dict, we implement it.
         '''
         try:
             value = self[key]
@@ -102,10 +110,11 @@ class BSTHashBucket(object):
         for key, value in self._bst.inorder_traversal_with_stack():
             yield key
 
-class SplayedHashBucket(object):
+class SplayedHashBucket(collections.MutableMapping):
     '''
-    A hash bucket is used to hold objects that hash to the same value in a hash table. This is hash bucket
-    using a splay tree. This masquerades as a python dict in code where it is used.
+    A hash bucket is used to hold objects that hash to the same value in a hash table. 
+    This is hash bucket using a splay tree. This masquerades as a python dict in code 
+    where it is used. Since splat tree is used lookups on avg take Olog(n)
     
     Note: HASHBUCKET ITERATION YIELDS KEYS. not the key value pairs in the bucket. 
     '''
@@ -117,8 +126,8 @@ class SplayedHashBucket(object):
     
     def get(self, key, default = None):
         '''
-        Get object associated with a key and on key miss return specified default. This is there in Python dict and this class
-        masquerades as dict, we implement it.
+        Get object associated with a key and on key miss return specified default. This is 
+        there in Python dict and this class masquerades as dict, we implement it.
         '''
         try:
             value = self[key]

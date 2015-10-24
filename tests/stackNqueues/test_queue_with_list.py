@@ -5,7 +5,7 @@ Created on Aug 14, 2015
 import unittest
 from datastructures.stackNqueues.Queue import Queue
 
-class TestCase_Len_Of_Empty_Queue(unittest.TestCase):
+class Test_Len_Of_Empty_Queue(unittest.TestCase):
     
     def setUp(self):
         self._q = Queue()
@@ -16,7 +16,7 @@ class TestCase_Len_Of_Empty_Queue(unittest.TestCase):
     def tearDown(self):
         del self._q
 
-class TestCase_Front_Of_Empty_Queue(unittest.TestCase):
+class Test_Front_Of_Empty_Queue(unittest.TestCase):
     
     def setUp(self):
         self._q = Queue()
@@ -27,7 +27,7 @@ class TestCase_Front_Of_Empty_Queue(unittest.TestCase):
     def tearDown(self):
         del self._q
 
-class TestCase_Dequeue_Of_Empty_Queue(unittest.TestCase):
+class Test_Dequeue_Of_Empty_Queue(unittest.TestCase):
     
     def setUp(self):
         self._q = Queue()
@@ -38,7 +38,7 @@ class TestCase_Dequeue_Of_Empty_Queue(unittest.TestCase):
     def tearDown(self):
         del self._q
     
-class TestCase_Front_Len_Of_Predictable_Queue_With_1_Elements(unittest.TestCase):
+class Test_Front_Len_Of_Predictable_Queue_With_1_Elements(unittest.TestCase):
     
     def setUp(self):
         self._q = Queue()
@@ -53,7 +53,7 @@ class TestCase_Front_Len_Of_Predictable_Queue_With_1_Elements(unittest.TestCase)
     def tearDown(self):
         del self._q
 
-class TestCase_Front_Len_While_Enqueuing_And_Dequeuing_A_Predictable_Queue_With_4_Elements(unittest.TestCase):
+class Test_Front_Len_While_Enqueuing_And_Dequeuing_A_Predictable_Queue_With_4_Elements(unittest.TestCase):
     
     def setUp(self):
         self._q = Queue()
@@ -78,7 +78,7 @@ class TestCase_Front_Len_While_Enqueuing_And_Dequeuing_A_Predictable_Queue_With_
     def tearDown(self):
         del self._q
     
-class TestCase_Iterator_Of_Predictable_Queue_With_4_Elements(unittest.TestCase):
+class Test_Iterator_Of_Predictable_Queue_With_4_Elements(unittest.TestCase):
     
     def setUp(self):
         self._q = Queue()
@@ -95,4 +95,5 @@ class TestCase_Iterator_Of_Predictable_Queue_With_4_Elements(unittest.TestCase):
         del self._q
 #Allows running as python run.
 if __name__ == '__main__':
+    print 'Queue tests'
     unittest.main()

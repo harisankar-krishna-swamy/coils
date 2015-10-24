@@ -195,13 +195,13 @@ class LinkedList_Test_Check_Tail_On_Remove_In_4_Element_List(unittest.TestCase):
     
     def test_tail_node_on_remove(self):
         self._linkedList.remove(1)#removed head. Tail must be same node 
-        self.assertEqual(self._linkedList.tail.element, 4)
+        self.assertEqual(self._linkedList.tail, 4)
         #Now list is [2, 3, 4]
         self._linkedList.remove(4)#tail should next be 3
-        self.assertEqual(self._linkedList.tail.element, 3, 'Tail must be adjusted on deletion of last node')
+        self.assertEqual(self._linkedList.tail, 3, 'Tail must be adjusted on deletion of last node')
         #Now list is [2, 3]
         self._linkedList.remove(2)#tail should next be 3
-        self.assertEqual(self._linkedList.tail.element, 3, 'Tail must be adjusted on deletion of last node')
+        self.assertEqual(self._linkedList.tail, 3, 'Tail must be adjusted on deletion of last node')
         #Now list is [3]
         self._linkedList.remove(3)#tail should next be None
         self.assertEqual(self._linkedList.tail, None, 'Tail must be None on empty list')
@@ -220,13 +220,13 @@ class LinkedList_Test_Check_Head_On_Remove_In_4_Element_List(unittest.TestCase):
     def test_tail_node_on_remove(self):
         #list is [1, 2, 3, 4]
         self._linkedList.remove(3)#removed head. Head must be same node 
-        self.assertEqual(self._linkedList.head.element, 1)
+        self.assertEqual(self._linkedList.head, 1)
         #Now list is [1, 2, 4]
         self._linkedList.remove(1)#head should next be 2
-        self.assertEqual(self._linkedList.head.element, 2, 'head must be adjusted on deletion of first node')
+        self.assertEqual(self._linkedList.head, 2, 'head must be adjusted on deletion of first node')
         #Now list is [2, 4]
         self._linkedList.remove(2)#head should next be 4
-        self.assertEqual(self._linkedList.head.element, 4, 'head must be adjusted on deletion of first node')
+        self.assertEqual(self._linkedList.head, 4, 'head must be adjusted on deletion of first node')
         #Now list is [4]
         self._linkedList.remove(4)#head should next be None
         self.assertEqual(self._linkedList.head, None, 'Head must be None on empty list')
@@ -287,7 +287,7 @@ class LinkedList_Test_Insert_At_Index_Larger_Than_Length_With_4_Elements(unittes
         element_to_insert = 20
         self._linkedList.insert_at(100, element_to_insert)
         self.assertEquals(self._linkedList.length, expected_length, 'Linked list length did not tally after insert at huge index')
-        self.assertEquals(self._linkedList.tail.element, element_to_insert, 'Linked list tail must be same as new element inserted at huge index')
+        self.assertEquals(self._linkedList.tail, element_to_insert, 'Linked list tail must be same as new element inserted at huge index')
         self.assertEquals(self._linkedList.index(20), expected_length - 1, 'index of new element did not add up')
     
     def tearDown(self):
@@ -390,8 +390,8 @@ class LinkedList_Test_Remove_Duplicates_With_Duplicates_At_Head(unittest.TestCas
         self._linkedList.remove_duplicates()
         expected_length = 2
         self.assertEqual(self._linkedList.length, expected_length, 'Linked list length did not add up after removing duplicates')
-        self.assertEqual(self._linkedList.head, expected_head, 'Linked list head did not add up after removing duplicates')
-        self.assertEqual(self._linkedList.tail, expected_tail, 'Linked list tail did not add up after removing duplicates')
+        self.assertEqual(self._linkedList._head, expected_head, 'Linked list head did not add up after removing duplicates')
+        self.assertEqual(self._linkedList._tail, expected_tail, 'Linked list tail did not add up after removing duplicates')
         
     def tearDown(self):
         self._linkedList = None
@@ -411,9 +411,10 @@ class LinkedList_Test_Remove_Duplicates_With_Duplicates_At_Tail(unittest.TestCas
         
         self._linkedList.remove_duplicates()
         expected_length = 2
+        #compare references of head and tail
         self.assertEqual(self._linkedList.length, expected_length, 'Linked list length did not add up after removing duplicates')
-        self.assertEqual(self._linkedList.head, expected_head, 'Linked list head did not add up after removing duplicates')
-        self.assertEqual(self._linkedList.tail, expected_tail, 'Linked list tail did not add up after removing duplicates')
+        self.assertEqual(self._linkedList._head, expected_head, 'Linked list head did not add up after removing duplicates')
+        self.assertEqual(self._linkedList._tail, expected_tail, 'Linked list tail did not add up after removing duplicates')
         
     def tearDown(self):
         self._linkedList = None
@@ -435,8 +436,8 @@ class LinkedList_Test_Remove_Duplicates_With_Duplicates_At_Middle(unittest.TestC
         self._linkedList.remove_duplicates()
         expected_length = 3
         self.assertEqual(self._linkedList.length, expected_length, 'Linked list length did not add up after removing duplicates')
-        self.assertEqual(self._linkedList.head, expected_head, 'Linked list head did not add up after removing duplicates')
-        self.assertEqual(self._linkedList.tail, expected_tail, 'Linked list tail did not add up after removing duplicates')
+        self.assertEqual(self._linkedList._head, expected_head, 'Linked list head did not add up after removing duplicates')
+        self.assertEqual(self._linkedList._tail, expected_tail, 'Linked list tail did not add up after removing duplicates')
         
     def tearDown(self):
         self._linkedList = None
@@ -460,8 +461,8 @@ class LinkedList_Test_Remove_Duplicates_With_Recurring_Duplicates(unittest.TestC
         self._linkedList.remove_duplicates()
         expected_length = 4
         self.assertEqual(self._linkedList.length, expected_length, 'Linked list length did not add up after removing duplicates')
-        self.assertEqual(self._linkedList.head, expected_head, 'Linked list head did not add up after removing duplicates')
-        self.assertEqual(self._linkedList.tail, expected_tail, 'Linked list tail did not add up after removing duplicates')
+        self.assertEqual(self._linkedList._head, expected_head, 'Linked list head did not add up after removing duplicates')
+        self.assertEqual(self._linkedList._tail, expected_tail, 'Linked list tail did not add up after removing duplicates')
         
     def tearDown(self):
         self._linkedList = None

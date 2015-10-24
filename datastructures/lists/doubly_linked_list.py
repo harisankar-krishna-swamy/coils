@@ -42,11 +42,15 @@ class DoublyLinkedList(object):
     
     @property
     def head(self):
-        return self._head
+        if self._head == None:
+            return None
+        return self._head.element
     
     @property
     def tail(self):
-        return self._tail
+        if self._tail == None:
+            return None
+        return self._tail.element
         
     def append(self, element):
         """

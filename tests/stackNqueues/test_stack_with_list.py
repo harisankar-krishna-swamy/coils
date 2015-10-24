@@ -12,7 +12,6 @@ class Test_Empty_Stack_Initialization(unittest.TestCase):
     
     def test_stack_size_is_zero(self):
         self.assertEquals(self._stack.size, 0, 'Empty Stack size must be 0')
-        print self._stack
         
     def tearDown(self):
         del self._stack

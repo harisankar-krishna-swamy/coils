@@ -18,8 +18,9 @@ Queue
 Heap (Min & Max)
 Binary Search Tree 
 SplayTree 
-LinkedList 
-SeperateChainHashTable (3 types of chaining) 
+LinkedList
+DoublyLinkedList 
+SeperateChainHashTable (3 types of chaining using LinkedList, SplayTree, BinarySearchTree) 
 
 Features to Implement:
 ----------------------

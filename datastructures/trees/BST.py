@@ -7,7 +7,8 @@ from datastructures.stackNqueues.Stack import Stack
 
 class BSTTreeNode(object):
     '''
-    A binary search tree node. For example, key can be a unique employee id and value is a python object for employee.
+    A binary search tree node. For example, key can be a unique employee id and value is a python object 
+    for employee.
     '''     
     __slots__ = 'kvpair', 'left_child', 'right_child', 'link_inversion_traversal_tag'
     def __init__(self, key = None, value = None, left_child = None, right_child = None):
@@ -25,7 +26,6 @@ class BSTTreeNode(object):
     @property
     def value(self):
         return self.kvpair.value
-
     @value.setter
     def value(self, new_value):
         self.kvpair.value = new_value
@@ -59,9 +59,10 @@ class BSTTreeNode(object):
 
 class BinarySearchTree(object):
     '''
-    A binary search tree. At each node, the key > than keys in left sub-tree and <= keys in right sub-tree.Duplicates are allowed 
-    as such. When deletion or find is done, the key encountered first is returned and this depends on the tree structure and 
-    as such no guarantees are given on this order.
+    A binary search tree. At each node, the key > than keys in left sub-tree and <= keys in right 
+    sub-tree.Duplicates are allowed as such. When deletion or find is done, the key encountered 
+    first is returned and this depends on the tree structure and as such no guarantees are given 
+    on this order.
     
     Note* Tree traversals yield(key, value) tuples 
           pre-order, in-order and post-order are implemented as constant-space link inversion traversals.               
@@ -110,8 +111,8 @@ class BinarySearchTree(object):
             
     def _find_node_with_key(self, key):
         '''
-        Returns the node with key and its parent node too as (node, parent). We use the parent often in other methods so sending it
-        together as a tuple saves a call to find the parent again.
+        Returns the node with key and its parent node too as (node, parent). We use the parent often 
+        in other methods so sending it together as a tuple saves a call to find the parent again.
         '''
         if self._root_node == None or key == None:
             return (None, None)
@@ -177,8 +178,8 @@ class BinarySearchTree(object):
             return
     
         '''
-        if the node to delete is a leaf node and it has a parent, set the parent child reference to None.
-        if node to delete does not have a parent, it is root, delete the node.
+        if the node to delete is a leaf node and it has a parent, set the parent child reference to 
+        None. if node to delete does not have a parent, it is root, delete the node.
         update the count and return 
         '''
         if node_to_delete.is_leaf_node:
@@ -229,8 +230,8 @@ class BinarySearchTree(object):
     
     def traversal(self, want_pre_order = False, want_post_order = False, want_in_order = False):
         '''
-        A yield is used to return the node elements while traversing the tree.
-        Code is exact duplicate of link inversion traversal for tree in my Java library. It is available to read/download at
+        A yield is used to return the node elements while traversing the tree. Code is exact duplicate
+        of link inversion traversal for tree in my Java library. It is available to read/download at
         http://harisankar-krishnaswamy.blogspot.in/2013/10/a-coder-post-link-inversion-traversal.html
         '''
         prev = None
@@ -278,6 +279,12 @@ class BinarySearchTree(object):
         return False
     
     def inorder_traversal_with_stack(self):
+        '''
+        this inorder traversal uses a stack and yields (key, value) pairs. this was added since link-
+        inversion traversal modifies the tree during traversal. This is a bummer as we use tree as a
+        hash bucket in hash tables. There are instances in MutableMapping where you iterate over the
+        key (tree has changed temporarily) and do d[key] which duly fails. 
+        '''
         stack = Stack()
         current_node = self._root_node
         while 1 == 1:

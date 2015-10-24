@@ -60,14 +60,12 @@ class BST_Test_Tree_Count_Find_Element_With_10_Elements(TestCase):
         self._bst_node_count = 10
     
     def test_node_count_of_tree_with_10_node(self):
-        print 'Bst node count %d' % self._bst.node_count
         self.assertEquals(self._bst.node_count, self._bst_node_count, 'Tree node count must be 10')
         
     def test_find_element_of_tree_with_10_node(self):
         for i in range(1, 11): # 1 to 10
             tree_element = self._bst.find(i)
             self.assertNotEqual(tree_element, None, 'BST findElement did not return existing element')
-            print 'Bst findElement(%d) = %d' % (i, tree_element)
             self.assertEquals(tree_element, i, 'Find operation failed on tree with 1 node')
     
     def tearDown(self):
@@ -97,7 +95,6 @@ class BST_Test_Tree_Delete_Element_With_10_Elements(TestCase):
     def test_delete_element_of_tree_with_10_node(self):
         elements_to_delete = [10, 1, 7, 3, 5, 8, 2, 6, 9]
         for element in elements_to_delete:
-            print 'Deleting %d from tree' % element 
             self._bst.remove(element)
             self.assertEquals(self._bst.find(element), None, 'Element found in BST after deleting it!')
             self._bst_node_count = self._bst_node_count - 1
@@ -124,13 +121,12 @@ class BST_Test_Tree_Delete_Element_With_10_Sorted_Elements(TestCase):
         self._bst_node_count = 10
         
     def test_delete_element_of_tree_non_existing_element(self):
-         self._bst.remove(11)
-         self.assertEquals(self._bst.node_count, self._bst_node_count, 'Tree node count must be 10')
+        self._bst.remove(11)
+        self.assertEquals(self._bst.node_count, self._bst_node_count, 'Tree node count must be 10')
     
     def test_delete_element_of_tree_with_10_node(self):
         elements_to_delete = [10, 1, 7, 3, 5, 8, 2, 6, 9, 4]
-        for element in elements_to_delete:
-            print 'Deleting %d from tree' % element 
+        for element in elements_to_delete: 
             self._bst.remove(element)
             self.assertEquals(self._bst.find(element), None, 'Element found in BST after deleting it!')
             self._bst_node_count = self._bst_node_count - 1
@@ -162,8 +158,7 @@ class BST_Test_Tree_Delete_Element_With_10_Reverse_Sorted_Elements(TestCase):
     
     def test_delete_element_of_tree_with_10_node(self):
         elements_to_delete = [10, 1, 7, 3, 5, 8, 2, 6, 9, 4]
-        for element in elements_to_delete:
-            print 'Deleting %d from tree' % element 
+        for element in elements_to_delete: 
             self._bst.remove(element)
             self.assertEquals(self._bst.find(element), None, 'Element found in BST after deleting it!')
             self._bst_node_count = self._bst_node_count - 1
@@ -281,4 +276,5 @@ class BST_Test_Replace_With_10_Elements_Existing_Key(TestCase):
 
 #Allows running as python run.
 if __name__ == '__main__':
+    print 'BST tests'
     unittest.main()

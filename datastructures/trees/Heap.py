@@ -12,6 +12,7 @@ class Heap(object):
     def __init__(self, minHeap=True):
         """
         Initiate the heap's internal list storage. 
+        if you want a max heap set minHeap = False
         """
         self._heapList = []
         self._heapList.append(None) # 0 index is not used.

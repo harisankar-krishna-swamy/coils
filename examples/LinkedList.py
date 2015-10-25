@@ -12,6 +12,16 @@ def print_list(link_list):
     print 'List is now %s' % elements_in_list
     #length of the list
     print 'Length of the list is %s' % len(link_list)
+
+def print_reverse_list(link_list):
+    elements_in_list = []
+    #iterate over the list
+    for element in link_list.reverse():
+        elements_in_list.append(element)
+    print 'Reversed List is now %s' % elements_in_list
+    #length of the list
+    print 'Length of the list is %s' % len(link_list)
+    
     
 if __name__ == '__main__':
     link_list = LinkedList()
@@ -67,3 +77,6 @@ if __name__ == '__main__':
     print_list(link_list)
     link_list.remove_duplicates()
     print_list(link_list)
+    
+    #Reverse print list using reversed
+    print_reverse_list(link_list)

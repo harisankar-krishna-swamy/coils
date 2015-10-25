@@ -3,11 +3,11 @@ Created on Oct 25, 2015
 
 @author: hari
 '''
-from coils.trees import heap.Heap
+from coils.trees.heap import Heap
 
 if __name__ == '__main__':
     # A max heap. for a min heap use minHeap = True (is default)
-    max_heap = heap(minHeap = False)
+    max_heap = Heap(minHeap = False)
     
     elements = [0, 4, 3, 2, 5, 1, 6]
     print 'Adding elements to heap: %s' % elements

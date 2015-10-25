@@ -3,7 +3,7 @@ Created on Aug 5, 2015
 @author: topcat
 '''
 import unittest
-from coils.trees import heap.Heap
+from coils.trees.heap import Heap
 from random import randint
 
 def assert_max_heap_property(heap_list):
@@ -32,7 +32,7 @@ class MaxHeap_TestCase_Create_With_No_Element(unittest.TestCase):
     Create only. No heap modification. No Elements.
     """    
     def setUp(self):
-        self._heap = heap(minHeap=False)
+        self._heap = Heap(minHeap=False)
         
     def test_heap_status(self):
         self.assertFalse(self._heap.isMinHeap, 'heap must be a max heap.')
@@ -47,7 +47,7 @@ class MaxHeap_TestCase_Create_With_One_Element(unittest.TestCase):
     Create only. No heap modification. Only one element.
     """    
     def setUp(self):
-        self._heap = heap(minHeap=False)
+        self._heap = Heap(minHeap=False)
         self._heap.addElement(3)
         
     def test_heap_status(self):
@@ -63,7 +63,7 @@ class MaxHeap_TestCase_Create_With_Predictable_SmallSet_Of_Elements(unittest.Tes
     Create only. No heap modification. Small predictable set of elements.
     """
     def setUp(self):
-        self._heap = heap(minHeap=False)
+        self._heap = Heap(minHeap=False)
         self._heap.addElements([3, 1, 2])
         
     def test_heap_status(self):
@@ -79,7 +79,7 @@ class MaxHeap_TestCase_1_Pop_With_Predictable_SmallSet_Of_Elements(unittest.Test
     Create only. No heap modification. Small predictable set of elements.
     """
     def setUp(self):
-        self._heap = heap(minHeap=False)
+        self._heap = Heap(minHeap=False)
         self._heap.addElements([3, 1, 2])
         
     def test_heap_status(self):
@@ -100,7 +100,7 @@ class MaxHeap_TestCase_2_Pops_With_Predictable_SmallSet_Of_Elements(unittest.Tes
     Create only. No heap modification. Small predictable set of elements.
     """
     def setUp(self):
-        self._heap = heap(minHeap=False)
+        self._heap = Heap(minHeap=False)
         self._heap.addElements([3, 1, 2])
         
     def test_heap_status(self):
@@ -123,7 +123,7 @@ class MaxHeap_TestCase_1000_Pops_With_RandomSet_Of_1000_Elements(unittest.TestCa
     Create only. No heap modification. Small predictable set of elements.
     """
     def setUp(self):
-        self._heap = heap(minHeap = False)
+        self._heap = Heap(minHeap = False)
     
     def test_heap_status_on_push_pop(self):
         self.assertFalse(self._heap.isMinHeap, 'heap must be a max heap.')
@@ -145,7 +145,7 @@ class MaxHeap_TestCase_Iterator_Element(unittest.TestCase):
     Create only. No heap modification. No Elements.
     """    
     def setUp(self):
-        self._heap = heap(minHeap = False)
+        self._heap = Heap(minHeap = False)
         self._sortedListofElements = [40, 20, 10, 9, 4]
         self._heap.addElements([10, 9, 4, 20, 40])
     

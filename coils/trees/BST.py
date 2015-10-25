@@ -2,8 +2,8 @@
 Created on Aug 15, 2015
 @author: hari
 '''
-from datastructures.common import KeyValuePair
-from datastructures.stackNqueues.Stack import Stack
+from coils.common import KeyValuePair
+from coils.stackNqueues.Stack import Stack
 
 class BSTTreeNode(object):
     '''

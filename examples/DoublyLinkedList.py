@@ -2,7 +2,7 @@
 Created on Oct 25, 2015
 @author: hari
 '''
-from datastructures.lists.doubly_linked_list import DoublyLinkedList
+from coils.lists.doubly_linked_list import DoublyLinkedList
 
 def print_list(double_link_list):
     elements_in_list = []

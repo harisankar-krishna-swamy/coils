@@ -3,7 +3,7 @@ Created on Aug 14, 2015
 @author: topcat
 '''
 import unittest
-from datastructures.stackNqueues.Queue import Queue
+from coils.stackNqueues.Queue import Queue
 
 class Test_Len_Of_Empty_Queue(unittest.TestCase):
     

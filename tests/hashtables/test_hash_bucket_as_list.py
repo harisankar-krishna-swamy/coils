@@ -3,7 +3,7 @@ Created on Oct 21, 2015
 @author: hari
 '''
 import unittest
-from datastructures.hashtables.hashbuckets import LinkedListHashBucket
+from coils.hashtables.hashbuckets import LinkedListHashBucket
 
 class LinkedListHashBucket_Test_With_0_Elements(unittest.TestCase):
     

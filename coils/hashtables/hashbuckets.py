@@ -2,11 +2,11 @@
 Created on Oct 23, 2015
 @author: hari
 '''
-from datastructures.lists.singly_linked_list import LinkedList
-from datastructures.common import KeyValuePair
-from datastructures.trees.BST import BinarySearchTree
-from datastructures.trees import splaytree
-from datastructures.trees.splaytree import BinarySplayTree
+from coils.lists.singly_linked_list import LinkedList
+from coils.common import KeyValuePair
+from coils.trees.BST import BinarySearchTree
+from coils.trees import splaytree
+from coils.trees.splaytree import BinarySplayTree
 import collections
 
 class LinkedListHashBucket(collections.MutableMapping):

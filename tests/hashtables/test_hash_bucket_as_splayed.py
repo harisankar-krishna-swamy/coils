@@ -4,7 +4,7 @@ Created on Oct 23, 2015
 @author: hari
 '''
 import unittest
-from datastructures.hashtables.hashbuckets import SplayedHashBucket
+from coils.hashtables.hashbuckets import SplayedHashBucket
 
 class SplayedHashBucket_TestCase_With_0_Elements(unittest.TestCase):
     

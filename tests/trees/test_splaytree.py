@@ -2,7 +2,7 @@
 Created on Oct 19, 2015
 @author: hari
 '''
-from datastructures.trees.splaytree import BinarySplayTree
+from coils.trees.splaytree import BinarySplayTree
 import unittest
 
 class Splay_Tree_Test_Empty_Tree(unittest.TestCase):    

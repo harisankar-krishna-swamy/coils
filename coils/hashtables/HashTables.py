@@ -8,7 +8,7 @@ happened to have keys k1 and k2 that mapped into the same bucket B. (collision)
 '''
 from random import randrange
 import collections
-from datastructures.hashtables.hashbuckets import LinkedListHashBucket
+from coils.hashtables.hashbuckets import LinkedListHashBucket
             
 class SeperateChainHashTable(collections.MutableMapping):
     '''

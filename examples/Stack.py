@@ -2,7 +2,7 @@
 Created on Oct 25, 2015
 @author: hari
 '''
-from datastructures.stackNqueues.Stack import Stack
+from coils.stackNqueues.Stack import Stack
 
 if __name__ == '__main__':
     stack = Stack()

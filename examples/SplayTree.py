@@ -3,7 +3,7 @@ Created on Oct 25, 2015
 
 @author: hari
 '''
-from datastructures.trees.splaytree import BinarySplayTree
+from coils.trees.splaytree import BinarySplayTree
 
 def print_tree_inorder_using_stack(tree):
     traversed  = []

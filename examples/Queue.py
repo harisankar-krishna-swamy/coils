@@ -2,7 +2,7 @@
 Created on Oct 25, 2015
 @author: hari
 '''
-from datastructures.stackNqueues.Queue import Queue
+from coils.stackNqueues.Queue import Queue
 if __name__ == '__main__':
     q = Queue()
     print 'Q size is %s' % str(q.size)

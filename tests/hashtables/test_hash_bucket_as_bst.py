@@ -3,7 +3,7 @@ Created on Oct 23, 2015
 @author: hari
 '''
 import unittest
-from datastructures.hashtables.hashbuckets import BSTHashBucket
+from coils.hashtables.hashbuckets import BSTHashBucket
 
 class BSTHashBucket_Test_With_0_Elements(unittest.TestCase):
     

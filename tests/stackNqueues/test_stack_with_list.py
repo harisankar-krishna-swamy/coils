@@ -3,7 +3,7 @@ Created on Aug 14, 2015
 @author: topcat
 '''
 import unittest
-from datastructures.stackNqueues.Stack import Stack
+from coils.stackNqueues.Stack import Stack
 
 class Test_Empty_Stack_Initialization(unittest.TestCase):
     

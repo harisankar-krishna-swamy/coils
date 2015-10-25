@@ -2,7 +2,7 @@
 Created on Oct 25, 2015
 @author: hari
 '''
-from datastructures.lists.singly_linked_list import LinkedList
+from coils.lists.singly_linked_list import LinkedList
 
 def print_list(link_list):
     elements_in_list = []

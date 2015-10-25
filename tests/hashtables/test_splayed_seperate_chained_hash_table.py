@@ -5,8 +5,8 @@ Created on Oct 23, 2015
 
 #TESTS FOR SeperateChainHashTable with SplayedHashBucket 
 import unittest
-from datastructures.hashtables.HashTables import SeperateChainHashTable
-from datastructures.hashtables.hashbuckets import SplayedHashBucket
+from coils.hashtables.HashTables import SeperateChainHashTable
+from coils.hashtables.hashbuckets import SplayedHashBucket
 
 #want to use string keys and values. rather than hash (1, 17) 17 is initial capacity
 list_of_strings_used_as_keys_and_values = ['one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten',

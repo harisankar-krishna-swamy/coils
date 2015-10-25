@@ -3,8 +3,8 @@ Created on Oct 25, 2015
 
 @author: hari
 '''
-from datastructures.hashtables.HashTables import SeperateChainHashTable
-from datastructures.hashtables.hashbuckets import LinkedListHashBucket,\
+from coils.hashtables.HashTables import SeperateChainHashTable
+from coils.hashtables.hashbuckets import LinkedListHashBucket,\
     BSTHashBucket, SplayedHashBucket
 
 def print_items_in_hash_table(hash_table):

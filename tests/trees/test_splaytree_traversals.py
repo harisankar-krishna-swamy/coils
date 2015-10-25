@@ -3,7 +3,7 @@ Created on Oct 19, 2015
 @author: hari
 '''
 import unittest
-from datastructures.trees.splaytree import BinarySplayTree
+from coils.trees.splaytree import BinarySplayTree
 #        
 # Preorder traversal
 #

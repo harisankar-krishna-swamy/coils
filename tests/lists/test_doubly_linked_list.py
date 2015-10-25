@@ -3,7 +3,7 @@ Created on Oct 24, 2015
 @author: hari
 '''
 import unittest
-from datastructures.lists.doubly_linked_list import DoublyLinkedList
+from coils.lists.doubly_linked_list import DoublyLinkedList
 from random import randint
 
 class DoublyDoublyLinkedList_Test_Count_With_0_Elements(unittest.TestCase):

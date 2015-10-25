@@ -23,6 +23,10 @@ class Queue(object):
     def __len__(self):
         return len(self._list)
     
+    @property
+    def size(self):
+        return len(self._list)
+    
     def __iter__(self):
         return self
     

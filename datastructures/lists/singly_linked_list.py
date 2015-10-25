@@ -148,6 +148,12 @@ class LinkedList(object):
             yield start_node.element
             start_node = start_node.nextNode
     #
+    def __reverse__(self):
+        start_node = self._tail
+        while start_node != None:
+            yield start_node.element
+            start_node = start_node.previousNode
+    #
     def __len__(self):
         return self._length
     

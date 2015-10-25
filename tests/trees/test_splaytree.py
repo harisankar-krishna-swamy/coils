@@ -2,12 +2,12 @@
 Created on Oct 19, 2015
 @author: hari
 '''
-from coils.trees.splaytree import BinarySplayTree
+from coils.trees.splaytree import SplayTree
 import unittest
 
 class Splay_Tree_Test_Empty_Tree(unittest.TestCase):    
     def setUp(self):
-        self._splaytree = BinarySplayTree()
+        self._splaytree = SplayTree()
     
     def test_node_count_of_empty_tree(self):
         self.assertEquals(self._splaytree.node_count, 0, 'Empty tree node count must be 0')
@@ -24,7 +24,7 @@ class Splay_Tree_Test_Empty_Tree(unittest.TestCase):
 class Splay_Tree_Test_Tree_With_1_Element(unittest.TestCase):
     
     def setUp(self):
-        self._splaytree = BinarySplayTree()
+        self._splaytree = SplayTree()
         self._splaytree.insert(key = 10, obj = 10)
     
     def test_node_count_of_tree_with_1_node(self):
@@ -44,7 +44,7 @@ class Splay_Tree_Test_Tree_With_1_Element(unittest.TestCase):
 class Splay_Tree_Test_Tree_Count_Find_Element_With_10_Elements(unittest.TestCase):
 
     def setUp(self):
-        self._splaytree = BinarySplayTree()
+        self._splaytree = SplayTree()
         self._splaytree.insert(key = 5, obj = 5)
         self._splaytree.insert(key = 8, obj = 8)
         self._splaytree.insert(key = 7, obj = 7)
@@ -73,7 +73,7 @@ class Splay_Tree_Test_Tree_Count_Find_Element_With_10_Elements(unittest.TestCase
 class Splay_Tree_Test_Tree_Delete_Element_With_10_Elements(unittest.TestCase):
     
     def setUp(self):
-        self._splaytree = BinarySplayTree()
+        self._splaytree = SplayTree()
         self._splaytree.insert(key = 5, obj = 5)
         self._splaytree.insert(key = 8, obj = 8)
         self._splaytree.insert(key = 7, obj = 7)
@@ -106,7 +106,7 @@ class Splay_Tree_Test_Tree_Delete_Element_With_10_Elements(unittest.TestCase):
 class Splay_Tree_Test_Tree_Delete_Element_With_10_Sorted_Elements(unittest.TestCase):
     
     def setUp(self):
-        self._splaytree = BinarySplayTree()
+        self._splaytree = SplayTree()
         self._splaytree.insert(key = 1, obj = 1)
         self._splaytree.insert(key = 2, obj = 2)
         self._splaytree.insert(key = 3, obj = 3)
@@ -138,7 +138,7 @@ class Splay_Tree_Test_Tree_Delete_Element_With_10_Sorted_Elements(unittest.TestC
 class Splay_Tree_Test_Tree_Delete_Element_With_10_Reverse_Sorted_Elements(unittest.TestCase):
     
     def setUp(self):
-        self._splaytree = BinarySplayTree()
+        self._splaytree = SplayTree()
         self._splaytree.insert(key = 10, obj = 10)
         self._splaytree.insert(key = 9, obj = 9)
         self._splaytree.insert(key = 8, obj = 8)
@@ -169,7 +169,7 @@ class Splay_Tree_Test_Tree_Delete_Element_With_10_Reverse_Sorted_Elements(unitte
         
 class Splay_Tree_Test_Has_Key_with_Empty_Tree(unittest.TestCase):    
     def setUp(self):
-        self._splaytree = BinarySplayTree()
+        self._splaytree = SplayTree()
     
     def test_has_key_empty_tree(self):
         self.assertEquals(self._splaytree.has_key(20), False, 'Empty tree has_key operation must return False')
@@ -179,7 +179,7 @@ class Splay_Tree_Test_Has_Key_with_Empty_Tree(unittest.TestCase):
 
 class Splay_Tree_Test_Has_Key_with_Single_Node_Tree(unittest.TestCase):    
     def setUp(self):
-        self._splaytree = BinarySplayTree()
+        self._splaytree = SplayTree()
         self._splaytree.insert(key = 10, obj = 'Object value')
     
     def test_has_key_empty_tree(self):
@@ -191,7 +191,7 @@ class Splay_Tree_Test_Has_Key_with_Single_Node_Tree(unittest.TestCase):
 class Splay_Tree_Test_Has_Key_With_10_Elements(unittest.TestCase):
     
     def setUp(self):
-        self._splaytree = BinarySplayTree()
+        self._splaytree = SplayTree()
         self._splaytree.insert(key = 5, obj = 5)
         self._splaytree.insert(key = 8, obj = 8)
         self._splaytree.insert(key = 7, obj = 7)
@@ -220,7 +220,7 @@ class Splay_Tree_Test_Tree_Structure_After_Insert_With_Inorder_Traversal(unittes
     tree structure.
     '''
     def setUp(self):
-        self._splaytree = BinarySplayTree()
+        self._splaytree = SplayTree()
         
     def test_tree_structure_after_each_insert_with_inorder_traversal(self):
         expected_inorder_list = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
@@ -241,7 +241,7 @@ class Splay_Tree_Test_Tree_Structure_After_Delete_With_Inorder_Traversal(unittes
     tree structure.
     '''
     def setUp(self):
-        self._splaytree = BinarySplayTree()
+        self._splaytree = SplayTree()
         self._splaytree.insert(key = 5, obj = 5)
         self._splaytree.insert(key = 8, obj = 8)
         self._splaytree.insert(key = 7, obj = 7)
@@ -273,7 +273,7 @@ class Splay_Tree_Test_Tree_Structure_After_Find_With_Inorder_Traversal(unittest.
     tree structure.
     '''
     def setUp(self):
-        self._splaytree = BinarySplayTree()
+        self._splaytree = SplayTree()
         self._splaytree.insert(key = 5, obj = 5)
         self._splaytree.insert(key = 8, obj = 8)
         self._splaytree.insert(key = 7, obj = 7)

@@ -4,12 +4,12 @@ Created on Oct 19, 2015
 '''
 from coils.trees.BST import BinarySearchTree
 
-class BinarySplayTree(BinarySearchTree):
+class SplayTree(BinarySearchTree):
     '''
     Splay tree is a binary search tree with splay operations to keep it balanced. Balanced search tree!
     '''
     def __init__(self, root_node=None):
-        super(BinarySplayTree, self).__init__(root_node = root_node)
+        super(SplayTree, self).__init__(root_node = root_node)
     
     def _find_node_with_key_for_splay(self, key):
         '''

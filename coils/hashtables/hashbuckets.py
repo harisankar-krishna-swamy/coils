@@ -6,7 +6,7 @@ from coils.lists.singly_linked_list import LinkedList
 from coils.common import KeyValuePair
 from coils.trees.BST import BinarySearchTree
 from coils.trees import splaytree
-from coils.trees.splaytree import BinarySplayTree
+from coils.trees.splaytree import SplayTree
 import collections
 
 class LinkedListHashBucket(collections.MutableMapping):
@@ -119,7 +119,7 @@ class SplayedHashBucket(collections.MutableMapping):
     Note: HASHBUCKET ITERATION YIELDS KEYS. not the key value pairs in the bucket. 
     '''
     def __init__(self):
-        self._st = BinarySplayTree()
+        self._st = SplayTree()
     
     def __len__(self):
         return self._st.node_count

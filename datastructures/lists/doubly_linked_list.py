@@ -152,7 +152,7 @@ class DoublyLinkedList(object):
             yield start_node.element
             start_node = start_node.nextNode
     #
-    def __reverse__(self):
+    def __reversed__(self):
         start_node = self._tail
         while start_node != None:
             yield start_node.element

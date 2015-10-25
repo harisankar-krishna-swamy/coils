@@ -3,7 +3,7 @@ Created on Oct 19, 2015
 @author: hari
 '''
 from unittest import TestCase
-from coils.trees.BST import BinarySearchTree        
+from coils.trees.bst import BinarySearchTree        
 import unittest
 #
 # Preorder traversal

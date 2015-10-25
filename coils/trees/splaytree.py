@@ -2,7 +2,7 @@
 Created on Oct 19, 2015
 @author: hari
 '''
-from coils.trees.BST import BinarySearchTree
+from coils.trees.bst import BinarySearchTree
 
 class SplayTree(BinarySearchTree):
     '''

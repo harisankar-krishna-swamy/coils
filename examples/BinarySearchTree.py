@@ -2,7 +2,7 @@
 Created on Oct 25, 2015
 @author: hari
 '''
-from coils.trees.BST import BinarySearchTree
+from coils.trees.bst import BinarySearchTree
 
 def print_tree_inorder_using_stack(tree):
     traversed  = []

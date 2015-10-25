@@ -3,7 +3,7 @@ Created on Oct 25, 2015
 
 @author: hari
 '''
-from coils.trees.splaytree import BinarySplayTree
+from coils.trees.splaytree import SplayTree
 
 def print_tree_inorder_using_stack(tree):
     traversed  = []
@@ -34,7 +34,7 @@ def print_tree_inorder(tree):
     print traversed
     
 if __name__ == '__main__':
-    bst = BinarySplayTree()
+    bst = SplayTree()
     print 'Node count is %s' % str(bst.node_count)
     print 'Adding key value pairs (1, 1), (2, 2), .... (6, 6)'
     kvpairs = [(5, 5), (2, 2), (7, 7), (1, 1), (3, 3), (9, 9), (8, 8), (4, 4), (6, 6)]

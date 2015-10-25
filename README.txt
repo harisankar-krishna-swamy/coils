@@ -13,19 +13,19 @@ This repo contains Hari's implementations of data structures in Python.
 
 Current implementation for:
 ---------------------------
-Stack 
-Queue
-Heap (Min & Max)
-Binary Search Tree 
-SplayTree 
-LinkedList
+Stack using python list
+Queue using python list
+Heap (Min & Max) using python list.
+Binary Search Tree with link inversion traversal
+SplayTree -do-
+LinkedList 
 DoublyLinkedList 
 SeperateChainHashTable (3 types of chaining using LinkedList, SplayTree, BinarySearchTree) 
 
 Features to Implement:
 ----------------------
 1) Thread Safety.
-2) Double Linked Lists
+2) Heap using linked tree
 3) Graphs
 4) An intern store
 

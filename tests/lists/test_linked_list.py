@@ -466,7 +466,102 @@ class LinkedList_Test_Remove_Duplicates_With_Recurring_Duplicates(unittest.TestC
         
     def tearDown(self):
         self._linkedList = None
+#
+# Test Reverse Iteration
+#
+class LinkedList_Test_Reverse_Iteration_With_0_Elements(unittest.TestCase):
+    
+    def setUp(self):
+        self._linkedList = LinkedList()
+    
+    def test_reverse_iteration_of_empty_list(self):
+        reverse_iter_of_list = [] 
+        for element in reversed(self._linkedList):
+            reverse_iter_of_list.append(element)
 
+        self.assertEquals(len(reverse_iter_of_list), 0, 'Reverse iteration on empty list gives non-empty values!')
+        
+    def tearDown(self):
+        self._linkedList = None
+        
+class LinkedList_Test_Reverse_Iteration_With_1_Elements(unittest.TestCase):
+    
+    def setUp(self):
+        self._linkedList = LinkedList()
+        self._linkedList.append(1)
+    
+    def test_reverse_iteration_of_1_element_list(self):
+        expected_reverse_iter_list  = [1] 
+        reverse_iter_of_list = [] 
+        for element in reversed(self._linkedList):
+            reverse_iter_of_list.append(element)
+
+        self.assertEquals(reverse_iter_of_list, expected_reverse_iter_list, 'reverse iteration did not yield expected list')
+        
+    def tearDown(self):
+        self._linkedList = None
+
+class LinkedList_Test_Reverse_Iteration_With_multiple_Elements(unittest.TestCase):
+    
+    def setUp(self):
+        self._linkedList = LinkedList()
+        extend_elements = [1, 2, 3, 4]
+        self._linkedList.extend(extend_elements)
+    
+    def test_reverse_iteration_with_multiple_elements(self):
+        expected_reverse_iter_list  = [4, 3, 2, 1] 
+        reverse_iter_of_list = [] 
+        for element in reversed(self._linkedList):
+            reverse_iter_of_list.append(element)
+
+        self.assertEquals(reverse_iter_of_list, expected_reverse_iter_list, 'reverse iteration did not yield expected list')
+        
+    def tearDown(self):
+        self._linkedList = None
+#
+# Test __getitem__
+#
+class LinkedList_Test_get_item_With_0_Elements(unittest.TestCase):
+    
+    def setUp(self):
+        self._linkedList = LinkedList()
+    
+    def test_get_item_of_empty_list(self):
+        self.assertRaises(IndexError, callableObj = lambda: self._linkedList[0])
+        self.assertRaises(IndexError, callableObj = lambda: self._linkedList[1])
+        self.assertRaises(IndexError, callableObj = lambda: self._linkedList[-1])
+        
+    def tearDown(self):
+        self._linkedList = None
+    
+class LinkedList_Test_get_item_With_1_Elements(unittest.TestCase):
+    
+    def setUp(self):
+        self._linkedList = LinkedList()
+        
+    def test_reverse_iteration_of_1_element_list(self):
+        element_to_add = 1
+        self._linkedList.append(element_to_add)
+        self.assertEqual(self._linkedList[0], element_to_add, 'list get item did not yield expected item')
+        self.assertEqual(self._linkedList[-1], element_to_add, 'list get item did not yield expected item')
+        self.assertEqual(self._linkedList[10], element_to_add, 'list get item did not yield expected item')
+        
+    def tearDown(self):
+        self._linkedList = None
+
+class LinkedList_Test_get_item_With_multiple_Elements(unittest.TestCase):
+    
+    def setUp(self):
+        self._linkedList = LinkedList()
+        self._extend_elements = [1, 2, 3, 4]
+        self._linkedList.extend(self._extend_elements)
+    
+    def test_get_item_with_multiple_elements(self):
+        for i in self._extend_elements:#loop through the items we added. item 1 will be at index 0, 2 at 1 and so on.
+            self.assertEquals(self._linkedList[i - 1], i, 'list get item at index failed')
+    
+    def tearDown(self):
+        self._linkedList = None
 #Allows running as python run.
 if __name__ == '__main__':
     unittest.main()

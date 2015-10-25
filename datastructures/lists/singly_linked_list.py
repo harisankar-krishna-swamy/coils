@@ -2,6 +2,7 @@
 Created on Aug 12, 2015
 @author: hari
 '''
+import collections
 class LinkedNode(object):
     """
     A node in a Linked list.
@@ -21,7 +22,7 @@ class LinkedNode(object):
     def __repr__(self):
         return '%s(element = %s)' % (self.__class__.__name__, self._element)
         
-class LinkedList(object):
+class LinkedList(collections.Sequence):
     '''
     A Linked list implementation. More pythonic by using iterator features.
     Note:
@@ -83,7 +84,6 @@ class LinkedList(object):
             index = index + 1
         return -1
     #
-    
     def insert_at(self, index, element):
         if index <= 0 or index >= self._length: #insert at head or at tail
             self.append(element) #takes care of length, head, tail etc
@@ -142,17 +142,30 @@ class LinkedList(object):
             self._tail = prev_node
         self._length = self._length - 1
     #
+    def __getitem__(self, index):
+        if self._length == 0:#empty list
+            raise IndexError('IndexError: list index is out of range')
+        if index < 0:#return the head node element
+            index = 0
+            return self._head.element
+        elif index >= self._length:#return tail
+            index = self._length
+            return self._tail.element
+        #we have to find the element 
+        current_index = 0
+        current_node = self._head
+        while current_node != None and current_index != index:
+            current_node = current_node.nextNode
+            current_index = current_index + 1
+        if current_node == None:
+            raise IndexError('IndexError: list index is out of range')
+        return current_node.element
+        
     def __iter__(self):
         start_node = self._head
         while start_node != None:
             yield start_node.element
             start_node = start_node.nextNode
-    #
-    def __reversed__(self):
-        start_node = self._tail
-        while start_node != None:
-            yield start_node.element
-            start_node = start_node.previousNode
     #
     def __len__(self):
         return self._length

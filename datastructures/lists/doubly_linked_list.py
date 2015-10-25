@@ -2,6 +2,7 @@
 Created on Oct 24, 2015
 @author: hari
 '''
+import collections
 class DoublyLinkedNode(object):
     """
     A node in a Linked list.
@@ -22,7 +23,7 @@ class DoublyLinkedNode(object):
     def __repr__(self):
         return '%s(element = %s)' % (self.__class__.__name__, self._element)
         
-class DoublyLinkedList(object):
+class DoublyLinkedList(collections.Sequence):
     '''
     A Doubly Linked list implementation. More pythonic by using iterator features.
     Note:
@@ -158,6 +159,24 @@ class DoublyLinkedList(object):
             yield start_node.element
             start_node = start_node.previousNode
     #
+    def __getitem__(self, index):
+        if self._length == 0:#empty list
+            raise IndexError('IndexError: list index is out of range')
+        if index < 0:#return the head node element
+            index = 0
+            return self._head.element
+        elif index >= self._length:#return tail
+            index = self._length
+            return self._tail.element
+        #we have to find the element 
+        current_index = 0
+        current_node = self._head
+        while current_node != None and current_index != index:
+            current_node = current_node.nextNode
+            current_index = current_index + 1
+        if current_node == None:
+            raise IndexError('IndexError: list index is out of range')
+        return current_node.element
     
     def __len__(self):
         return self._length

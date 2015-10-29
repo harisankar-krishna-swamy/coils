@@ -8,7 +8,7 @@ from coils.trees.uptree import UpTreeNode
 
 class DisjointSetWithUnion(object):
     '''
-    A disjoint set forest has disjoint sets where each set is represented by an uptree.
+    A disjoint set holds a set of items. The set may also hold subset of items.
     
     A disjoint set DJS has a number of elements from a fixed Universe U. DJS knows all the elements in it.
     The elements in DJS may themselves form subsets. i.e U = { a, b, c, d, r, f, g}. DJS can be
@@ -16,16 +16,23 @@ class DisjointSetWithUnion(object):
     
     1) make_set(x) returns a new set {x}
     2) find(x) return R such that x is in set R. for example {c, r, f} be identified by c. then find(r) = c
+       The set to which an item belongs is represented by one of the items in the set. This representative item is usually at
+       the root node of the uptree that links together all the items in the set.
     3) union(s, t): merges the smaller set into the larger. {c} U {r, f} = {c, r, f}
     for more info please refer Datastructures and their algorithms by Harry Lewis and Larry Denenberg
     
-    uptree nodes are used to represent the individual items of the set.
-    1) Each item needs to be known just like that in the set. We use a hash tabe where table[item] = UpTree Node for the item
+    Uptree nodes are used to hold the individual items of the set.
+    
+    1) Each item needs to be known in the set. We use a hashtable where table[item] = UpTree Node for the item
     2) make_set(item) just creates an uptree node with item. Each node starts off as a tree rooted at node.   
     '''
     def __init__(self):
         self._table_of_uptrees = SeperateChainHashTable(bucket_type_class = SplayedHashBucket)
-    
+        
+    @property
+    def size(self):
+        return len(self._table_of_uptrees)
+        
     def make_set(self, item = None):
         if item == None:
             return None
@@ -58,7 +65,7 @@ class DisjointSetWithUnion(object):
         
     def find(self, item):
         '''
-        returns the set to which this item belongs.
+        returns the set to which this item belongs. The set to which an item belongs is represented by the item at root of the set.
         '''
         try:
             root_node = self._uptree_find_with_path_compression(item)

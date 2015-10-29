@@ -21,13 +21,15 @@ SplayTree -do-
 LinkedList 
 DoublyLinkedList 
 SeperateChainHashTable (3 types of chaining using LinkedList, SplayTree, BinarySearchTree) 
+DisjointSetWithUnion (uses uptree nodes and path compression)
 
 Features to Implement:
 ----------------------
-1) Thread Safety.
-2) Heap using linked tree
-3) Graphs
-4) An intern store
+* indicates priority.
+1) Thread Safety *
+2) Heap using linked tree ****
+3) Graphs *
+4) An intern store *
 
 TESTING
 =======

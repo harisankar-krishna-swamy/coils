@@ -16,6 +16,18 @@ class DisjointSet_With_Union_Test_init(unittest.TestCase):
     def tearDown(self):
         self._disjointset = None
 
+class DisjointSet_With_Union_Test_Size_Of_Empty_Set(unittest.TestCase):
+    def setUp(self):
+        pass
+    
+    def test_size_of_empty_set(self):
+        self._disjointset = DisjointSetWithUnion()
+        expected_size = 0
+        self.assertEquals(self._disjointset.size, expected_size, 'Empty disjoint set size was not 0')
+        
+    def tearDown(self):
+        self._disjointset = None
+
 class DisjointSet_With_Union_Test_Find_with_Empty_Set(unittest.TestCase):
     def setUp(self):
         self._disjointset = DisjointSetWithUnion()
@@ -32,6 +44,19 @@ class DisjointSet_With_Union_Test_Make_Set_with_None(unittest.TestCase):
     
     def test_make_set_with_none(self):
         self._disjointset.make_set(None)
+        
+    def tearDown(self):
+        self._disjointset = None
+
+class DisjointSet_With_Union_Test_Size_with_Single_Item(unittest.TestCase):
+    def setUp(self):
+        self._disjointset = DisjointSetWithUnion()
+    
+    def test_make_set_with_single_item(self):
+        item = -1
+        self._disjointset.make_set(item)
+        expected_size = 1
+        self.assertEquals(self._disjointset.size, expected_size, 'Singleton disjoint set size was not 1')
         
     def tearDown(self):
         self._disjointset = None

@@ -24,7 +24,8 @@ class DisjointSetWithUnion(object):
     Uptree nodes are used to hold the individual items of the set.
     
     1) Each item needs to be known in the set. We use a hashtable where table[item] = UpTree Node for the item
-    2) make_set(item) just creates an uptree node with item. Each node starts off as a tree rooted at node.   
+    2) make_set(item) just creates an uptree node with item. Each node starts off as a tree rooted at node.
+    3) Iter on Disjoint set results in yielding (item, item's set) tuples.    
     '''
     def __init__(self):
         self._table_of_uptrees = SeperateChainHashTable(bucket_type_class = SplayedHashBucket)
@@ -92,3 +93,12 @@ class DisjointSetWithUnion(object):
             uptree_1.parent_node = uptree_2
             uptree_2.node_count = uptree_2.node_count + uptree_1.node_count
             return uptree_2
+    
+    def __iter__(self):
+        '''
+        Iter on Disjoint set results in yielding (item, item's set) tuples
+        '''
+        item_in_table = None
+        for key in self._table_of_uptrees:
+            item_in_table = self._table_of_uptrees[key].node_element#hash table entries are uptree nodes
+            yield (item_in_table, self.find(item_in_table))

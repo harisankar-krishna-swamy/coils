@@ -158,10 +158,74 @@ class DisjointSet_Test_Union_Towards_Multiple_Final_Sets(unittest.TestCase):
         self.assertEquals(self._disjointset.find(0), zero, 
                                             'Find failed after union towards multiple final sets.')
         
-            
     def tearDown(self):
         self._disjointset = None
+
+class DisjointSet_With_Union_Test_Iter_On_Empty_Set(unittest.TestCase):
+    def setUp(self):
+        self._disjointset = DisjointSetWithUnion()
+    
+    def test_iter_on_empty_set(self):
+        list_of_tuples = []
+        for item_and_set in self._disjointset:
+            list_of_tuples.append(item_and_set)
+        self.assertEquals(len(list_of_tuples), 0, 'Iterating over empty set cannot yield anything')
+        
+    def tearDown(self):
+        self._disjointset = None        
+
+class DisjointSet_With_Union_Test_Iter_On_Singleton_Set(unittest.TestCase):
+    def setUp(self):
+        self._disjointset = DisjointSetWithUnion()
+        self._item = 1
+        self._disjointset.make_set(self._item)
+        
+    def test_iter_on_singleton_set(self):
+        list_of_tuples = []
+        for item_and_set in self._disjointset:
+            list_of_tuples.append(item_and_set)
+        self.assertEquals(len(list_of_tuples), 1, 'Iterating over (item, set) pairs in a singleton does not add up')
+        
+    def tearDown(self):
+        self._disjointset = None
+
+
+class DisjointSet_Test_Iter_After_Union_Towards_Multiple_Final_Sets(unittest.TestCase):
+    def setUp(self):
+        self._disjointset = DisjointSetWithUnion()
+        self._positive_items_1 = [1, 2, 3, 4, 5, 6, 7, 8]
+        self._negative_items_1 = [-1, -2, -3, -4, -5]
+        
+        self._all_items =  [-5, -4, -3, -2, -1, 0, 1, 2, 3, 4, 5, 6, 7, 8]
+        for item in self._all_items:
+            self._disjointset.make_set(item)
+        
+        negative_items_count = len(self._negative_items_1)
+        for index in range(0 , negative_items_count - 1):
+            set = self._disjointset.union(self._negative_items_1[index], self._negative_items_1[index + 1])
+            
+        positive_items_count = len(self._positive_items_1)
+        for index in range(0 , positive_items_count - 1):
+            set = self._disjointset.union(self._positive_items_1[index], self._positive_items_1[index + 1])
+        #Now there should be 3 sets with representations by -1, 0 and 1
+            
+    def test_iter_after_union_towards_multiple_final_set(self):
+        
+        positive_representative_item = 1
+        negative_representative_item = -1
+        zero = 0
+        
+        for item, set_of_item in self._disjointset:
+            if item == 0:
+                self.assertEquals(set_of_item, zero, 'Iterating over (item, set) yields wrong set membership')
+            elif item > 0:
+                self.assertEquals(set_of_item, positive_representative_item, 'Iterating over (item, set) yields wrong set membership')
+            else:
+                self.assertEquals(set_of_item, negative_representative_item, 'Iterating over (item, set) yields wrong set membership')
                 
+    def tearDown(self):
+        self._disjointset = None
+        
 if __name__ == '__main__':
     print 'Disjoint sets with union tests'
     unittest.main()

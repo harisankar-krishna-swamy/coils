@@ -25,6 +25,10 @@ class Heap(object):
             self._siftDown = self._siftDownMaxHeap
         
         self._isMinHeap = minHeap
+        
+    @property
+    def heap_size(self):
+        return len(self._heapList) - 1#accomodate first unused entry TODO:TEST THIS 
     
     @property
     def isMinHeap(self):
@@ -147,17 +151,9 @@ class Heap(object):
         return str(self._heapList)
     #
     def __iter__(self):
-        '''
-        Support for iterating through the heap.
-        '''
-        return self
-    #
-    def next(self):
-        if self._count != 0:
-            temp = self.getElement()
-            return temp
-        raise StopIteration
-    
+        while self._count != 0:#TODO: CHECK WHILE IS USED IN ITERS WITH YIELD
+            yield self.getElement()
+
     def _getHeapAsList(self):
         """
         Returns the internal array representation of the heap.

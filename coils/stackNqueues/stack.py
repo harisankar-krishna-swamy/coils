@@ -4,22 +4,22 @@ Created on Aug 14, 2015
 '''
 class Stack(object):
     """
-    A stack implementation in Python. Uses Python list to hold stack elements.
+    A stack implementation in Python. Uses Python list to hold stack items.
     """
     def __init__(self):
         self._list = []
     
-    def push(self, element):
-        self._list.append(element)
+    def push(self, item):
+        self._list.append(item)
     
     def pop(self):
         if len(self._list) == 0:
             return None
             
         index = len(self._list) - 1
-        element = self._list[index]
+        item = self._list[index]
         del self._list[index]
-        return element
+        return item
     
     def __len__(self):
         return len(self._list)
@@ -38,10 +38,10 @@ class Stack(object):
         return self
     
     def next(self):
-        stack_element = self.pop()
-        if stack_element == None:
+        stack_item = self.pop()
+        if stack_item == None:
             raise StopIteration
-        return stack_element 
+        return stack_item 
     
     def __str__(self):
-        return '%s size [%s] elements %s' % (self.__class__.__name__, len(self), self._list)
+        return '%s size [%s] items %s' % (self.__class__.__name__, len(self), self._list)

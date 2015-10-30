@@ -44,16 +44,16 @@ class PriorityQueue(object):
         creates a priority queue such that priority 10 is processed first than priority 2. If you want
         to reverse this set reverse_priority so that item with priority 2 is processed first 
         '''
-        self._heap = Heap(minHeap = reverse_priority)#create the heap as needed. Default Max heap
+        self._heap = Heap(min_heap =  reverse_priority)#create the heap as needed. Default Max heap
     
     def add_item(self, item = None, priority = None):
         if item == None:
             return #we are not wasting time
         
-        self._heap.addElement(PriorityQueueEntry(item = item, priority = priority))
+        self._heap.add_item(PriorityQueueEntry(item = item, priority = priority))
     
-    def get_item(self):
-        priority_q_entry = self._heap.getElement()
+    def get(self):
+        priority_q_entry = self._heap.get()
         if priority_q_entry == None:
             return None
         return priority_q_entry.item

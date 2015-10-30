@@ -9,12 +9,12 @@ if __name__ == '__main__':
     # count items
     print 'stack items count: %s' % str(stack.size)
     #Push items
-    stack.push(element = 1)
-    stack.push(element = 2)
-    stack.push(element = 3)
-    stack.push(element = 4)
-    stack.push(element = 5)
-    stack.push(element = 6)
+    stack.push(item = 1)
+    stack.push(item = 2)
+    stack.push(item = 3)
+    stack.push(item = 4)
+    stack.push(item = 5)
+    stack.push(item = 6)
     #top
     print 'stack top is %s' % str(stack.top)
     #pop

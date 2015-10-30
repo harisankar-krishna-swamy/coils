@@ -49,7 +49,7 @@ class Priority_Q_Max_Heap_Test_Get_With_Empty_Q(unittest.TestCase):
         self._priorityQ = PriorityQueue()
         
     def test_priority_q_test_add_element(self):
-        self.assertEquals(self._priorityQ.get_item(), None, 'Empty Q must return None on get op')
+        self.assertEquals(self._priorityQ.get(), None, 'Empty Q must return None on get op')
     
     def tearDown(self):
         self._priorityQ = None
@@ -75,7 +75,7 @@ class Priority_Q_Max_Heap_Test_Q_Add_And_Get_With_Single_Entry(unittest.TestCase
         
     def test_priority_q_test_add__and_get(self):
         self._priorityQ.add_item(self._item, self._priority)
-        item = self._priorityQ.get_item()
+        item = self._priorityQ.get()
         self.assertEquals(item, self._item, 'Get op on priority Q did not yield expected item')
     
     def tearDown(self):
@@ -119,7 +119,7 @@ class Priority_Q_Max_Heap_Test_Add_Get_Multiple_Entries(unittest.TestCase):
             
         items_from_q = []
         for i in range(len(self._item_priority_entries)):#get this many items from the Q
-            items_from_q.append(self._priorityQ.get_item())
+            items_from_q.append(self._priorityQ.get())
             
         self.assertEquals(items_from_q, self._expected_order_of_items_from_get, 'Items from priority Q did not match expected list.')
     def tearDown(self):

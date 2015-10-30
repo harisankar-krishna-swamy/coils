@@ -22,6 +22,7 @@ LinkedList
 DoublyLinkedList 
 SeperateChainHashTable (3 types of chaining using LinkedList, SplayTree, BinarySearchTree) 
 DisjointSetWithUnion (uses uptree nodes and path compression)
+PriorityQueues
 
 Features to Implement:
 ----------------------

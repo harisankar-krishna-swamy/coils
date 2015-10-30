@@ -28,13 +28,9 @@ class Queue(object):
         return len(self._list)
     
     def __iter__(self):
-        return self
-    
-    def next(self):
-        if len(self._list) != 0:
-            return self.dequeue()
-        raise StopIteration
-    
+        while len(self._list) != 0:
+            yield self.dequeue()
+
     @property
     def front(self):
         if len(self._list) == 0:

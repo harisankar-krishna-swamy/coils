@@ -5,7 +5,6 @@ Created on Oct 23, 2015
 from coils.lists.singly_linked_list import LinkedList
 from coils.common import KeyValuePair
 from coils.trees.bst import BinarySearchTree
-from coils.trees import splaytree
 from coils.trees.splaytree import SplayTree
 import collections
 

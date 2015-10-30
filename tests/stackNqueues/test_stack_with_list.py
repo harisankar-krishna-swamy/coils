@@ -3,7 +3,7 @@ Created on Aug 14, 2015
 @author: topcat
 '''
 import unittest
-from coils.stackNqueues.Stack import Stack
+from coils.stackNqueues.stack import Stack
 
 class Test_Empty_Stack_Initialization(unittest.TestCase):
     
@@ -11,7 +11,7 @@ class Test_Empty_Stack_Initialization(unittest.TestCase):
         self._stack = Stack()
     
     def test_stack_size_is_zero(self):
-        self.assertEquals(self._stack.size, 0, 'Empty Stack size must be 0')
+        self.assertEquals(self._stack.size, 0, 'Empty stack size must be 0')
         
     def tearDown(self):
         del self._stack
@@ -22,7 +22,7 @@ class Test_Empty_Stack_Pop(unittest.TestCase):
         self._stack = Stack()
     
     def test_empty_stack_pop(self):
-        self.assertEquals(self._stack.pop(), None, 'Empty Stack must pop None')
+        self.assertEquals(self._stack.pop(), None, 'Empty stack must pop None')
                 
     def tearDown(self):
         del self._stack
@@ -103,12 +103,12 @@ class Test_Iterator_With_Stack_Of_4_Elements(unittest.TestCase):
     def test_iterator_with_stack_with_4_elements(self):
         elements = [4, 3, 2, 1]
         for stack_element in self._stack:
-            self.assertEquals(stack_element, elements[0], 'Stack Iterator must match expected elements.')
+            self.assertEquals(stack_element, elements[0], 'stack Iterator must match expected elements.')
             del elements[0]
             
     def tearDown(self):
         del self._stack
 #Allows running as python run.
 if __name__ == '__main__':
-    print 'Stack Tests'
+    print 'stack Tests'
     unittest.main()

@@ -17,6 +17,7 @@ class KeyValuePair:# Save space in key value pair by using slots for all client 
             return False
         
         return self.key == other_kv_pair.key 
+    
     def __lt__(self, other_kv_pair):
         if other_kv_pair is None:
             return False

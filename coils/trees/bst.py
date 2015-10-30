@@ -3,7 +3,7 @@ Created on Aug 15, 2015
 @author: hari
 '''
 from coils.common import KeyValuePair
-from coils.stackNqueues.Stack import Stack
+from coils.stackNqueues.stack import Stack
 
 class BSTTreeNode(object):
     '''

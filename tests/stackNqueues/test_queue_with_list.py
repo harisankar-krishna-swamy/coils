@@ -3,7 +3,7 @@ Created on Aug 14, 2015
 @author: topcat
 '''
 import unittest
-from coils.stackNqueues.Queue import Queue
+from coils.stackNqueues.queue import Queue
 
 class Test_Len_Of_Empty_Queue(unittest.TestCase):
     
@@ -95,5 +95,5 @@ class Test_Iterator_Of_Predictable_Queue_With_4_Elements(unittest.TestCase):
         del self._q
 #Allows running as python run.
 if __name__ == '__main__':
-    print 'Queue tests'
+    print 'queue tests'
     unittest.main()

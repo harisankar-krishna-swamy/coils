@@ -25,17 +25,13 @@ class PriorityQueueEntry(object):
         if other_entry is None:
             return False
             
-        if self.priority == other_entry.priority:
-            return True
-        return False
-    
+        return self.priority == other_entry.priority
+            
     def __lt__(self, other_entry): 
-        if other_entry is None:#TODO: Check all other total ordering to compare Nones first.
+        if other_entry is None:
             return False
         
-        if self.priority < other_entry.priority:
-            return True
-        return False
+        return self.priority < other_entry.priority
 
 class PriorityQueue(object):
     '''

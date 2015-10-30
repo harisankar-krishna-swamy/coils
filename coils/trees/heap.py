@@ -151,7 +151,7 @@ class Heap(object):
         return str(self._heapList)
     #
     def __iter__(self):
-        while self._count != 0:#TODO: CHECK WHILE IS USED IN ITERS WITH YIELD
+        while self._count != 0:
             yield self.getElement()
 
     def _getHeapAsList(self):

@@ -9,7 +9,7 @@ class Heap(object):
      0   1   2   3   4   5   6   7   8   9
     [#] [y] [c] [b] [e] [g] [f] [z] [a] [p] ........
     """
-    def __init__(self, minHeap=True):
+    def __init__(self, min_heap=True):
         """
         Initiate the heap's internal list storage. 
         if you want a max heap set minHeap = False
@@ -17,60 +17,64 @@ class Heap(object):
         self._heapList = []
         self._heapList.append(None) # 0 index is not used.
         self._count = 0
-        if minHeap is True:
-            self._siftUp = self._siftUpMinHeap
-            self._siftDown = self._siftDownMinHeap
+        if min_heap is True:
+            self._siftUp = self._sift_up_min_heap
+            self._siftDown = self._sift_down_min_heap
         else:
-            self._siftUp = self._siftUpMaxHeap
-            self._siftDown = self._siftDownMaxHeap
+            self._siftUp = self._sift_up_max_heap
+            self._siftDown = self._sift_down_max_heap
         
-        self._isMinHeap = minHeap
+        self._is_min_heap = min_heap
+        
+    @property
+    def heap_size(self):
+        return len(self._heapList) - 1#accomodate first unused entry TODO:TEST THIS 
     
     @property
-    def isMinHeap(self):
-        return self._isMinHeap
+    def is_min_heap(self):
+        return self._is_min_heap
     
-    def addElements(self, element_list):
+    def add_items(self, item_list):
         """
         Helper method that allows for multiple insertions.
         
-        element_list: a Python list. 
+        item_list: a Python list. 
         """
-        if element_list is None:
+        if item_list is None:
             return
-        for element in element_list:
-            self.addElement(element)
+        for item in item_list:
+            self.add_item(item)
         
-    def addElement(self, element):
+    def add_item(self, item):
         """
-        Add a Single element to the heap. Maintain heap condition.
+        Add a Single item to the heap. Maintain heap condition.
         """
-        if element is None: 
+        if item is None: 
             return
         
-        self._heapList.append(element)
+        self._heapList.append(item)
         self._count = self._count + 1
         self._siftUp(self._count)
         
     
-    def getElement(self):
+    def get(self):
         """
-        Take an element from the top of the heap. Maintain heap condition.
+        Take an item from the top of the heap. Maintain heap condition.
         """
         if self._count == 0:
             return None
             
-        element = self._heapList[1] #always we return index 1
+        item = self._heapList[1] #always we return index 1
         self._heapList[1] = self._heapList[self._count]
         del self._heapList[-1]
         self._siftDown()
         self._count = self._count - 1
-        return element
+        return item
     
-    def _siftUpMinHeap(self, N):
+    def _sift_up_min_heap(self, N):
         """
-        MinHeap: Move the element at index N up until post condition is every heap element is lower than its children
-        This operation maintains the min-heap condition after adding an element.
+        MinHeap: Move the item at index N up until post condition is every heap item is lower than its children
+        This operation maintains the min-heap condition after adding an item.
         """
         I = N
         parent = None
@@ -80,16 +84,16 @@ class Heap(object):
                 self._heapList[I/2] = self._heapList[I]
                 self._heapList[I] = parent
             else:
-                # we reach a situation where the element is at I is not less than the parent. Break.
+                # we reach a situation where the item is at I is not less than the parent. Break.
                 break
             #Continue moving up the heap tree
             I = I / 2
         #while
                 
-    def _siftDownMinHeap(self):
+    def _sift_down_min_heap(self):
         """
-        MinHeap: We move the element at index 1 down so that heap post condition every node in the heap is less than its own child nodes.
-        Maintains heap property after removing an element from the heap.
+        MinHeap: We move the item at index 1 down so that heap post condition every node in the heap is less than its own child nodes.
+        Maintains heap property after removing an item from the heap.
         """
         I = 1
         C = 1
@@ -106,9 +110,9 @@ class Heap(object):
                 break
             I = C
     
-    def _siftUpMaxHeap(self, N):
+    def _sift_up_max_heap(self, N):
         """
-        MaxHeap: Move the element up until post condition is every element is less than its parent
+        MaxHeap: Move the item up until post condition is every item is less than its parent
         """
         I = N
         parent = None
@@ -118,15 +122,15 @@ class Heap(object):
                 self._heapList[I/2] = self._heapList[I]
                 self._heapList[I] = parent
             else:
-                # we reach a situation where the element is not less than the parent. Break.
+                # we reach a situation where the item is not less than the parent. Break.
                 break
             #Continue moving up the heap tree
             I = I / 2
         #while
                 
-    def _siftDownMaxHeap(self):
+    def _sift_down_max_heap(self):
         """
-        MaxHeap: We move the element at index 1 down so that post condition is every node element is greater than its children.
+        MaxHeap: We move the item at index 1 down so that post condition is every node item is greater than its children.
         """
         I = 1
         C = 1
@@ -147,18 +151,10 @@ class Heap(object):
         return str(self._heapList)
     #
     def __iter__(self):
-        '''
-        Support for iterating through the heap.
-        '''
-        return self
-    #
-    def next(self):
-        if self._count != 0:
-            temp = self.getElement()
-            return temp
-        raise StopIteration
-    
-    def _getHeapAsList(self):
+        while self._count != 0:
+            yield self.get()
+
+    def _get_heap_as_list(self):
         """
         Returns the internal array representation of the heap.
         """

@@ -7,15 +7,15 @@ class DoublyLinkedNode(object):
     """
     A node in a Linked list.
     """
-    __slots__ = 'element', 'nextNode', 'previousNode'
-    def __init__(self, element = None, nextNode = None, previousNode = None):
+    __slots__ = 'element', 'next_node', 'previous_node'
+    def __init__(self, element = None, next_node = None, previous_node = None):
         '''
         a node is created with the element object and the next node. If any of these
         are not available, use the default value None.
         '''
-        self.nextNode = nextNode
+        self.next_node = next_node
         self.element = element
-        self.previousNode = previousNode
+        self.previous_node = previous_node
         
     def __str__(self):
         return '%s %s' % (self.__class__.__name__, self._element)
@@ -61,8 +61,8 @@ class DoublyLinkedList(collections.Sequence):
             self._head = DoublyLinkedNode(element)
             self._tail = self._head
         else:
-            new_node = DoublyLinkedNode(element, nextNode = None, previousNode = self._tail)
-            self._tail.nextNode = new_node
+            new_node = DoublyLinkedNode(element, next_node = None, previous_node = self._tail)
+            self._tail.next_node = new_node
             self._tail = new_node
         
         self._length = self._length + 1
@@ -81,7 +81,7 @@ class DoublyLinkedList(collections.Sequence):
         while (current_node is not None):
             if current_node.element == element:
                 return index
-            current_node = current_node.nextNode
+            current_node = current_node.next_node
             index = index + 1
         return -1
     #
@@ -96,10 +96,10 @@ class DoublyLinkedList(collections.Sequence):
         current_node = self._head
         
         while count != till_where:
-            current_node = current_node.nextNode
+            current_node = current_node.next_node
             count = count + 1
-        temp = current_node.nextNode
-        current_node.nextNode = DoublyLinkedNode(element = element, nextNode = temp, previousNode = current_node)
+        temp = current_node.next_node
+        current_node.next_node = DoublyLinkedNode(element = element, next_node = temp, previous_node = current_node)
         self._length = self._length + 1
             
     def extend(self, linked_list):
@@ -118,12 +118,12 @@ class DoublyLinkedList(collections.Sequence):
             return
         
         if self._head.element == element:
-            if self._head.nextNode == None:
+            if self._head.next_node == None:
                 self._head = None
                 self._tail = None
             else:
-                self._head = self._head.nextNode
-                self._head.previousNode = None
+                self._head = self._head.next_node
+                self._head.previous_node = None
             self._length = self._length - 1
             return
         
@@ -133,31 +133,31 @@ class DoublyLinkedList(collections.Sequence):
         while (current_node != None):
             if current_node.element != element:
                 prev_node = current_node
-                current_node = current_node.nextNode
+                current_node = current_node.next_node
             else:
                 break
         
         if current_node == None:#did not find the element in the list.
             return
         #element found. it is in current_node.
-        prev_node.nextNode = current_node.nextNode
-        if prev_node.nextNode == None: #Prev is the tail now.
+        prev_node.next_node = current_node.next_node
+        if prev_node.next_node == None: #Prev is the tail now.
             self._tail = prev_node
         else:
-            prev_node.nextNode.previousNode = prev_node
+            prev_node.next_node.previous_node = prev_node
         self._length = self._length - 1
     #
     def __iter__(self):
         start_node = self._head
         while start_node != None:
             yield start_node.element
-            start_node = start_node.nextNode
+            start_node = start_node.next_node
     #
     def __reversed__(self):
         start_node = self._tail
         while start_node != None:
             yield start_node.element
-            start_node = start_node.previousNode
+            start_node = start_node.previous_node
     #
     def __getitem__(self, index):
         if self._length == 0:#empty list
@@ -172,7 +172,7 @@ class DoublyLinkedList(collections.Sequence):
         current_index = 0
         current_node = self._head
         while current_node != None and current_index != index:
-            current_node = current_node.nextNode
+            current_node = current_node.next_node
             current_index = current_index + 1
         if current_node == None:
             raise IndexError('IndexError: list index is out of range')
@@ -192,23 +192,23 @@ class DoublyLinkedList(collections.Sequence):
             return
         last_node_of_corrected_list = self._head
         running_node = self._head
-        current_node = last_node_of_corrected_list.nextNode
+        current_node = last_node_of_corrected_list.next_node
         
         while current_node != None:#all the way until end
             running_node = self._head
             while running_node != current_node:
                 if running_node.element == current_node.element: #duplicate
-                    nxt_of_duplicate = current_node.nextNode
-                    last_node_of_corrected_list.nextNode = nxt_of_duplicate
+                    nxt_of_duplicate = current_node.next_node
+                    last_node_of_corrected_list.next_node = nxt_of_duplicate
                     if nxt_of_duplicate != None:
-                        nxt_of_duplicate.previousNode = last_node_of_corrected_list
+                        nxt_of_duplicate.previous_node = last_node_of_corrected_list
                     self._length = self._length - 1 
                     current_node = nxt_of_duplicate
                     break
-                running_node = running_node.nextNode
+                running_node = running_node.next_node
                 
             if running_node == current_node:# current node did not have a duplicate element in the list seen so far
                 last_node_of_corrected_list = current_node
-                current_node = current_node.nextNode
+                current_node = current_node.next_node
         
         self._tail = last_node_of_corrected_list    

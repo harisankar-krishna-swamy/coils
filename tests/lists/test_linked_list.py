@@ -407,7 +407,7 @@ class LinkedList_Test_Remove_Duplicates_With_Duplicates_At_Tail(unittest.TestCas
         
     def test_remove_duplicates_of_list_with_2_identical_elements(self):
         expected_head = self._linkedList._head
-        expected_tail = self._linkedList._head.nextNode
+        expected_tail = self._linkedList._head.next_node
         
         self._linkedList.remove_duplicates()
         expected_length = 2

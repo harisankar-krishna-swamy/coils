@@ -7,13 +7,13 @@ class LinkedNode(object):
     """
     A node in a Linked list.
     """
-    __slots__ = 'element', 'nextNode'
-    def __init__(self, element = None, nextNode = None):
+    __slots__ = 'element', 'next_node'
+    def __init__(self, element = None, next_node = None):
         '''
         a node is created with the element object and the next node. If any of these
         are not available, use the default value None.
         '''
-        self.nextNode = nextNode
+        self.next_node = next_node
         self.element = element
         
     def __str__(self):
@@ -61,7 +61,7 @@ class LinkedList(collections.Sequence):
             self._tail = self._head
         else:
             new_node = LinkedNode(element)
-            self._tail.nextNode = new_node
+            self._tail.next_node = new_node
             self._tail = new_node
         
         self._length = self._length + 1
@@ -80,7 +80,7 @@ class LinkedList(collections.Sequence):
         while (current_node is not None):
             if current_node.element == element:
                 return index
-            current_node = current_node.nextNode
+            current_node = current_node.next_node
             index = index + 1
         return -1
     #
@@ -94,10 +94,10 @@ class LinkedList(collections.Sequence):
         current_node = self._head
         
         while count != till_where:
-            current_node = current_node.nextNode
+            current_node = current_node.next_node
             count = count + 1
-        temp = current_node.nextNode
-        current_node.nextNode = LinkedNode(element = element, nextNode = temp)
+        temp = current_node.next_node
+        current_node.next_node = LinkedNode(element = element, next_node = temp)
         self._length = self._length + 1
             
     def extend(self, linked_list):
@@ -116,11 +116,11 @@ class LinkedList(collections.Sequence):
             return
         
         if self._head.element == element:
-            if self._head.nextNode == None:
+            if self._head.next_node == None:
                 self._head = None
                 self._tail = None
             else:
-                self._head = self._head.nextNode
+                self._head = self._head.next_node
             self._length = self._length - 1
             return
         
@@ -130,15 +130,15 @@ class LinkedList(collections.Sequence):
         while (current_node != None):
             if current_node.element != element:
                 prev_node = current_node
-                current_node = current_node.nextNode
+                current_node = current_node.next_node
             else:
                 break
         
         if current_node == None:#did not find the element in the list.
             return
         #element found. it is in current_node.
-        prev_node.nextNode = current_node.nextNode
-        if prev_node.nextNode == None: #Prev is the tail now.
+        prev_node.next_node = current_node.next_node
+        if prev_node.next_node == None: #Prev is the tail now.
             self._tail = prev_node
         self._length = self._length - 1
     #
@@ -155,7 +155,7 @@ class LinkedList(collections.Sequence):
         current_index = 0
         current_node = self._head
         while current_node != None and current_index != index:
-            current_node = current_node.nextNode
+            current_node = current_node.next_node
             current_index = current_index + 1
         if current_node == None:
             raise IndexError('IndexError: list index is out of range')
@@ -165,7 +165,7 @@ class LinkedList(collections.Sequence):
         start_node = self._head
         while start_node != None:
             yield start_node.element
-            start_node = start_node.nextNode
+            start_node = start_node.next_node
     #
     def __len__(self):
         return self._length
@@ -181,21 +181,21 @@ class LinkedList(collections.Sequence):
             return
         last_node_of_corrected_list = self._head
         running_node = self._head
-        current_node = last_node_of_corrected_list.nextNode
+        current_node = last_node_of_corrected_list.next_node
         
         while current_node != None:#all the way until end
             running_node = self._head
             while running_node != current_node:
                 if running_node.element == current_node.element: #duplicate
-                    nxt_of_duplicate = current_node.nextNode
-                    last_node_of_corrected_list.nextNode = nxt_of_duplicate
+                    nxt_of_duplicate = current_node.next_node
+                    last_node_of_corrected_list.next_node = nxt_of_duplicate
                     self._length = self._length - 1 
                     current_node = nxt_of_duplicate
                     break
-                running_node = running_node.nextNode
+                running_node = running_node.next_node
                 
             if running_node == current_node:# current node did not have a duplicate element in the list seen so far
                 last_node_of_corrected_list = current_node
-                current_node = current_node.nextNode
+                current_node = current_node.next_node
         
         self._tail = last_node_of_corrected_list    

@@ -7,15 +7,15 @@ from coils.trees.heap import Heap
 
 if __name__ == '__main__':
     # A max heap. for a min heap use minHeap = True (is default)
-    max_heap = Heap(minHeap = False)
+    max_heap = Heap(min_heap = False)
     
     elements = [0, 4, 3, 2, 5, 1, 6]
     print 'Adding elements to heap: %s' % elements
     for element in elements:
-        max_heap.addElement(element)
+        max_heap.add_item(element)
         
     print 'Getting element from max heap'
-    element = max_heap.getElement()
+    element = max_heap.get()
     print 'Top element from heap is %s' % str(element)
     
     print 'Iterating through heap' 

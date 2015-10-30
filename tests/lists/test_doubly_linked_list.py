@@ -409,7 +409,7 @@ class DoublyDoublyLinkedList_Test_Remove_Duplicates_With_Duplicates_At_Tail(unit
         
     def test_remove_duplicates_of_list_with_2_identical_elements(self):
         expected_head = self._doubly_linkedList._head
-        expected_tail = self._doubly_linkedList._head.nextNode
+        expected_tail = self._doubly_linkedList._head.next_node
         
         self._doubly_linkedList.remove_duplicates()
         expected_length = 2

@@ -9,16 +9,16 @@ class Queue(object):
     def __init__(self):
         self._list = []
     
-    def enqueue(self, element):
-        self._list.append(element)
+    def enqueue(self, item):
+        self._list.append(item)
     
     def dequeue(self):
         if len(self._list) == 0:
             return None
             
-        element = self._list[0]
+        item = self._list[0]
         del self._list[0]
-        return element
+        return item
     
     def __len__(self):
         return len(self._list)
@@ -28,13 +28,9 @@ class Queue(object):
         return len(self._list)
     
     def __iter__(self):
-        return self
-    
-    def next(self):
-        if len(self._list) != 0:
-            return self.dequeue()
-        raise StopIteration
-    
+        while len(self._list) != 0:
+            yield self.dequeue()
+
     @property
     def front(self):
         if len(self._list) == 0:

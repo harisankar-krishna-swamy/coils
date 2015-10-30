@@ -13,8 +13,14 @@ class KeyValuePair:# Save space in key value pair by using slots for all client 
         self.value = value
             
     def __eq__(self, other_kv_pair):
+        if other_kv_pair is None:
+            return False
+        
         return self.key == other_kv_pair.key 
+    
     def __lt__(self, other_kv_pair):
+        if other_kv_pair is None:
+            return False
         return self.key < other_kv_pair.key
     
     def __str__(self):

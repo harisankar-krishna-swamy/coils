@@ -11,6 +11,10 @@ Contents:
 ---------
 This repo contains Hari's implementations of data structures in Python.
 
+Newly added:
+-----------
+InternStore
+
 Current implementation for:
 ---------------------------
 Stack using python list
@@ -23,6 +27,7 @@ DoublyLinkedList
 SeperateChainHashTable (3 types of chaining using LinkedList, SplayTree, BinarySearchTree) 
 DisjointSetWithUnion (uses uptree nodes and path compression)
 PriorityQueues
+InternStore
 
 Features to Implement:
 ----------------------
@@ -30,7 +35,6 @@ Features to Implement:
 1) Thread Safety *
 2) Heap using linked tree ****
 3) Graphs *
-4) An intern store *
 
 TESTING
 =======

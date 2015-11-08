@@ -22,8 +22,8 @@ class InternStore(object):
         with hash = hash(obj) then that instance is returned. If no entry is found a weak 
         reference to obj is created and stored.
         '''
-        if obj == null:
-            return null
+        if obj == None:
+            return None
         
         class_of_obj = type(obj)
         map_of_class_to_weak_refs_of_obj = self._store.get(class_of_obj, default = None)
@@ -33,9 +33,11 @@ class InternStore(object):
         
         weak_ref_to_obj = map_of_class_to_weak_refs_of_obj.get(obj, default = None)
         strong_ref_obj = None 
-        if weak_ref_to_obj is not None :
-            strong_ref_obj = weak_ref_to_obj()
-        if strong_ref_obj is None:
-            map_of_class_to_weak_refs_of_obj[obj] = weakref.ref(obj)
         
-        return strong_ref_obj
+        if weak_ref_to_obj is not None:
+            strong_ref_obj = weak_ref_to_obj
+            return strong_ref_obj
+        else:
+            map_of_class_to_weak_refs_of_obj[obj] = obj 
+            strong_ref_obj = obj
+            return strong_ref_obj

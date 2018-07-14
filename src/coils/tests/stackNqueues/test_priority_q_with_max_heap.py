@@ -106,13 +106,13 @@ class Priority_Q_Max_Heap_Test_Add_Get_Multiple_Entries(unittest.TestCase):
     def setUp(self):
         self._item_priority_entries = []
         
-        for letter in string.uppercase:#build letter, ord(letter) tuples
+        for letter in string.ascii_uppercase:#build letter, ord(letter) tuples
             self._item_priority_entries.append((letter, ord(letter)))
              
         self._priorityQ = PriorityQueue()
         
         self._expected_order_of_items_from_get = []
-        for letter in reversed(string.uppercase):#build Z, Y, X, .....C, B , A because this is a max heap.
+        for letter in reversed(string.ascii_uppercase):#build Z, Y, X, .....C, B , A because this is a max heap.
             self._expected_order_of_items_from_get.append(letter)
         
     def test_add_get_multiple_entries(self):
@@ -132,13 +132,13 @@ class Priority_Q_Max_Heap_Test_Iteration_With_Multiple_Entries(unittest.TestCase
     def setUp(self):
         self._item_priority_entries = []
         
-        for letter in string.uppercase:#build letter, ord(letter) tuples
+        for letter in string.ascii_uppercase:#build letter, ord(letter) tuples
             self._item_priority_entries.append((letter, ord(letter)))
              
         self._priorityQ = PriorityQueue()
         
         self._expected_item_priority_pairs = []
-        for letter in reversed(string.uppercase):
+        for letter in reversed(string.ascii_uppercase):
             self._expected_item_priority_pairs.append((letter, ord(letter)) )
         
     def test_iteration_with_multiple_entries(self):

@@ -11,7 +11,7 @@ class PriorityQ_Element_Test_Init(unittest.TestCase):
         unittest.TestCase.setUp(self)
         
     def test_priority_q_init(self):
-        self.assertRaises(excClass = ValueError, callableObj = lambda: PriorityQueueEntry(item = None, priority = None))
+        self.assertRaises(ValueError, callableObj = lambda: PriorityQueueEntry(item = None, priority = None))
         
     def tearDown(self):
         unittest.TestCase.tearDown(self)
@@ -21,8 +21,8 @@ class PriorityQ_Element_Test_Properties_With_None(unittest.TestCase):
         pass 
         
     def test_priority_q_properties_with_none(self):
-        self.assertRaises(excClass = ValueError, callableObj = lambda: PriorityQueueEntry(item = None, priority = 'Some Priority'))
-        self.assertRaises(excClass = ValueError, callableObj = lambda: PriorityQueueEntry(item = 'Some Item', priority = None))
+        self.assertRaises(ValueError, callableObj = lambda: PriorityQueueEntry(item = None, priority = 'Some Priority'))
+        self.assertRaises(ValueError, callableObj = lambda: PriorityQueueEntry(item = 'Some Item', priority = None))
         
     def tearDown(self):
         self._priority_q_entry = None

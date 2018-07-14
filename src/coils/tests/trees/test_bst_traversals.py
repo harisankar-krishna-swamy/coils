@@ -2,6 +2,7 @@
 Created on Oct 19, 2015
 @author: hari
 '''
+from __future__ import print_function
 from unittest import TestCase
 from coils.trees.bst import BinarySearchTree        
 import unittest
@@ -264,5 +265,5 @@ class BST_Test_Inorder_Traversal_with_Stack_on_10_Node_Tree(TestCase):
                           
 #Allows running as python run.
 if __name__ == '__main__':
-    print 'BST Traversal test'
+    print('BST Traversal test')
     unittest.main()

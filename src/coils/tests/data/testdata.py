@@ -3,6 +3,7 @@ Created on Nov 8, 2015
 
 @author: hari
 '''
+from builtins import object
 from functools import total_ordering
 
 class WrappedString(object):

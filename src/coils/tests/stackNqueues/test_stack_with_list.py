@@ -2,6 +2,7 @@
 Created on Aug 14, 2015
 @author: topcat
 '''
+from __future__ import print_function
 import unittest
 from coils.stackNqueues.stack import Stack
 
@@ -110,5 +111,5 @@ class Test_Iterator_With_Stack_Of_4_Elements(unittest.TestCase):
         del self._stack
 #Allows running as python run.
 if __name__ == '__main__':
-    print 'stack Tests'
+    print('stack Tests')
     unittest.main()

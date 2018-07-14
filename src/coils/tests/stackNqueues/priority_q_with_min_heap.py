@@ -2,6 +2,8 @@
 Created on Oct 29, 2015
 @author: hari
 '''
+from __future__ import print_function
+from builtins import range
 import unittest
 from coils.stackNqueues.priorityqueue import PriorityQueue
 import string
@@ -153,5 +155,5 @@ class Priority_Q_Min_Heap_Test_Iteration_With_Multiple_Entries(unittest.TestCase
         self._priorityQ = None
 
 if __name__ == '__main__':
-    print 'Priority Q with Min Heap tests'
+    print('Priority Q with Min Heap tests')
     unittest.main()

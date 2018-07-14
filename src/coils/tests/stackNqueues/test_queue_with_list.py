@@ -2,6 +2,8 @@
 Created on Aug 14, 2015
 @author: topcat
 '''
+from __future__ import print_function
+from builtins import range
 import unittest
 from coils.stackNqueues.queue import Queue
 
@@ -95,5 +97,5 @@ class Test_Iterator_Of_Predictable_Queue_With_4_Elements(unittest.TestCase):
         del self._q
 #Allows running as python run.
 if __name__ == '__main__':
-    print 'queue tests'
+    print('queue tests')
     unittest.main()

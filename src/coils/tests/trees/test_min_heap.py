@@ -2,6 +2,10 @@
 Created on Aug 5, 2015
 @author: topcat
 '''
+from __future__ import print_function
+from __future__ import division
+from builtins import range
+from past.utils import old_div
 import unittest
 from coils.trees.heap import Heap
 from random import randint
@@ -12,7 +16,7 @@ def assert_min_heap_property(heap_list):
     """ 
     count = len(heap_list) - 1
     index = 1
-    limit = count / 2
+    limit = old_div(count, 2)
 
     while index <= limit:
         if heap_list[index] > heap_list[index *2]:
@@ -162,5 +166,5 @@ class MinHeap_TestCase_Iterator_Element(unittest.TestCase):
         unittest.TestCase.tearDown(self) 
 
 if __name__ == '__main__':
-    print 'heap tests'
+    print('heap tests')
     unittest.main()

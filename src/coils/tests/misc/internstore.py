@@ -2,6 +2,8 @@
 Created on Nov 8, 2015
 @author: hari
 '''
+from __future__ import print_function
+from builtins import range
 import unittest
 import gc
 from coils.misc.internstore import InternStore
@@ -92,5 +94,5 @@ class Internstore_Test_With_Many_Equal_Objects(unittest.TestCase):
 
 
 if __name__ == '__main__':
-    print 'Interstore tests'
+    print('Interstore tests')
     unittest.main()

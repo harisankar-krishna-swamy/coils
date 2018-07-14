@@ -2,6 +2,8 @@
 Created on Oct 24, 2015
 @author: hari
 '''
+from __future__ import print_function
+from builtins import range
 import unittest
 from coils.lists.doubly_linked_list import DoublyLinkedList
 from random import randint
@@ -565,5 +567,5 @@ class DoublyLinkedList_Test_get_item_With_multiple_Elements(unittest.TestCase):
         self._doubly_linkedList = None
 #Allows running as python run.
 if __name__ == '__main__':
-    print 'Doubly Linked List tests'
+    print('Doubly Linked List tests')
     unittest.main()

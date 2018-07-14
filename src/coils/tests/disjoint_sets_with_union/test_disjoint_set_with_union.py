@@ -3,6 +3,8 @@ Created on Oct 28, 2015
 
 @author: hari
 '''
+from __future__ import print_function
+from builtins import range
 import unittest
 from coils.sets.disjoint_sets_with_union import DisjointSetWithUnion
 
@@ -227,5 +229,5 @@ class DisjointSet_Test_Iter_After_Union_Towards_Multiple_Final_Sets(unittest.Tes
         self._disjointset = None
         
 if __name__ == '__main__':
-    print 'Disjoint sets with union tests'
+    print('Disjoint sets with union tests')
     unittest.main()

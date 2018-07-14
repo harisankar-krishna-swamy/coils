@@ -3,6 +3,7 @@ Created on Oct 23, 2015
 @author: hari
 '''
 #TESTS FOR SeperateChainHashTable with BSTHashBucket 
+from builtins import range
 import unittest
 from coils.hashtables.HashTables import SeperateChainHashTable
 from coils.hashtables.hashbuckets import BSTHashBucket

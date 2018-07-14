@@ -2,6 +2,7 @@
 Created on Oct 19, 2015
 @author: hari
 '''
+from __future__ import print_function
 import unittest
 from coils.trees.splaytree import SplayTree
 #        
@@ -263,5 +264,5 @@ class Splay_Tree__Test_Inorder_Traversal_with_Stack_on_10_Node_Tree(unittest.Tes
         self._splaytree = None
 if __name__ == '__main__':
     #splay tree traversal
-    print 'SplayTree traversal tests'
+    print('SplayTree traversal tests')
     unittest.main()

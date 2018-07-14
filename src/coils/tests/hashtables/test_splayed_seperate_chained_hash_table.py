@@ -4,6 +4,7 @@ Created on Oct 23, 2015
 '''
 
 #TESTS FOR SeperateChainHashTable with SplayedHashBucket 
+from builtins import range
 import unittest
 from coils.hashtables.HashTables import SeperateChainHashTable
 from coils.hashtables.hashbuckets import SplayedHashBucket

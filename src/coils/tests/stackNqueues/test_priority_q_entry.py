@@ -2,6 +2,7 @@
 Created on Oct 29, 2015
 @author: hari
 '''
+from __future__ import print_function
 import unittest
 from coils.stackNqueues.priorityqueue import PriorityQueueEntry
 
@@ -78,5 +79,5 @@ class PriorityQ_Element_Test_Greater_Than_And_Less_Than_Compare_of_Two_Entries(u
         self._priority_q_entry = None
         
 if __name__ == '__main__':
-    print 'Priority Q entry tests'
+    print('Priority Q entry tests')
     unittest.main()

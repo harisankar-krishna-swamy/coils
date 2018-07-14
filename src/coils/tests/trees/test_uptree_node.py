@@ -2,6 +2,7 @@
 Created on Oct 28, 2015
 @author: hari
 '''
+from __future__ import print_function
 import unittest
 from coils.trees.uptree import UpTreeNode
 
@@ -31,5 +32,5 @@ class UpTreeNode_Test_Attributes_With_Predefined_Values(unittest.TestCase):
         self._uptree_node = None
 
 if __name__ == '__main__':
-    print 'UpTreeNode tests'
+    print('UpTreeNode tests')
     unittest.main()

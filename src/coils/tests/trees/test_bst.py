@@ -2,6 +2,8 @@
 Created on Oct 17, 2015
 @author: hari
 '''
+from __future__ import print_function
+from builtins import range
 from unittest import TestCase
 from coils.trees.bst import BinarySearchTree
 import unittest
@@ -171,7 +173,7 @@ class BST_Test_Has_Key_with_Empty_Tree(TestCase):
         self._bst = BinarySearchTree()
     
     def test_has_key_empty_tree(self):
-        self.assertEquals(self._bst.has_key(20), False, 'Empty tree has_key operation must return False')
+        self.assertEquals(20 in self._bst, False, 'Empty tree has_key operation must return False')
     
     def tearDown(self):
         self._bst = None
@@ -182,7 +184,7 @@ class BST_Test_Has_Key_with_Single_Node_Tree(TestCase):
         self._bst.insert(key = 10, obj = 'Object value')
     
     def test_has_key_empty_tree(self):
-        self.assertEquals(self._bst.has_key(10), True, 'Tree has_key operation must return True for existing key')
+        self.assertEquals(10 in self._bst, True, 'Tree has_key operation must return True for existing key')
     
     def tearDown(self):
         self._bst = None
@@ -206,7 +208,7 @@ class BST_Test_Has_Key_With_10_Elements(TestCase):
     
     def test_has_key_with_10_node(self):
         for i in range(1, 11): # 1 to 10
-            self.assertEquals(self._bst.has_key(i), True, 'has_key operation must return True for existing key.')
+            self.assertEquals(i in self._bst, True, 'has_key operation must return True for existing key.')
     
     def tearDown(self):
         self._bst = None
@@ -267,7 +269,7 @@ class BST_Test_Replace_With_10_Elements_Existing_Key(TestCase):
         
         self._bst.replace(key_to_replace, value_to_set)
         
-        self.assertEquals(self._bst.has_key(key_to_replace), True, 'Tree has_key operation must return True for existing key')
+        self.assertEquals(key_to_replace in self._bst, True, 'Tree has_key operation must return True for existing key')
         self.assertEquals(self._bst.find(key_to_replace), value_to_set, 'Find operation failed on tree after replace')
         self.assertNotEquals(self._bst.find(key_to_replace), key_to_replace, 'replaced key still exists!')
         
@@ -276,5 +278,5 @@ class BST_Test_Replace_With_10_Elements_Existing_Key(TestCase):
 
 #Allows running as python run.
 if __name__ == '__main__':
-    print 'BST tests'
+    print('BST tests')
     unittest.main()

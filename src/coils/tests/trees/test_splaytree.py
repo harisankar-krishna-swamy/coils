@@ -2,6 +2,8 @@
 Created on Oct 19, 2015
 @author: hari
 '''
+from __future__ import print_function
+from builtins import range
 from coils.trees.splaytree import SplayTree
 import unittest
 
@@ -172,7 +174,7 @@ class Splay_Tree_Test_Has_Key_with_Empty_Tree(unittest.TestCase):
         self._splaytree = SplayTree()
     
     def test_has_key_empty_tree(self):
-        self.assertEquals(self._splaytree.has_key(20), False, 'Empty tree has_key operation must return False')
+        self.assertEquals(20 in self._splaytree, False, 'Empty tree has_key operation must return False')
     
     def tearDown(self):
         self._splaytree = None
@@ -183,7 +185,7 @@ class Splay_Tree_Test_Has_Key_with_Single_Node_Tree(unittest.TestCase):
         self._splaytree.insert(key = 10, obj = 'Object value')
     
     def test_has_key_empty_tree(self):
-        self.assertEquals(self._splaytree.has_key(10), True, 'Tree has_key operation must return True for existing key')
+        self.assertEquals(10 in self._splaytree, True, 'Tree has_key operation must return True for existing key')
     
     def tearDown(self):
         self._splaytree = None
@@ -207,7 +209,7 @@ class Splay_Tree_Test_Has_Key_With_10_Elements(unittest.TestCase):
     
     def test_has_key_with_10_node(self):
         for i in range(1, 11): # 1 to 10
-            self.assertEquals(self._splaytree.has_key(i), True, 'has_key operation must return True for existing key.')
+            self.assertEquals(i in self._splaytree, True, 'has_key operation must return True for existing key.')
     
     def tearDown(self):
         self._splaytree = None
@@ -300,5 +302,5 @@ class Splay_Tree_Test_Tree_Structure_After_Find_With_Inorder_Traversal(unittest.
 
 #Allows running as python run.
 if __name__ == '__main__':
-    print 'Splaytree tests'
+    print('Splaytree tests')
     unittest.main()

@@ -2,6 +2,7 @@
 Created on Oct 21, 2015
 @author: hari
 '''
+from builtins import range
 import unittest
 from coils.hashtables.hashbuckets import LinkedListHashBucket
 

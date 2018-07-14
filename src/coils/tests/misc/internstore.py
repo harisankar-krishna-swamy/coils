@@ -62,7 +62,7 @@ class Internstore_Test_With_2_Equal_Objects(unittest.TestCase):
         self.assertEqual(id_of_obj1_to_intern, id_of_interned_obj2, 'Interned object is not same as existing object id')
         #reference to the new object created will be lost as there is already a reference in the
         #store point to the same/equal object  
-        self.assertNotEquals(id_of_obj2_to_intern, id_of_interned_obj2, 'Copy of an interned object was returned instead of original value')
+        self.assertNotEqual(id_of_obj2_to_intern, id_of_interned_obj2, 'Copy of an interned object was returned instead of original value')
     
     def tearDown(self):
         pass

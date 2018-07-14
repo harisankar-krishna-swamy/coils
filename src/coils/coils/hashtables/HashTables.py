@@ -6,6 +6,8 @@ the key and get a bucket number B. This is just an index to a table. A bucket ca
 or any other ds you like. A Bucket, which is masquerading as a python dict, holds multiple objects which 
 happened to have keys k1 and k2 that mapped into the same bucket B. (collision)    
 '''
+from __future__ import division
+from past.utils import old_div
 from random import randrange
 import collections
 from coils.hashtables.hashbuckets import LinkedListHashBucket
@@ -77,7 +79,7 @@ class SeperateChainHashTable(collections.MutableMapping):
     def __setitem__(self, key, obj):
         bucket_index = self._find_bucket_for_key(key)
         self._set_item_in_bucket(bucket_index, key, obj)
-        if self._hash_table_items_count / float(len(self._table)) >= self._load_factor_limit:
+        if old_div(self._hash_table_items_count, float(len(self._table))) >= self._load_factor_limit:
             self._resize(self._table_max_size * 2)
              
     def __iter__(self):

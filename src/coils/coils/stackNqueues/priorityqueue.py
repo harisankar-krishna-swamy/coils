@@ -2,6 +2,7 @@
 Created on Oct 29, 2015
 @author: hari
 '''
+from builtins import object
 from coils.trees.heap import Heap
 from functools import total_ordering
 

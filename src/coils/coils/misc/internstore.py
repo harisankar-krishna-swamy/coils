@@ -2,6 +2,7 @@
 Created on Nov 6, 2015
 @author: hari
 '''
+from builtins import object
 from coils.hashtables.HashTables import SeperateChainHashTable
 import weakref
 

@@ -2,6 +2,8 @@
 Created on Aug 15, 2015
 @author: hari
 '''
+from builtins import str
+from builtins import object
 from coils.common import KeyValuePair
 from coils.stackNqueues.stack import Stack
 

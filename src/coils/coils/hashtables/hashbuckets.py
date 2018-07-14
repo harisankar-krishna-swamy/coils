@@ -94,13 +94,13 @@ class BSTHashBucket(collections.MutableMapping):
         return value
         
     def __delitem__(self, key):
-        if self._bst.has_key(key):
+        if key in self._bst:
             self._bst.remove(key)
         else:
             raise KeyError('Key Error: %s ' % repr(key))
         
     def __setitem__(self, key, obj):
-        if self._bst.has_key(key):
+        if key in self._bst:
             self._bst.replace(key, obj)
         else:
             self._bst.insert(key, obj)
@@ -141,13 +141,13 @@ class SplayedHashBucket(collections.MutableMapping):
         return value
         
     def __delitem__(self, key):
-        if self._st.has_key(key):
+        if key in self._st:
             self._st.remove(key)
         else:
             raise KeyError('Key Error: %s ' % repr(key))
         
     def __setitem__(self, key, obj):
-        if self._st.has_key(key):
+        if key in self._st:
             self._st.replace(key, obj)
         else:
             self._st.insert(key, obj)

@@ -2,6 +2,7 @@
 Created on Aug 14, 2015
 @author: topcat
 '''
+from builtins import object
 class Stack(object):
     """
     A stack implementation in Python. Uses Python list to hold stack items.
@@ -37,7 +38,7 @@ class Stack(object):
     def __iter__(self):
         return self
     
-    def next(self):
+    def __next__(self):
         stack_item = self.pop()
         if stack_item == None:
             raise StopIteration

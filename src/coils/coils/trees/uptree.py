@@ -2,6 +2,7 @@
 Created on Oct 28, 2015
 @author: hari
 '''
+from builtins import object
 from coils.hashtables.HashTables import SeperateChainHashTable
 from coils.hashtables.hashbuckets import SplayedHashBucket
 

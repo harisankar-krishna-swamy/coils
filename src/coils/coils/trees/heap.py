@@ -2,6 +2,10 @@
 Created on Aug 5, 2015
 @author: topcat
 '''
+from __future__ import division
+from builtins import str
+from builtins import object
+from past.utils import old_div
 class Heap(object):
     """
     Implements heap class in python. Heap holds an array(Python list) so that for index i, 2*i is left child and 2*i+1 is right child 
@@ -79,15 +83,15 @@ class Heap(object):
         I = N
         parent = None
         while (I > 1):
-            parent = self._heapList[I/2]
+            parent = self._heapList[old_div(I,2)]
             if self._heapList[I] < parent: # less than parent? make it the parent
-                self._heapList[I/2] = self._heapList[I]
+                self._heapList[old_div(I,2)] = self._heapList[I]
                 self._heapList[I] = parent
             else:
                 # we reach a situation where the item is at I is not less than the parent. Break.
                 break
             #Continue moving up the heap tree
-            I = I / 2
+            I = old_div(I, 2)
         #while
                 
     def _sift_down_min_heap(self):
@@ -117,15 +121,15 @@ class Heap(object):
         I = N
         parent = None
         while (I > 1):
-            parent = self._heapList[I/2]
+            parent = self._heapList[old_div(I,2)]
             if self._heapList[I] > parent: # less than parent? make it the parent
-                self._heapList[I/2] = self._heapList[I]
+                self._heapList[old_div(I,2)] = self._heapList[I]
                 self._heapList[I] = parent
             else:
                 # we reach a situation where the item is not less than the parent. Break.
                 break
             #Continue moving up the heap tree
-            I = I / 2
+            I = old_div(I, 2)
         #while
                 
     def _sift_down_max_heap(self):

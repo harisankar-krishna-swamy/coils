@@ -2,6 +2,7 @@
 Created on Aug 14, 2015
 @author: hari
 '''
+from builtins import object
 class Queue(object):
     """
     Implementation of queue in Python using list.

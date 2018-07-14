@@ -2,6 +2,8 @@
 Created on Aug 12, 2015
 @author: hari
 '''
+from builtins import str
+from builtins import object
 import collections
 class LinkedNode(object):
     """

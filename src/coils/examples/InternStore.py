@@ -2,6 +2,8 @@
 Created on Nov 8, 2015
 @author: hari
 '''
+from __future__ import print_function
+from builtins import object
 from functools import total_ordering
 from coils.misc.internstore import InternStore
 
@@ -38,12 +40,12 @@ if __name__ == '__main__':
     intern_store.intern(obj = US)
     intern_store.intern(obj = IN)
     
-    print 'Id of original US object is %d' % id(US)
+    print('Id of original US object is %d' % id(US))
     
     duplicate_country_US = Country(country_name = 'US')
-    print 'id of duplicate US object is %d' % id(duplicate_country_US)
-    print 'Interning this new object'
+    print('id of duplicate US object is %d' % id(duplicate_country_US))
+    print('Interning this new object')
     duplicate_country_US = intern_store.intern(obj = duplicate_country_US)
-    print 'After interning we get the original object with id %d' % id(duplicate_country_US)
+    print('After interning we get the original object with id %d' % id(duplicate_country_US))
      
-    print 'We might as well do this country = intern_store.intern(Country(name=\'US\'))'
+    print('We might as well do this country = intern_store.intern(Country(name=\'US\'))')

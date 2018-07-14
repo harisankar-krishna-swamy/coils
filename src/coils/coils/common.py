@@ -2,10 +2,12 @@
 Created on Oct 21, 2015
 @author: hari
 '''
+from builtins import str
+from builtins import object
 from functools import total_ordering
 
 @total_ordering
-class KeyValuePair:# Save space in key value pair by using slots for all client programs using this?! 
+class KeyValuePair(object):# Save space in key value pair by using slots for all client programs using this?! 
     __slots__ = 'key', 'value'# python created descriptors for the slots
 
     def __init__(self, key = None, value = None):

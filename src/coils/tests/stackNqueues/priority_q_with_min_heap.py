@@ -13,7 +13,7 @@ class Priority_Q_Min_Heap_Test_Empty_Q_Length(unittest.TestCase):
         self._priorityQ = PriorityQueue(reverse_priority = True)
     
     def test_priority_q_length(self):
-        self.assertEquals(len(self._priorityQ), 0, 'Empty priority Q length must be 0')
+        self.assertEqual(len(self._priorityQ), 0, 'Empty priority Q length must be 0')
     
     def tearDown(self):
         self._priorityQ = None
@@ -27,7 +27,7 @@ class Priority_Q_Min_Heap_Test_Empty_Q_Iteration(unittest.TestCase):
         for item, priority in self._priorityQ:
             list_of_q_entries.append((item, priority))
             
-        self.assertEquals(len(list_of_q_entries), 0, 'Empty priority Q iteration cannot yield anything')
+        self.assertEqual(len(list_of_q_entries), 0, 'Empty priority Q iteration cannot yield anything')
 
     def tearDown(self):
         self._priorityQ = None
@@ -41,7 +41,7 @@ class Priority_Q_Min_Heap_Test_Q_Iteration(unittest.TestCase):
         for item, priority in self._priorityQ:
             list_of_q_entries.append((item, priority))
             
-        self.assertEquals(len(list_of_q_entries), 0, 'Empty priority Q iteration cannot yield anything')
+        self.assertEqual(len(list_of_q_entries), 0, 'Empty priority Q iteration cannot yield anything')
 
     def tearDown(self):
         self._priorityQ = None
@@ -51,7 +51,7 @@ class Priority_Q_Min_Heap_Test_Get_With_Empty_Q(unittest.TestCase):
         self._priorityQ = PriorityQueue(reverse_priority = True)
         
     def test_priority_q_test_add_element(self):
-        self.assertEquals(self._priorityQ.get(), None, 'Empty Q must return None on get op')
+        self.assertEqual(self._priorityQ.get(), None, 'Empty Q must return None on get op')
     
     def tearDown(self):
         self._priorityQ = None
@@ -64,7 +64,7 @@ class Priority_Q_Min_Heap_Test_Q_Add(unittest.TestCase):
         
     def test_priority_q_test_add_element(self):
         self._priorityQ.add_item(self._item, self._priority)
-        self.assertEquals(len(self._priorityQ), 1, 'Priority Q length must be 1')
+        self.assertEqual(len(self._priorityQ), 1, 'Priority Q length must be 1')
     
     def tearDown(self):
         self._priorityQ = None
@@ -78,7 +78,7 @@ class Priority_Q_Min_Heap_Test_Q_Add_And_Get_With_Single_Entry(unittest.TestCase
     def test_priority_q_test_add__and_get(self):
         self._priorityQ.add_item(self._item, self._priority)
         item = self._priorityQ.get()
-        self.assertEquals(item, self._item, 'Get op on priority Q did not yield expected item')
+        self.assertEqual(item, self._item, 'Get op on priority Q did not yield expected item')
     
     def tearDown(self):
         self._priorityQ = None
@@ -97,7 +97,7 @@ class Priority_Q_Min_Heap_Test_Q_Iter_With_Single_Entry(unittest.TestCase):
         for item, priority in self._priorityQ:
             list_of_q_entries.append((item, priority))
         
-        self.assertEquals(list_of_q_entries, expected_list_of_entries, 'Priority Q iteration did not yield expected entries')
+        self.assertEqual(list_of_q_entries, expected_list_of_entries, 'Priority Q iteration did not yield expected entries')
         
     def tearDown(self):
         self._priorityQ = None
@@ -123,7 +123,7 @@ class Priority_Q_Min_Heap_Test_Add_Get_Multiple_Entries(unittest.TestCase):
         for i in range(len(self._item_priority_entries)):#get this many items from the Q
             items_from_q.append(self._priorityQ.get())
             
-        self.assertEquals(items_from_q, self._expected_order_of_items_from_get, 'Items from priority Q did not match expected list.')
+        self.assertEqual(items_from_q, self._expected_order_of_items_from_get, 'Items from priority Q did not match expected list.')
     def tearDown(self):
         self._priorityQ = None
 
@@ -149,7 +149,7 @@ class Priority_Q_Min_Heap_Test_Iteration_With_Multiple_Entries(unittest.TestCase
         for item, priority in self._priorityQ:
             items_and_priorities_pairs_from_q.append((item, priority))
         
-        self.assertEquals(items_and_priorities_pairs_from_q, self._expected_item_priority_pairs, 'Iteration on priority Q did not yield expected (item, priority) list')
+        self.assertEqual(items_and_priorities_pairs_from_q, self._expected_item_priority_pairs, 'Iteration on priority Q did not yield expected (item, priority) list')
         
     def tearDown(self):
         self._priorityQ = None

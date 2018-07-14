@@ -17,7 +17,7 @@ class BST_Test_Preorder_Traversal_with_empty_Tree(TestCase):
         pre_order_elements = []
         for key, element in self._bst.traversal(want_pre_order = True, want_in_order = False, want_post_order = False):
             pre_order_elements.append(element)
-        self.assertEquals(0, len(pre_order_elements), 'Pre order traversal on empty tree must yield no elements')
+        self.assertEqual(0, len(pre_order_elements), 'Pre order traversal on empty tree must yield no elements')
     
     def tearDown(self):
         self._bst = None
@@ -32,8 +32,8 @@ class BST_Test_Preorder_Traversal_with_Single_Node_Tree(TestCase):
         pre_order_elements = []
         for key, element in self._bst.traversal(want_pre_order = True, want_in_order = False, want_post_order = False):
             pre_order_elements.append(element)
-        self.assertEquals(1, len(pre_order_elements), 'Pre order traversal on single node tree must yield no elements')
-        self.assertEquals(pre_order_elements, [10], 'Pre order traversal did not yield expected elements in order')
+        self.assertEqual(1, len(pre_order_elements), 'Pre order traversal on single node tree must yield no elements')
+        self.assertEqual(pre_order_elements, [10], 'Pre order traversal did not yield expected elements in order')
     
     def tearDown(self):
         self._bst = None
@@ -56,8 +56,8 @@ class BST_Test_Preorder_Traversal_with_10_Node_Tree(TestCase):
         pre_order_elements = []
         for key, element in self._bst.traversal(want_pre_order = True, want_in_order = False, want_post_order = False):
             pre_order_elements.append(element)
-        self.assertEquals(10, len(pre_order_elements), 'Pre order traversal on 10 node tree must yield 10 elements')
-        self.assertEquals(pre_order_elements, [5, 2, 1, 3, 4, 8, 7, 6, 9, 10], 'Pre order traversal did not yield expected elements in order')
+        self.assertEqual(10, len(pre_order_elements), 'Pre order traversal on 10 node tree must yield 10 elements')
+        self.assertEqual(pre_order_elements, [5, 2, 1, 3, 4, 8, 7, 6, 9, 10], 'Pre order traversal did not yield expected elements in order')
     
     def tearDown(self):
         self._bst = None        
@@ -73,7 +73,7 @@ class BST_Test_Postorder_Traversal_with_empty_Tree(TestCase):
         post_order_elements = []
         for key, element in self._bst.traversal(want_pre_order = False, want_in_order = False, want_post_order = True):
             post_order_elements.append(element)
-        self.assertEquals(0, len(post_order_elements), 'Post order traversal on empty tree must yield no elements')
+        self.assertEqual(0, len(post_order_elements), 'Post order traversal on empty tree must yield no elements')
     
     def tearDown(self):
         self._bst = None
@@ -87,8 +87,8 @@ class BST_Test_Postorder_Traversal_with_Single_Node_Tree(TestCase):
         post_order_elements = []
         for key, element in self._bst.traversal(want_pre_order = False, want_in_order = False, want_post_order = True):
             post_order_elements.append(element)
-        self.assertEquals(1, len(post_order_elements), 'Post order traversal on single node tree must yield one elements')
-        self.assertEquals(post_order_elements, [10], 'Post order traversal did not yield expected elements in order')
+        self.assertEqual(1, len(post_order_elements), 'Post order traversal on single node tree must yield one elements')
+        self.assertEqual(post_order_elements, [10], 'Post order traversal did not yield expected elements in order')
     
     def tearDown(self):
         self._bst = None
@@ -111,8 +111,8 @@ class BST_Test_Postorder_Traversal_with_10_Node_Tree(TestCase):
         post_order_elements = []
         for key, element in self._bst.traversal(want_pre_order = False, want_in_order = False, want_post_order = True):
             post_order_elements.append(element)
-        self.assertEquals(10, len(post_order_elements), 'Post order traversal on 10 node tree must yield 10 elements')
-        self.assertEquals(post_order_elements, [1, 4, 3, 2, 6, 7, 10, 9, 8, 5], 'Post order traversal did not yield expected elements in order')
+        self.assertEqual(10, len(post_order_elements), 'Post order traversal on 10 node tree must yield 10 elements')
+        self.assertEqual(post_order_elements, [1, 4, 3, 2, 6, 7, 10, 9, 8, 5], 'Post order traversal did not yield expected elements in order')
     
     def tearDown(self):
         self._bst = None
@@ -127,7 +127,7 @@ class BST_Test_Inorder_Traversal_with_empty_Tree(TestCase):
         in_order_elements = []
         for key, element in self._bst.traversal(want_pre_order = False, want_in_order = True, want_post_order = False):
             in_order_elements.append(element)
-        self.assertEquals(0, len(in_order_elements), 'In order traversal on empty tree must yield no elements')
+        self.assertEqual(0, len(in_order_elements), 'In order traversal on empty tree must yield no elements')
     
     def tearDown(self):
         self._bst = None
@@ -141,8 +141,8 @@ class BST_Test_Inorder_Traversal_with_Single_Node_Tree(TestCase):
         in_order_elements = []
         for key, element in self._bst.traversal(want_pre_order = False, want_in_order = True, want_post_order = False):
             in_order_elements.append(element)
-        self.assertEquals(1, len(in_order_elements), 'In order traversal on single node tree must yield one elements')
-        self.assertEquals(in_order_elements, [10], 'In order traversal did not yield expected elements in order')
+        self.assertEqual(1, len(in_order_elements), 'In order traversal on single node tree must yield one elements')
+        self.assertEqual(in_order_elements, [10], 'In order traversal did not yield expected elements in order')
     
     def tearDown(self):
         self._bst = None
@@ -165,8 +165,8 @@ class BST_Test_Inorder_Traversal_with_10_Node_Tree(TestCase):
         in_order_elements = []
         for key, element in self._bst.traversal(want_pre_order = False, want_in_order = True, want_post_order = False):
             in_order_elements.append(element)
-        self.assertEquals(10, len(in_order_elements), 'In order traversal on 10 node tree must yield 10 elements')
-        self.assertEquals(in_order_elements, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 'In order traversal did not yield expected elements in order')
+        self.assertEqual(10, len(in_order_elements), 'In order traversal on 10 node tree must yield 10 elements')
+        self.assertEqual(in_order_elements, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 'In order traversal did not yield expected elements in order')
     
     def tearDown(self):
         self._bst = None
@@ -190,21 +190,21 @@ class BST_Test_All_Traversals_Consecutively_For_Tree_Integirty_With_10_Node_Tree
         in_order_elements = []
         for key, element in self._bst.traversal(want_pre_order = False, want_in_order = True, want_post_order = False):
             in_order_elements.append(element)
-        self.assertEquals(10, len(in_order_elements), 'In order traversal on 10 node tree must yield 10 elements')
-        self.assertEquals(in_order_elements, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 'In order traversal did not yield expected elements in order')
+        self.assertEqual(10, len(in_order_elements), 'In order traversal on 10 node tree must yield 10 elements')
+        self.assertEqual(in_order_elements, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 'In order traversal did not yield expected elements in order')
         
         #postorder
         post_order_elements = []
         for key, element in self._bst.traversal(want_pre_order = False, want_in_order = False, want_post_order = True):
             post_order_elements.append(element)
-        self.assertEquals(10, len(post_order_elements), 'Post order traversal on 10 node tree must yield 10 elements')
-        self.assertEquals(post_order_elements, [1, 4, 3, 2, 6, 7, 10, 9, 8, 5], 'Post order traversal did not yield expected elements in order')
+        self.assertEqual(10, len(post_order_elements), 'Post order traversal on 10 node tree must yield 10 elements')
+        self.assertEqual(post_order_elements, [1, 4, 3, 2, 6, 7, 10, 9, 8, 5], 'Post order traversal did not yield expected elements in order')
     
         pre_order_elements = []
         for key, element in self._bst.traversal(want_pre_order = True, want_in_order = False, want_post_order = False):
             pre_order_elements.append(element)
-        self.assertEquals(10, len(pre_order_elements), 'Pre order traversal on 10 node tree must yield 10 elements')
-        self.assertEquals(pre_order_elements, [5, 2, 1, 3, 4, 8, 7, 6, 9, 10], 'Pre order traversal did not yield expected elements in order')
+        self.assertEqual(10, len(pre_order_elements), 'Pre order traversal on 10 node tree must yield 10 elements')
+        self.assertEqual(pre_order_elements, [5, 2, 1, 3, 4, 8, 7, 6, 9, 10], 'Pre order traversal did not yield expected elements in order')
     
     def tearDown(self):
         self._bst = None
@@ -219,7 +219,7 @@ class BST_Test_Inorder_Traversal_Using_Stack_with_empty_Tree(TestCase):
         in_order_elements = []
         for key, element in self._bst.inorder_traversal_with_stack():
             in_order_elements.append(element)
-        self.assertEquals(0, len(in_order_elements), 'In order traversal on empty tree must yield no elements')
+        self.assertEqual(0, len(in_order_elements), 'In order traversal on empty tree must yield no elements')
     
     def tearDown(self):
         self._bst = None
@@ -233,8 +233,8 @@ class BST_Test_Inorder_Traversal_with_Stack_On_Single_Node_Tree(TestCase):
         in_order_elements = []
         for key, element in self._bst.inorder_traversal_with_stack():
             in_order_elements.append(element)
-        self.assertEquals(1, len(in_order_elements), 'In order traversal on single node tree must yield one elements')
-        self.assertEquals(in_order_elements, [10], 'In order traversal did not yield expected elements in order')
+        self.assertEqual(1, len(in_order_elements), 'In order traversal on single node tree must yield one elements')
+        self.assertEqual(in_order_elements, [10], 'In order traversal did not yield expected elements in order')
     
     def tearDown(self):
         self._bst = None
@@ -257,8 +257,8 @@ class BST_Test_Inorder_Traversal_with_Stack_on_10_Node_Tree(TestCase):
         in_order_elements = []
         for key, element in self._bst.inorder_traversal_with_stack():
             in_order_elements.append(element)
-        self.assertEquals(10, len(in_order_elements), 'In order traversal on 10 node tree must yield 10 elements')
-        self.assertEquals(in_order_elements, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 'In order traversal did not yield expected elements in order')
+        self.assertEqual(10, len(in_order_elements), 'In order traversal on 10 node tree must yield 10 elements')
+        self.assertEqual(in_order_elements, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 'In order traversal did not yield expected elements in order')
     
     def tearDown(self):
         self._bst = None

@@ -159,7 +159,7 @@ class MaxHeap_TestCase_Iterator_Element(unittest.TestCase):
         # Iterate through the heap and make sure the elements are present
         list_index = 0
         for element in self._heap:
-            self.assertEquals(element, self._sortedListofElements[list_index], 'heap contents did not match up when iterating over a known list of elements.')
+            self.assertEqual(element, self._sortedListofElements[list_index], 'heap contents did not match up when iterating over a known list of elements.')
             list_index = list_index + 1
     
     def tearDown(self):

@@ -18,7 +18,7 @@ class SeperateChainHashTable_with_BSTHashBucket_Test_With_0_Elements(unittest.Te
     
     def test_get_empty_hash_table(self):
         non_existing_key = "SomeKey"
-        self.assertEquals(self._chained_hash_table.get(key = non_existing_key), None, 'get on Non existing key must return None')
+        self.assertEqual(self._chained_hash_table.get(key = non_existing_key), None, 'get on Non existing key must return None')
         self.assertRaises(KeyError, callableObj = lambda : self._chained_hash_table[non_existing_key])
     
     def test_del_empty_hash_table(self):
@@ -26,14 +26,14 @@ class SeperateChainHashTable_with_BSTHashBucket_Test_With_0_Elements(unittest.Te
         try:
             del self._chained_hash_table[non_existing_key]
         except Exception as e:
-            self.assertEquals(e.__class__.__name__, KeyError.__name__, 'deleting non-existing key did not raise key error')
+            self.assertEqual(e.__class__.__name__, KeyError.__name__, 'deleting non-existing key did not raise key error')
     
     def test_len_empty_hash_table(self):
-        self.assertEquals(len(self._chained_hash_table), 0, 'Empty hash table length must be 0')
+        self.assertEqual(len(self._chained_hash_table), 0, 'Empty hash table length must be 0')
     
     def test_has_key_empty_hash_table(self):
         non_existing_key = "SomeKey"
-        self.assertEquals(self._chained_hash_table.has_key(key = non_existing_key), 0, 'Empty hash table length must be 0')
+        self.assertEqual(self._chained_hash_table.has_key(key = non_existing_key), 0, 'Empty hash table length must be 0')
     
     def tearDown(self):
         self._chained_hash_table = None
@@ -47,17 +47,17 @@ class SeperateChainHashTable_with_BSTHashBucket_Test_With_1_Elements(unittest.Te
         self._chained_hash_table[self._key] = self._value
          
     def test_get_and_len_on_single_entry_hash_table(self):
-        self.assertEquals(self._chained_hash_table.get(key = self._key), self._value, 'get on existing key failed')
-        self.assertEquals(self._chained_hash_table[self._key], self._value, 'get on existing key failed')
+        self.assertEqual(self._chained_hash_table.get(key = self._key), self._value, 'get on existing key failed')
+        self.assertEqual(self._chained_hash_table[self._key], self._value, 'get on existing key failed')
     
-        self.assertEquals(len(self._chained_hash_table), 1, 'single entry hash table length must be 1')
+        self.assertEqual(len(self._chained_hash_table), 1, 'single entry hash table length must be 1')
         
     def test_del_single_entry_hash_table(self):
         del self._chained_hash_table[self._key]
         try:
             del self._chained_hash_table[self._key]
         except Exception as e:
-            self.assertEquals(e.__class__.__name__, KeyError.__name__, 'deleting non-existing key did not raise key error')
+            self.assertEqual(e.__class__.__name__, KeyError.__name__, 'deleting non-existing key did not raise key error')
     
     def tearDown(self):
         self._chained_hash_table = None
@@ -71,12 +71,12 @@ class SeperateChainHashTable_with_BSTHashBucket_Test_Capacity_On_Resize(unittest
              
     def test_capacity_on_resize(self):
         for i in list_of_strings_used_as_keys_and_values:
-            self.assertEquals(self._chained_hash_table.get(key = i), i, 'get on existing key failed')
-            self.assertEquals(self._chained_hash_table[i], i, 'get on existing key failed')
+            self.assertEqual(self._chained_hash_table.get(key = i), i, 'get on existing key failed')
+            self.assertEqual(self._chained_hash_table[i], i, 'get on existing key failed')
         #would have resized but number of items would be same
-        self.assertEquals(len(self._chained_hash_table), self._default_initial_capacity, 'hash table length does not add up')
+        self.assertEqual(len(self._chained_hash_table), self._default_initial_capacity, 'hash table length does not add up')
         #but table size would have doubled
-        self.assertEquals(self._chained_hash_table.current_capacity, self._default_initial_capacity * 2, 'hash table capacity does not add up')    
+        self.assertEqual(self._chained_hash_table.current_capacity, self._default_initial_capacity * 2, 'hash table capacity does not add up')
                 
     def tearDown(self):
         self._chained_hash_table = None
@@ -90,21 +90,21 @@ class SeperateChainHashTable_with_BSTHashBucket_Test_With_Full_Initial_Capacity_
              
     def test_get_and_len_on_full_initial_capacity_hash_table(self):
         for i in list_of_strings_used_as_keys_and_values:
-            self.assertEquals(self._chained_hash_table.get(key = i), i, 'get on existing key failed')
-            self.assertEquals(self._chained_hash_table[i], i, 'get on existing key failed')
+            self.assertEqual(self._chained_hash_table.get(key = i), i, 'get on existing key failed')
+            self.assertEqual(self._chained_hash_table[i], i, 'get on existing key failed')
         #would have resized but number of items would be same
-        self.assertEquals(len(self._chained_hash_table), self._default_initial_capacity, 'hash table length does not add up')
+        self.assertEqual(len(self._chained_hash_table), self._default_initial_capacity, 'hash table length does not add up')
         #but table size would have doubled
-        self.assertEquals(self._chained_hash_table.current_capacity, self._default_initial_capacity * 2, 'hash table capacity does not add up')    
+        self.assertEqual(self._chained_hash_table.current_capacity, self._default_initial_capacity * 2, 'hash table capacity does not add up')
         
     def test_del_then_get_and_len_on_full_initial_capacity_hash_table(self):
         rolling_capacity = len(self._chained_hash_table)
         for i in list_of_strings_used_as_keys_and_values:
             del self._chained_hash_table[i]
             rolling_capacity = rolling_capacity - 1
-            self.assertEquals(self._chained_hash_table.get(key = i), None, 'get on Non existing key must return None')
+            self.assertEqual(self._chained_hash_table.get(key = i), None, 'get on Non existing key must return None')
             self.assertRaises(KeyError, callableObj = lambda : self._chained_hash_table[i])
-            self.assertEquals(len(self._chained_hash_table), rolling_capacity, 'hash table length did not add up after delete')
+            self.assertEqual(len(self._chained_hash_table), rolling_capacity, 'hash table length did not add up after delete')
             
     def tearDown(self):
         self._chained_hash_table = None
@@ -121,19 +121,19 @@ class SeperateChainHashTable_with_BSTHashBucket_Test_With_Less_Than_Initial_Capa
              
     def test_get_and_len_on_less_than_initial_capacity_hash_table(self):
         for i in list_of_strings_used_as_keys_and_values[0:5]:
-            self.assertEquals(self._chained_hash_table.get(key = i), i, 'get on existing key failed')
-            self.assertEquals(self._chained_hash_table[i], i, 'get on existing key failed')
+            self.assertEqual(self._chained_hash_table.get(key = i), i, 'get on existing key failed')
+            self.assertEqual(self._chained_hash_table[i], i, 'get on existing key failed')
             
-        self.assertEquals(len(self._chained_hash_table), self._default_initial_capacity, 'hash table length must be same as full initial capacity')    
+        self.assertEqual(len(self._chained_hash_table), self._default_initial_capacity, 'hash table length must be same as full initial capacity')
     
     def test_del_then_get_and_len_on_less_thaninitial_capacity_hash_table(self):
         rolling_capacity = self._default_initial_capacity
         for i in list_of_strings_used_as_keys_and_values[0:5]:
             del self._chained_hash_table[i]
             rolling_capacity = rolling_capacity - 1
-            self.assertEquals(self._chained_hash_table.get(key = i), None, 'get on Non existing key must return None')
+            self.assertEqual(self._chained_hash_table.get(key = i), None, 'get on Non existing key must return None')
             self.assertRaises(KeyError, callableObj = lambda : self._chained_hash_table[i])
-            self.assertEquals(len(self._chained_hash_table), rolling_capacity, 'hash table length did not add up after delete')
+            self.assertEqual(len(self._chained_hash_table), rolling_capacity, 'hash table length did not add up after delete')
             
     def tearDown(self):
         self._chained_hash_table = None
@@ -151,13 +151,13 @@ class SeperateChainHashTable_with_BSTHashBucket_Test_Multiple_Resizes(unittest.T
             self._chained_hash_table[i] = i
 
         for i in range(1, self._length_upper_limit): # will trigger 
-            self.assertEquals(self._chained_hash_table.get(key = i), i, 'get on existing key failed')
-            self.assertEquals(self._chained_hash_table[i], i, 'get on existing key failed')
+            self.assertEqual(self._chained_hash_table.get(key = i), i, 'get on existing key failed')
+            self.assertEqual(self._chained_hash_table[i], i, 'get on existing key failed')
         #would have resized but number of items would be same
-        self.assertEquals(len(self._chained_hash_table), self._length_upper_limit - 1, 'hash table length does not add up')
+        self.assertEqual(len(self._chained_hash_table), self._length_upper_limit - 1, 'hash table length does not add up')
         #but table size would have doubled
         current_capacity_would_be = 2176 #coz 13 is where a default size 17 table resizes at first.
-        self.assertEquals(self._chained_hash_table.current_capacity, current_capacity_would_be,'hash table capacity does not add up')    
+        self.assertEqual(self._chained_hash_table.current_capacity, current_capacity_would_be,'hash table capacity does not add up')
     
     def test_del_then_get_and_len_with_a_truck_load_of_resizes(self):
         
@@ -168,9 +168,9 @@ class SeperateChainHashTable_with_BSTHashBucket_Test_Multiple_Resizes(unittest.T
         for i in range(1, self._length_upper_limit): # will trigger
             del self._chained_hash_table[i]
             rolling_length = rolling_length - 1
-            self.assertEquals(self._chained_hash_table.get(key = i), None, 'get on Non existing key must return None')
+            self.assertEqual(self._chained_hash_table.get(key = i), None, 'get on Non existing key must return None')
             self.assertRaises(KeyError, callableObj = lambda : self._chained_hash_table[i])
-            self.assertEquals(len(self._chained_hash_table), rolling_length, 'hash table length did not add up after delete')
+            self.assertEqual(len(self._chained_hash_table), rolling_length, 'hash table length did not add up after delete')
         
     def tearDown(self):
         self._chained_hash_table = None

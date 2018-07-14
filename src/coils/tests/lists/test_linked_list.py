@@ -13,7 +13,7 @@ class LinkedList_Test_Count_With_0_Elements(unittest.TestCase):
         self._linkedList = LinkedList()
     
     def test_count_of_empty_list(self):
-        self.assertEquals(self._linkedList.length, 0, 'Empty List length must be 0')
+        self.assertEqual(self._linkedList.length, 0, 'Empty List length must be 0')
     
     def tearDown(self):
         self._linkedList = None
@@ -24,8 +24,8 @@ class LinkedList_Test_Head_n_Tail_With_0_Elements(unittest.TestCase):
         self._linkedList = LinkedList()
     
     def test_count_of_empty_list(self):
-        self.assertEquals(self._linkedList.head, None, 'Head of 0 element list must be None')
-        self.assertEquals(self._linkedList.tail, None, 'Tail of 0 element list must be None')
+        self.assertEqual(self._linkedList.head, None, 'Head of 0 element list must be None')
+        self.assertEqual(self._linkedList.tail, None, 'Tail of 0 element list must be None')
     
     def tearDown(self):
         self._linkedList = None
@@ -41,7 +41,7 @@ class LinkedList_Test_Count_With_4_Predictable_Elements(unittest.TestCase):
         self._linkedList.append(4)
     
     def test_count_of_list(self):
-        self.assertEquals(self._linkedList.length, 4, 'Empty List length must be 4')
+        self.assertEqual(self._linkedList.length, 4, 'Empty List length must be 4')
     
     def tearDown(self):
         self._linkedList = None
@@ -53,7 +53,7 @@ class LinkedList_Test_Remove_Non_Existing_Element_From_0_Element_List(unittest.T
     
     def test_count_of_list(self):
         self._linkedList.remove(-1)
-        self.assertEquals(self._linkedList.length, 0, 'Length must be 0 for empty list')
+        self.assertEqual(self._linkedList.length, 0, 'Length must be 0 for empty list')
     
     def tearDown(self):
         self._linkedList = None
@@ -69,7 +69,7 @@ class LinkedList_Test_Remove_Non_Existing_Element_From_4_Element_List(unittest.T
     
     def test_count_of_list(self):
         self._linkedList.remove(-1)
-        self.assertEquals(self._linkedList.length, 4, 'Length not valid after trying to remove non-existing element')
+        self.assertEqual(self._linkedList.length, 4, 'Length not valid after trying to remove non-existing element')
 
     def tearDown(self):
         self._linkedList = None
@@ -85,7 +85,7 @@ class LinkedList_Test_Remove_Middle_Element_From_4_Element_List(unittest.TestCas
     
     def test_count_of_list(self):
         self._linkedList.remove(3)
-        self.assertEquals(self._linkedList.length, 3, 'Length not valid after trying to remove non-existin element')
+        self.assertEqual(self._linkedList.length, 3, 'Length not valid after trying to remove non-existin element')
 
     def tearDown(self):
         self._linkedList = None
@@ -97,7 +97,7 @@ class LinkedList_Test_IndexOf_Element_In_Empty_List(unittest.TestCase):
     
     def test_index(self):
         index = self._linkedList.index(8)
-        self.assertEquals(index, -1, 'Non existing element has index -1')
+        self.assertEqual(index, -1, 'Non existing element has index -1')
 
     def tearDown(self):
         self._linkedList = None
@@ -114,7 +114,7 @@ class LinkedList_Test_IndexOf_Elements_In_4_Element_List(unittest.TestCase):
     def test_index(self):
         for element in range(1, 5):
             index = self._linkedList.index(element)
-            self.assertEquals(index + 1, element, 'index failed for element')
+            self.assertEqual(index + 1, element, 'index failed for element')
 
     def tearDown(self):
         self._linkedList = None    
@@ -133,20 +133,20 @@ class LinkedList_Test_Operations_On_List_with_1000_Random_Elements(unittest.Test
         Check count, index before and after each predictable removal operation 
         """
         for i in self._shadow_list[:]:
-            self.assertEquals(self._linked_list.length, len(self._shadow_list))
+            self.assertEqual(self._linked_list.length, len(self._shadow_list))
             
-            self.assertEquals(self._linked_list.index(i), self._shadow_list.index(i))
+            self.assertEqual(self._linked_list.index(i), self._shadow_list.index(i))
             
             self._shadow_list.remove(i)
             self._linked_list.remove(i)
             
             try:
                 self._shadow_list.index(i)
-                self.assertEquals(self._linked_list.index(i), self._shadow_list.index(i))
+                self.assertEqual(self._linked_list.index(i), self._shadow_list.index(i))
             except ValueError:
-                self.assertEquals(self._linked_list.index(i), -1)
+                self.assertEqual(self._linked_list.index(i), -1)
             
-            self.assertEquals(self._linked_list.length, len(self._shadow_list))
+            self.assertEqual(self._linked_list.length, len(self._shadow_list))
 
 class LinkedList_Test_extend_With_Predictable_Elements(unittest.TestCase):
     '''
@@ -169,12 +169,12 @@ class LinkedList_Test_extend_With_Predictable_Elements(unittest.TestCase):
         self._secondList.append(7)
         
     def test_extend_of_list(self):
-        self.assertEquals(self._linkedList.length, 4, 'Original list before extend must be 4')
+        self.assertEqual(self._linkedList.length, 4, 'Original list before extend must be 4')
         count_before_extend = self._linkedList.length
         next_index_will_be = count_before_extend
         self._linkedList.extend(self._secondList)
         #check new length
-        self.assertEquals(self._linkedList.length, count_before_extend + self._secondList.length, 'New length after extend must add up.')
+        self.assertEqual(self._linkedList.length, count_before_extend + self._secondList.length, 'New length after extend must add up.')
         #check if the elements of shadow list are present
         for element in self._secondList:
             self.assertEqual(self._linkedList.index(element), next_index_will_be
@@ -242,8 +242,8 @@ class LinkedList_Test_Insert_At_0_With_0_Elements(unittest.TestCase):
     
     def test_insert_at_0_of_empty_list(self):
         self._linkedList.insert_at(0, 20)
-        self.assertEquals(self._linkedList.length, 1, 'Linked list length must be 1 after inserting to empty list')
-        self.assertEquals(self._linkedList.head, self._linkedList.tail, 'Linked list length must be same node after inserting to empty list')
+        self.assertEqual(self._linkedList.length, 1, 'Linked list length must be 1 after inserting to empty list')
+        self.assertEqual(self._linkedList.head, self._linkedList.tail, 'Linked list length must be same node after inserting to empty list')
     
     def tearDown(self):
         self._linkedList = None
@@ -255,8 +255,8 @@ class LinkedList_Test_Insert_At_Negative_Index_With_0_Elements(unittest.TestCase
     
     def test_insert_at_negative_index_of_empty_list(self):
         self._linkedList.insert_at(-2, 20)
-        self.assertEquals(self._linkedList.length, 1, 'Linked list length must be 1 after inserting to empty list at negative index')
-        self.assertEquals(self._linkedList.head, self._linkedList.tail, 'Linked list length must be same node after inserting to empty list at negative index')
+        self.assertEqual(self._linkedList.length, 1, 'Linked list length must be 1 after inserting to empty list at negative index')
+        self.assertEqual(self._linkedList.head, self._linkedList.tail, 'Linked list length must be same node after inserting to empty list at negative index')
     
     def tearDown(self):
         self._linkedList = None
@@ -268,8 +268,8 @@ class LinkedList_Test_Insert_At_Index_Larger_Than_Length_With_0_Elements(unittes
     
     def test_insert_at_negative_index_of_empty_list(self):
         self._linkedList.insert_at(100, 20)
-        self.assertEquals(self._linkedList.length, 1, 'Linked list length must be 1 after inserting to empty list at huge index')
-        self.assertEquals(self._linkedList.head, self._linkedList.tail, 'Linked list length must be same node after inserting to empty list at huge index')
+        self.assertEqual(self._linkedList.length, 1, 'Linked list length must be 1 after inserting to empty list at huge index')
+        self.assertEqual(self._linkedList.head, self._linkedList.tail, 'Linked list length must be same node after inserting to empty list at huge index')
     
     def tearDown(self):
         self._linkedList = None
@@ -287,9 +287,9 @@ class LinkedList_Test_Insert_At_Index_Larger_Than_Length_With_4_Elements(unittes
         expected_length = self._linkedList.length + 1
         element_to_insert = 20
         self._linkedList.insert_at(100, element_to_insert)
-        self.assertEquals(self._linkedList.length, expected_length, 'Linked list length did not tally after insert at huge index')
-        self.assertEquals(self._linkedList.tail, element_to_insert, 'Linked list tail must be same as new element inserted at huge index')
-        self.assertEquals(self._linkedList.index(20), expected_length - 1, 'index of new element did not add up')
+        self.assertEqual(self._linkedList.length, expected_length, 'Linked list length did not tally after insert at huge index')
+        self.assertEqual(self._linkedList.tail, element_to_insert, 'Linked list tail must be same as new element inserted at huge index')
+        self.assertEqual(self._linkedList.index(20), expected_length - 1, 'index of new element did not add up')
     
     def tearDown(self):
         self._linkedList = None
@@ -309,14 +309,14 @@ class LinkedList_Test_Insert_At_Index_In_Middle_With_4_Elements(unittest.TestCas
         element_to_insert = 3
         insert_at_index = 2
         self._linkedList.insert_at(insert_at_index, element_to_insert)# list will become 1, 2, 3, 4, 5
-        self.assertEquals(self._linkedList.length, expected_length, 'Linked list length did not tally after insert in the middle')
-        self.assertEquals(self._linkedList.index(3), insert_at_index, 'index of new element is not where we insert it at!')
+        self.assertEqual(self._linkedList.length, expected_length, 'Linked list length did not tally after insert in the middle')
+        self.assertEqual(self._linkedList.index(3), insert_at_index, 'index of new element is not where we insert it at!')
         
         #iterate and check
         expected_list = []
         for element in self._linkedList:
             expected_list.append(element)
-        self.assertEquals(expected_list, [1, 2, 3, 4, 5], 'List was not same as expected after insert At index')
+        self.assertEqual(expected_list, [1, 2, 3, 4, 5], 'List was not same as expected after insert At index')
     
     def tearDown(self):
         self._linkedList = None
@@ -480,7 +480,7 @@ class LinkedList_Test_Reverse_Iteration_With_0_Elements(unittest.TestCase):
         for element in reversed(self._linkedList):
             reverse_iter_of_list.append(element)
 
-        self.assertEquals(len(reverse_iter_of_list), 0, 'Reverse iteration on empty list gives non-empty values!')
+        self.assertEqual(len(reverse_iter_of_list), 0, 'Reverse iteration on empty list gives non-empty values!')
         
     def tearDown(self):
         self._linkedList = None
@@ -497,7 +497,7 @@ class LinkedList_Test_Reverse_Iteration_With_1_Elements(unittest.TestCase):
         for element in reversed(self._linkedList):
             reverse_iter_of_list.append(element)
 
-        self.assertEquals(reverse_iter_of_list, expected_reverse_iter_list, 'reverse iteration did not yield expected list')
+        self.assertEqual(reverse_iter_of_list, expected_reverse_iter_list, 'reverse iteration did not yield expected list')
         
     def tearDown(self):
         self._linkedList = None
@@ -515,7 +515,7 @@ class LinkedList_Test_Reverse_Iteration_With_multiple_Elements(unittest.TestCase
         for element in reversed(self._linkedList):
             reverse_iter_of_list.append(element)
 
-        self.assertEquals(reverse_iter_of_list, expected_reverse_iter_list, 'reverse iteration did not yield expected list')
+        self.assertEqual(reverse_iter_of_list, expected_reverse_iter_list, 'reverse iteration did not yield expected list')
         
     def tearDown(self):
         self._linkedList = None
@@ -559,7 +559,7 @@ class LinkedList_Test_get_item_With_multiple_Elements(unittest.TestCase):
     
     def test_get_item_with_multiple_elements(self):
         for i in self._extend_elements:#loop through the items we added. item 1 will be at index 0, 2 at 1 and so on.
-            self.assertEquals(self._linkedList[i - 1], i, 'list get item at index failed')
+            self.assertEqual(self._linkedList[i - 1], i, 'list get item at index failed')
     
     def tearDown(self):
         self._linkedList = None

@@ -34,8 +34,8 @@ class PriorityQ_Element_Test_Properties_With_Known_Item_And_Priority(unittest.Te
         self._priority_q_entry = PriorityQueueEntry(item = self._item, priority = self._priority) 
         
     def test_priority_q_properties_with_known_properties(self):
-        self.assertEquals(self._priority_q_entry.priority, self._priority, 'PriorityQ priority property did not matche expected')
-        self.assertEquals(self._priority_q_entry.item, self._item, 'PriorityQ item property did not matche expected')
+        self.assertEqual(self._priority_q_entry.priority, self._priority, 'PriorityQ priority property did not matche expected')
+        self.assertEqual(self._priority_q_entry.item, self._item, 'PriorityQ item property did not matche expected')
         
     def tearDown(self):
         self._priority_q_entry = None
@@ -52,7 +52,7 @@ class PriorityQ_Element_Test_Equality_of_Two_Entries(unittest.TestCase):
         self._priority_q_entry_2 = PriorityQueueEntry(item = self._item_2, priority = self._priority_2)
         
     def test_priority_q__test_equality_of_entries(self):
-        self.assertEquals(self._priority_q_entry_1 == self._priority_q_entry_2, True, 'Priority Q entries with same priority did not pass equality')
+        self.assertEqual(self._priority_q_entry_1 == self._priority_q_entry_2, True, 'Priority Q entries with same priority did not pass equality')
         
     def tearDown(self):
         self._priority_q_entry = None
@@ -70,10 +70,10 @@ class PriorityQ_Element_Test_Greater_Than_And_Less_Than_Compare_of_Two_Entries(u
         self._priority_q_entry_2 = PriorityQueueEntry(item = self._item_2, priority = self._priority_2)
             
     def test_priority_q_test_greater_than_of_entries(self):
-        self.assertEquals(self._priority_q_entry_2 > self._priority_q_entry_1, True, 'Priority Q entries did not pass greater than comparison')
+        self.assertEqual(self._priority_q_entry_2 > self._priority_q_entry_1, True, 'Priority Q entries did not pass greater than comparison')
     
     def test_priority_q_test_less_than_of_entries(self):
-        self.assertEquals(self._priority_q_entry_1 < self._priority_q_entry_2, True, 'Priority Q entries did not pass less than comparison')
+        self.assertEqual(self._priority_q_entry_1 < self._priority_q_entry_2, True, 'Priority Q entries did not pass less than comparison')
         
     def tearDown(self):
         self._priority_q_entry = None

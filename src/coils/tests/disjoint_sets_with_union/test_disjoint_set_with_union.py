@@ -25,7 +25,7 @@ class DisjointSet_With_Union_Test_Size_Of_Empty_Set(unittest.TestCase):
     def test_size_of_empty_set(self):
         self._disjointset = DisjointSetWithUnion()
         expected_size = 0
-        self.assertEquals(self._disjointset.size, expected_size, 'Empty disjoint set size was not 0')
+        self.assertEqual(self._disjointset.size, expected_size, 'Empty disjoint set size was not 0')
         
     def tearDown(self):
         self._disjointset = None
@@ -35,7 +35,7 @@ class DisjointSet_With_Union_Test_Find_with_Empty_Set(unittest.TestCase):
         self._disjointset = DisjointSetWithUnion()
     
     def test_find_on_empty_set(self):
-        self.assertEquals(self._disjointset.find(-1), None, 'Empty disjoint set find must return None')
+        self.assertEqual(self._disjointset.find(-1), None, 'Empty disjoint set find must return None')
         
     def tearDown(self):
         self._disjointset = None
@@ -58,7 +58,7 @@ class DisjointSet_With_Union_Test_Size_with_Single_Item(unittest.TestCase):
         item = -1
         self._disjointset.make_set(item)
         expected_size = 1
-        self.assertEquals(self._disjointset.size, expected_size, 'Singleton disjoint set size was not 1')
+        self.assertEqual(self._disjointset.size, expected_size, 'Singleton disjoint set size was not 1')
         
     def tearDown(self):
         self._disjointset = None
@@ -70,7 +70,7 @@ class DisjointSet_With_Union_Test_Make_Set_with_Single_Item(unittest.TestCase):
     def test_make_set_with_single_item(self):
         item = -1
         self._disjointset.make_set(item)
-        self.assertEquals(self._disjointset.find(item), item, 'singleton disjoing set find subsequent to make set failed')
+        self.assertEqual(self._disjointset.find(item), item, 'singleton disjoing set find subsequent to make set failed')
         
     def tearDown(self):
         self._disjointset = None
@@ -84,7 +84,7 @@ class DisjointSet_With_Union_Test_Make_Set_with_Multiple_Items(unittest.TestCase
         for item in items:
             self._disjointset.make_set(item)
         for item in items:
-            self.assertEquals(self._disjointset.find(item), item, 'singleton disjoint set find subsequent to make set failed')
+            self.assertEqual(self._disjointset.find(item), item, 'singleton disjoint set find subsequent to make set failed')
         
     def tearDown(self):
         self._disjointset = None        
@@ -94,13 +94,13 @@ class DisjointSet_Test_Union_With_None(unittest.TestCase):
         self._disjointset = DisjointSetWithUnion()
     
     def test_union_with_none(self):
-        self.assertEquals(self._disjointset.union(item_1 = None, item_2 = None), None, 
+        self.assertEqual(self._disjointset.union(item_1 = None, item_2 = None), None,
                                                 'disjoint union with none,none failed')
     def test_union_with_none_and_value(self):
-        self.assertEquals(self._disjointset.union(item_1 = None, item_2 = 'Some Value'), None, 
+        self.assertEqual(self._disjointset.union(item_1 = None, item_2 = 'Some Value'), None,
                                                 'disjoint union(None, some value) failed')
     def test_union_with_value_and_none(self):
-        self.assertEquals(self._disjointset.union(item_1 = 'Some value', item_2 = None), None, 
+        self.assertEqual(self._disjointset.union(item_1 = 'Some value', item_2 = None), None,
                                                 'disjoint union(some value, None) failed')    
     def tearDown(self):
         self._disjointset = None
@@ -117,9 +117,9 @@ class DisjointSet_Test_Union_Towards_Single_Final_Set(unittest.TestCase):
         set = None
         for index in range(0 , items_count - 1):
             set = self._disjointset.union(self._items[index], self._items[index + 1])
-            self.assertEquals(self._disjointset.find(self._items[index]), set, 
+            self.assertEqual(self._disjointset.find(self._items[index]), set,
                               'Disjoint union-find failed while progressing to a single final set')
-            self.assertEquals(self._disjointset.find(self._items[index + 1]), set, 
+            self.assertEqual(self._disjointset.find(self._items[index + 1]), set,
                               'Disjoint union-find failed while progressing to a single final set')
         
     def tearDown(self):
@@ -150,14 +150,14 @@ class DisjointSet_Test_Union_Towards_Multiple_Final_Sets(unittest.TestCase):
         zero = 0
         
         for item in self._positive_items_1:
-            self.assertEquals(self._disjointset.find(item), positive_representative_item, 
+            self.assertEqual(self._disjointset.find(item), positive_representative_item,
                                             'Find failed after union towards multiple final sets.')
         
         for item in self._negative_items_1:
-            self.assertEquals(self._disjointset.find(item), negative_representative_item, 
+            self.assertEqual(self._disjointset.find(item), negative_representative_item,
                                             'Find failed after union towards multiple final sets.')
         
-        self.assertEquals(self._disjointset.find(0), zero, 
+        self.assertEqual(self._disjointset.find(0), zero,
                                             'Find failed after union towards multiple final sets.')
         
     def tearDown(self):
@@ -171,7 +171,7 @@ class DisjointSet_With_Union_Test_Iter_On_Empty_Set(unittest.TestCase):
         list_of_tuples = []
         for item_and_set in self._disjointset:
             list_of_tuples.append(item_and_set)
-        self.assertEquals(len(list_of_tuples), 0, 'Iterating over empty set cannot yield anything')
+        self.assertEqual(len(list_of_tuples), 0, 'Iterating over empty set cannot yield anything')
         
     def tearDown(self):
         self._disjointset = None        
@@ -186,7 +186,7 @@ class DisjointSet_With_Union_Test_Iter_On_Singleton_Set(unittest.TestCase):
         list_of_tuples = []
         for item_and_set in self._disjointset:
             list_of_tuples.append(item_and_set)
-        self.assertEquals(len(list_of_tuples), 1, 'Iterating over (item, set) pairs in a singleton does not add up')
+        self.assertEqual(len(list_of_tuples), 1, 'Iterating over (item, set) pairs in a singleton does not add up')
         
     def tearDown(self):
         self._disjointset = None
@@ -219,11 +219,11 @@ class DisjointSet_Test_Iter_After_Union_Towards_Multiple_Final_Sets(unittest.Tes
         
         for item, set_of_item in self._disjointset:
             if item == 0:
-                self.assertEquals(set_of_item, zero, 'Iterating over (item, set) yields wrong set membership')
+                self.assertEqual(set_of_item, zero, 'Iterating over (item, set) yields wrong set membership')
             elif item > 0:
-                self.assertEquals(set_of_item, positive_representative_item, 'Iterating over (item, set) yields wrong set membership')
+                self.assertEqual(set_of_item, positive_representative_item, 'Iterating over (item, set) yields wrong set membership')
             else:
-                self.assertEquals(set_of_item, negative_representative_item, 'Iterating over (item, set) yields wrong set membership')
+                self.assertEqual(set_of_item, negative_representative_item, 'Iterating over (item, set) yields wrong set membership')
                 
     def tearDown(self):
         self._disjointset = None

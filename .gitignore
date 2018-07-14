@@ -1,1 +1,5 @@
+.idea/
+353pyenv/
 *.pyc
+*.log
+*.coverage

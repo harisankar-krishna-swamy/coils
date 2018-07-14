@@ -528,10 +528,10 @@ class LinkedList_Test_get_item_With_0_Elements(unittest.TestCase):
         self._linkedList = LinkedList()
     
     def test_get_item_of_empty_list(self):
-        self.assertRaises(IndexError, callableObj = lambda: self._linkedList[0])
-        self.assertRaises(IndexError, callableObj = lambda: self._linkedList[1])
-        self.assertRaises(IndexError, callableObj = lambda: self._linkedList[-1])
-        
+        for index in [-1, 0, 1]:
+            with self.assertRaises(IndexError):
+                self._linkedList[0]
+
     def tearDown(self):
         self._linkedList = None
     

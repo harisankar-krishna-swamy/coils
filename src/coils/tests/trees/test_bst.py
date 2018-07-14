@@ -218,7 +218,8 @@ class BST_Test_Replace_Empty_Tree(TestCase):
         self._bst = BinarySearchTree()
     
     def test_replace_with_empty_tree(self):
-        self.assertRaises(KeyError, callableObj = lambda : self._bst.replace('key', None))
+        with self.assertRaises(KeyError):
+            self._bst.replace('key', None)
         
     def tearDown(self):
         self._bst = None
@@ -241,7 +242,8 @@ class BST_Test_Replace_With_10_Elements_Non_Existing_Key(TestCase):
         self._bst_node_count = 10
     
     def test_replace_with_full_tree(self):
-        self.assertRaises(KeyError, callableObj = lambda : self._bst.replace('key', None))
+        with self.assertRaises(KeyError):
+            self._bst.replace(-99, None)
         
     def tearDown(self):
         self._bst = None
@@ -271,7 +273,7 @@ class BST_Test_Replace_With_10_Elements_Existing_Key(TestCase):
         
         self.assertEqual(key_to_replace in self._bst, True, 'Tree has_key operation must return True for existing key')
         self.assertEqual(self._bst.find(key_to_replace), value_to_set, 'Find operation failed on tree after replace')
-        self.assertNotEquals(self._bst.find(key_to_replace), key_to_replace, 'replaced key still exists!')
+        self.assertNotEqual(self._bst.find(key_to_replace), key_to_replace, 'replaced key still exists!')
         
     def tearDown(self):
         self._bst = None

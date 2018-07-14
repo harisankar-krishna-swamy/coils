@@ -62,7 +62,8 @@ class BSTHashBucket_Test_Get_Non_Existing_Item_With_4_Elements(unittest.TestCase
                                         'default value for non existing key was not used')
     
     def test_get_non_exiting_item_of_hash_bucket(self):
-        self.assertRaises(KeyError, callableObj = lambda : self._hash_bucket[1])
+        with self.assertRaises(KeyError):
+            self._hash_bucket[1]
         
     def test_get_non_exiting_item_of_hash_bucket_expect_Something_as_default(self):
         expected_default_return = "Default"
@@ -84,7 +85,8 @@ class BSTHashBucket_Test_Delete_Item_With_4_Elements(unittest.TestCase):
         for i in range(1, 5):
             self.assertEqual(self._hash_bucket[i], i, 'Hash bucket items did not match on retirieval')
             del self._hash_bucket[i]
-            self.assertRaises(KeyError, callableObj = lambda : self._hash_bucket[i])
+            with self.assertRaises(KeyError):
+                self._hash_bucket[i]
             
     def tearDown(self):
         self._hash_bucket = None

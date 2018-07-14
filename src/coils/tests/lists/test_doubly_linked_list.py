@@ -530,9 +530,9 @@ class DoublyDoublyLinkedList_Test_get_item_With_0_Elements(unittest.TestCase):
         self._doubly_linkedList = DoublyLinkedList()
     
     def test_get_item_of_empty_list(self):
-        self.assertRaises(IndexError, callableObj = lambda: self._doubly_linkedList[0])
-        self.assertRaises(IndexError, callableObj = lambda: self._doubly_linkedList[1])
-        self.assertRaises(IndexError, callableObj = lambda: self._doubly_linkedList[-1])
+        for index in [-1, 0, 1]:
+            with self.assertRaises(IndexError):
+                self._doubly_linkedList[index]
         
     def tearDown(self):
         self._doubly_linkedList = None

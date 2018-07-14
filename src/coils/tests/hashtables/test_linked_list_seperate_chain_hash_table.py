@@ -18,7 +18,8 @@ class SeperateChainHashTable_Test_With_0_Elements(unittest.TestCase):
     def test_get_empty_hash_table(self):
         non_existing_key = "SomeKey"
         self.assertEqual(self._chained_hash_table.get(key = non_existing_key), None, 'get on Non existing key must return None')
-        self.assertRaises(KeyError, callableObj = lambda : self._chained_hash_table[non_existing_key])
+        with self.assertRaises(KeyError):
+            self._chained_hash_table[non_existing_key]
     
     def test_del_empty_hash_table(self):
         non_existing_key = "SomeKey"
@@ -102,7 +103,8 @@ class SeperateChainHashTable_Test_With_Full_Initial_Capacity_Elements_Forces_Res
             del self._chained_hash_table[i]
             rolling_capacity = rolling_capacity - 1
             self.assertEqual(self._chained_hash_table.get(key = i), None, 'get on Non existing key must return None')
-            self.assertRaises(KeyError, callableObj = lambda : self._chained_hash_table[i])
+            with self.assertRaises(KeyError):
+                self._chained_hash_table[i]
             self.assertEqual(len(self._chained_hash_table), rolling_capacity, 'hash table length did not add up after delete')
             
     def tearDown(self):
@@ -131,7 +133,8 @@ class SeperateChainHashTable_Test_With_Less_Than_Initial_Capacity_Elements_Cause
             del self._chained_hash_table[i]
             rolling_capacity = rolling_capacity - 1
             self.assertEqual(self._chained_hash_table.get(key = i), None, 'get on Non existing key must return None')
-            self.assertRaises(KeyError, callableObj = lambda : self._chained_hash_table[i])
+            with self.assertRaises(KeyError):
+                self._chained_hash_table[i]
             self.assertEqual(len(self._chained_hash_table), rolling_capacity, 'hash table length did not add up after delete')
             
     def tearDown(self):
@@ -166,7 +169,8 @@ class SeperateChainHashTable_Test_Multiple_Resizes(unittest.TestCase):
             del self._chained_hash_table[i]
             rolling_length = rolling_length - 1
             self.assertEqual(self._chained_hash_table.get(key = i), None, 'get on Non existing key must return None')
-            self.assertRaises(KeyError, callableObj = lambda : self._chained_hash_table[i])
+            with self.assertRaises(KeyError):
+                self._chained_hash_table[i]
             self.assertEqual(len(self._chained_hash_table), rolling_length, 'hash table length did not add up after delete')
         
     def tearDown(self):

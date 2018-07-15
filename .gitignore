@@ -1,1 +1,10 @@
+.idea/
+353pyenv/
+2715pyenv/
+build/
+dist/
+pycoils.egg-info/
 *.pyc
+*.log
+*.coverage
+*.bak

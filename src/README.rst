@@ -1,23 +1,17 @@
-Author: Harisankar Krishna Swamy
-Linkedin: in.linkedin.com/in/harisankar02krishnaswamy
-Blog:     harisankar-krishnaswamy.blogspot.in
+pycoils is an implementaion of some common data structures in Python.
 
 License:
--------- 
+
 Apache2 License
 
-Contents:
----------
-This repo contains Hari's implementation of data structures in Python.
+New Features:
 
-Newly added:
------------
 15 July 2018:
 
 Python 3 & 2.7.15 support
 
 Current implementation for:
----------------------------
+
 Stack using python list
 Queue using python list
 Heap (Min & Max) using python list.
@@ -31,16 +25,12 @@ PriorityQueues
 InternStore
 
 Features to Implement:
-----------------------
+
 * indicates priority.
 1) Thread Safety *
 2) Heap using linked tree ****
 3) Graphs *
 
-INSTALL
-=======
-pip install pycoils
+Examples and usage:
 
-USAGE
-=====
 Refer: pycoils/examples package

@@ -1,5 +1,4 @@
-Author
-------
+Author: Harisankar Krishna Swamy
 Linkedin: in.linkedin.com/in/harisankar02krishnaswamy
 Blog:     harisankar-krishnaswamy.blogspot.in
 
@@ -13,7 +12,9 @@ This repo contains Hari's implementation of data structures in Python.
 
 Newly added:
 -----------
-InternStore
+15 July 2018:
+
+Python 3 & 2.7.15 support
 
 Current implementation for:
 ---------------------------
@@ -38,10 +39,8 @@ Features to Implement:
 
 INSTALL
 =======
-pip install pycoils-ds
+pip install pycoils
 
-TESTING
-=======
-On command prompt type
-
-python -m unittest discover tests
+USAGE
+=====
+Refer: pycoils/examples package

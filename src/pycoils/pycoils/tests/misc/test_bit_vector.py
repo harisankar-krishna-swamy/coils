@@ -57,3 +57,47 @@ class TestBitVectorDefaultInstance(unittest.TestCase):
         # check has number
         for number in numbers:
             self.assertFalse(self.bv.has(number), '{0} should not be in bit vector'.format(number))
+
+
+class TestBitVectorLargeMaxValue(unittest.TestCase):
+
+    def setUp(self):
+        self.max_value = 1000000000
+        self.bv = BitVector(max_value=self.max_value)
+
+    def test_default_max(self):
+        self.assertEqual(self.bv.max_value, self.max_value)
+
+    def test_item_size(self):
+        self.assertEqual(self.bv.vector.itemsize, 1)
+
+    def test_set_negative(self):
+        with self.assertRaises(ValueError):
+            self.bv.set(number=-1)
+
+    def test_set_zero(self):
+        self.bv.set(number=0)
+        self.assertTrue(self.bv.has(0))
+
+    def test_set_gt_max_value(self):
+        with self.assertRaises(ValueError):
+            self.bv.set(number=self.bv.max_value + 1)
+
+    def test_set_unset(self):
+        numbers = random.sample(range(0, self.max_value + 1), 30000)
+        # set
+        for number in numbers:
+            self.bv.set(number)
+        # check has number
+        for number in numbers:
+            self.assertTrue(self.bv.has(number), '{0} has to be in bit vector'.format(number))
+
+        # unset
+        for number in numbers:
+            self.bv.unset(number)
+        # check has number
+        for number in numbers:
+            self.assertFalse(self.bv.has(number), '{0} should not be in bit vector'.format(number))
+
+    def tearDown(self):
+        del self.bv

@@ -35,17 +35,11 @@ class BitVector:
 
     def set(self, number):
         index, offset = self._index_offset(number)
-        print('index {0} offset {1}'.format(index, offset))
-        print('Before {0:08b}'.format(self._array[index]))
         self._array[index] = self._array[index] | self._set_bit_masks[offset]
-        print('After {0:08b}'.format(self._array[index]))
 
     def unset(self, number):
         index, offset = self._index_offset(number)
-        print('index {0} offset {1}'.format(index, offset))
-        print('Before {0:08b}'.format(self._array[index]))
         self._array[index] = self._array[index] & self._unset_bit_masks[offset]
-        print('After {0:08b}'.format(self._array[index]))
 
     def __str__(self):
         return '{0} max_count {1}'.format(self._array, self._max_value)

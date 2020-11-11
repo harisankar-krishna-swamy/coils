@@ -10,7 +10,7 @@ Apache2 License
 11 November 2020:
 1) Bit vector data structure
 
-Current implementation for
+# List of data structures
 
 1) Stack using python list
 2) Queue using python list

@@ -13,9 +13,9 @@ setuptools.setup(
     description="A Python datastructure library",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://bitbucket.org/harisankar-krishna-swamy-code/coils",
+    url="https://github.com/harisankar-krishna-swamy/coils.git",
     packages=setuptools.find_packages(),
-    python_requires='>=2.7, <4',
+    python_requires='>=3.7.4, <4',
     classifiers=(
         "Programming Language :: Python :: 3",
         "License :: OSI Approved :: Apache Software License",

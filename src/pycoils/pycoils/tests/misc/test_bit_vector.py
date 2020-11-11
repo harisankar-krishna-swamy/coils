@@ -13,7 +13,7 @@ class TestBitVectorDefaultInstance(unittest.TestCase):
         self.assertEqual(self.bv.max_value, BV_DEFAULT_MAX_VALUE)
 
     def test_item_size(self):
-        self.assertEqual(self.bv.array.itemsize, 1)
+        self.assertEqual(self.bv.vector.itemsize, 1)
 
     def test_set_negative(self):
         with self.assertRaises(ValueError):

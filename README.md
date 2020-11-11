@@ -1,6 +1,9 @@
 # coils
 Data structures implemented using Python.
 
+# Install
+pip install pycoils
+
 # License
 
 Apache2 License

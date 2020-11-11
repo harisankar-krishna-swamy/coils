@@ -4,8 +4,10 @@ BV_DEFAULT_MAX_VALUE = 10
 
 
 class BitVector:
-
     def __init__(self, max_value=BV_DEFAULT_MAX_VALUE):
+        '''
+        :param max_value: largest number this bit vector must hold
+        '''
         self._max_value = max_value
         self._vector = array('B', [0 for i in range(int(self._max_value / 8 + 1))])
 
@@ -42,13 +44,9 @@ class BitVector:
         index, offset = self._index_offset(number)
         self._vector[index] = self._vector[index] & self._unset_bit_masks[offset]
 
-    def __str__(self):
-        return '{0} max_count {1}'.format(self._vector, self._max_value)
-
     def has(self, number):
         index, offset = self._index_offset(number)
         return bool(self._vector[index] & self._set_bit_masks[offset])
 
-    def bit_array_str_(self):
-        for index, byte in enumerate(self._vector):
-            print("{0}: {1:08b}".format(index, byte))
+    def __str__(self):
+        return '{0} max_count {1}'.format(self._vector, self._max_value)

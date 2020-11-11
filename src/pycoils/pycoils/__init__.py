@@ -1,2 +1,2 @@
 name = 'pycoils'
-version = '1.6.2'
+version = '3.0.0'

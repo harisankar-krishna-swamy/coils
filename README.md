@@ -1,16 +1,16 @@
 # coils
 Data structures implemented using Python.
 
-# License:
+# License
 
 Apache2 License
 
-# New Features:
+# New Features
 
 11 November 2020:
 1) Bit vector data structure
 
-Current implementation for:
+Current implementation for
 
 1) Stack using python list
 2) Queue using python list
@@ -25,6 +25,6 @@ Current implementation for:
 11) InternStore
 12) Bit Vector
 
-Examples and usage:
+Examples and usage
 
 Refer: pycoils/examples package

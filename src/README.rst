@@ -1,16 +1,19 @@
-pycoils is an implementaion of some common data structures in Python.
+# coils
+Data structures implemented using Python.
 
-License:
+# Install
+pip install pycoils
+
+# License
 
 Apache2 License
 
-New Features:
+# New Features
 
-15 July 2018:
+11 November 2020:
+1) Bit vector data structure
 
-* Python 3 & 2.7.15 support
-
-Current implementation for:
+# List of data structures
 
 1) Stack using python list
 2) Queue using python list
@@ -23,7 +26,8 @@ Current implementation for:
 9) DisjointSetWithUnion (uses uptree nodes and path compression)
 10) PriorityQueues
 11) InternStore
+12) Bit Vector
 
-Examples and usage:
+Examples and usage
 
 Refer: pycoils/examples package
